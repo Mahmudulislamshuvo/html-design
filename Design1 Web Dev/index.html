@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Mahmudul Islam - A high-performance web developer specializing in scalable full-stack applications and modern web architecture. SEO Keyword: Freelance Full-Stack Web Developer."
+    />
+    <title>Mahmudul Islam | High-Performance Web Developer</title>
+    <!-- Tailwind CSS CDN - The only styling permitted -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Alpine.js CDN - For all interactive elements and animation -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <!-- HTMX CDN - For the dynamic contact form -->
+    <script
+      src="https://unpkg.com/htmx.org@1.9.10"
+      xintegrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9WqS9IF7mtmiWPkXHL0FPlOouOkIG5JqssXf2hX"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Custom Tailwind Configuration derived from DesignSystem JSON -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              // Color Palette Mapping
+              "primary-bg": "#101010", // primaryBackground
+              "component-bg": "#1E1E1E", // componentBackground
+              "primary-text": "#FFFFFF", // primaryText
+              "secondary-text": "#C4C4C4", // secondaryText
+              accent: "#F9004D", // accent
+              "divider-color": "#333333", // divider
+            },
+            fontSize: {
+              // Typography Sizes Mapping
+              "h1-size": "4rem", // Very large (4rem for desktop, adapting with responsive classes)
+              "h2-size": "2.5rem",
+              "h3-size": "1.5rem",
+              "p-size": "1rem",
+            },
+            fontFamily: {
+              // Typography Font Family Mapping
+              sans: ["Poppins", "Helvetica Neue", "Arial", "sans-serif"],
+            },
+            borderRadius: {
+              // Component Border Radius Mapping
+              card: "10px", // Medium (10px)
+              input: "4px", // Small (4px)
+            },
+            spacing: {
+              // Generous spacing derived from Layout notes
+              "section-y": "8rem", // Generous padding for sections
+              "section-py": "6rem",
+              "card-p": "1.5rem",
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Essential icon library (Material Icons Outlined for simplicity and line-art aesthetic) -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body
+    class="bg-primary-bg text-secondary-text font-sans antialiased"
+    x-data="{ open: false, activeSection: 'hero' }"
+  >
+    <!-- Contact Form HTMX Target Placeholder -->
+    <!-- This div is used by HTMX to swap the success message after form submission -->
+    <div id="contact-form-response" class="sr-only"></div>
+
+    <!-- 1. Header & Sticky Navigation -->
+    <header
+      class="sticky top-0 z-50 bg-primary-bg/95 backdrop-blur-sm shadow-xl shadow-black/30 transition duration-300 ease-in-out"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <!-- Logo/Name -->
+        <a href="#" class="text-h3-size font-bold text-primary-text">
+          M<span class="text-accent">.</span> Islam
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex space-x-8 font-medium">
+          <a
+            href="#about"
+            class="text-secondary-text hover:text-accent transition duration-300"
+            >About</a
+          >
+          <a
+            href="#services"
+            class="text-secondary-text hover:text-accent transition duration-300"
+            >Services</a
+          >
+          <a
+            href="#projects"
+            class="text-secondary-text hover:text-accent transition duration-300"
+            >Projects</a
+          >
+          <a
+            href="#process"
+            class="text-secondary-text hover:text-accent transition duration-300"
+            >Process</a
+          >
+          <a
+            href="#contact"
+            class="px-4 py-2 bg-accent text-primary-text rounded-full hover:bg-opacity-90 transition duration-300 font-medium tracking-wide"
+            >CONTACT NOW</a
+          >
+        </nav>
+
+        <!-- Mobile Menu Button (Alpine.js) -->
+        <button
+          @click="open = true"
+          class="md:hidden text-primary-text hover:text-accent"
+        >
+          <span class="material-icons-outlined text-3xl">menu</span>
+        </button>
+      </div>
+
+      <!-- Mobile Menu Flyout (Alpine.js) -->
+      <div
+        x-show="open"
+        @click.away="open = false"
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0 scale-95"
+        x-transition:enter-end="opacity-100 scale-100"
+        x-transition:leave="transition ease-in duration-200"
+        x-transition:leave-start="opacity-100 scale-100"
+        x-transition:leave-end="opacity-0 scale-95"
+        class="fixed inset-x-0 top-0 p-4 md:hidden bg-component-bg shadow-2xl origin-top z-50 min-h-screen"
+      >
+        <div class="flex justify-between items-center mb-6">
+          <a href="#" class="text-h3-size font-bold text-primary-text"
+            >M<span class="text-accent">.</span> Islam</a
+          >
+          <button
+            @click="open = false"
+            class="text-primary-text hover:text-accent"
+          >
+            <span class="material-icons-outlined text-3xl">close</span>
+          </button>
+        </div>
+        <nav class="flex flex-col space-y-4">
+          <a
+            @click="open = false"
+            href="#about"
+            class="text-secondary-text hover:text-accent py-3 border-b border-divider-color text-lg"
+            >About</a
+          >
+          <a
+            @click="open = false"
+            href="#services"
+            class="text-secondary-text hover:text-accent py-3 border-b border-divider-color text-lg"
+            >Services</a
+          >
+          <a
+            @click="open = false"
+            href="#projects"
+            class="text-secondary-text hover:text-accent py-3 border-b border-divider-color text-lg"
+            >Projects</a
+          >
+          <a
+            @click="open = false"
+            href="#process"
+            class="text-secondary-text hover:text-accent py-3 border-b border-divider-color text-lg"
+            >Process</a
+          >
+          <a
+            @click="open = false"
+            href="#contact"
+            class="text-accent font-bold py-3 text-lg"
+            >CONTACT NOW</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Section 1: Hero - The Hook & Introduction -->
+      <section
+        id="hero"
+        class="max-w-7xl mx-auto px-6 py-section-y md:min-h-screen flex items-center"
+      >
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <!-- Left Column: Text -->
+          <div
+            x-data="{ role: 'Freelance Full-Stack Developer', text: '', charIndex: 0 }"
+            x-init="
+                        // Typing effect for the role
+                        let interval = setInterval(() => {
+                            if (charIndex < role.length) {
+                                text += role.charAt(charIndex);
+                                charIndex++;
+                            } else {
+                                clearInterval(interval);
+                            }
+                        }, 70);
+                    "
+            class="space-y-6"
+            x-intersect:enter="$el.classList.add('opacity-100', 'translate-y-0')"
+            class="opacity-0 translate-y-4 transition duration-1000 ease-out"
+          >
+            <p
+              class="text-accent uppercase font-medium tracking-widest text-sm"
+            >
+              WELCOME TO MY WORLD
+            </p>
+            <h1
+              class="text-5xl md:text-h1-size font-bold text-primary-text leading-tight"
+            >
+              Hi, I'm <span class="text-accent">Mahmudul</span> Islam
+            </h1>
+            <p
+              class="text-h3-size font-medium text-primary-text h-10 overflow-hidden"
+            >
+              A <span class="text-accent">{{ text }}</span>
+              <span class="inline-block w-1 h-8 bg-accent animate-pulse"></span>
+            </p>
+            <p
+              class="text-secondary-text text-p-size md:text-lg max-w-xl leading-relaxed"
+            >
+              I architect scalable, secure, and **blazing-fast** full-stack
+              applications that turn complex requirements into clean,
+              production-ready code. My focus is always on **performance and
+              maintainability**.
+            </p>
+
+            <!-- Primary CTA Button Link Style -->
+            <div class="pt-4 flex space-x-6 items-center">
+              <a
+                href="#projects"
+                class="text-accent uppercase font-medium hover:text-primary-text transition duration-300"
+              >
+                View My Work
+                <span
+                  class="material-icons-outlined text-base align-middle ml-1"
+                  >arrow_forward</span
+                >
+              </a>
+
+              <!-- Social Icons (Secondary Text color, Accent on hover) -->
+              <div class="flex space-x-4">
+                <!-- GitHub Icon SVG -->
+                <a
+                  href="#"
+                  target="_blank"
+                  class="text-secondary-text hover:text-accent transition duration-300"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 4c.14-.61.72-2 0-3.69-.94-.31-3.14.73-4.44 1.55A12.03 12.03 0 0 0 12 3c-1.85 0-3.63.5-5.32 1.41C5.69 3.1 3.49 2.05 2.56 2.36c-.73 1.69-.15 3.08 0 3.69A5.44 5.44 0 0 0 2 10.74c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 20v3"
+                    />
+                  </svg>
+                </a>
+                <!-- LinkedIn Icon SVG -->
+                <a
+                  href="#"
+                  target="_blank"
+                  class="text-secondary-text hover:text-accent transition duration-300"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                    />
+                    <rect x="2" y="9" width="4" height="12" />
+                    <circle cx="4" cy="4" r="2" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Image Placeholder -->
+          <div class="relative flex justify-center md:justify-end">
+            <!-- Placeholder for the professional photograph as per the Design System -->
+            <div
+              class="w-full max-w-sm h-[450px] bg-component-bg rounded-card overflow-hidden border border-divider-color shadow-lg transition-all duration-500 ease-in-out hover:shadow-accent/30 hover:border-accent/50 flex items-center justify-center"
+            >
+              <span class="text-secondary-text/50 italic"
+                >Professional Photo of Mahmudul Islam</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2. Logo Ticker / Trusted By -->
+      <section
+        class="max-w-7xl mx-auto px-6 py-12 border-y border-divider-color"
+      >
+        <div class="text-center mb-6">
+          <p
+            class="text-sm uppercase tracking-wider font-medium text-secondary-text"
+          >
+            Trusted By Leading <span class="text-accent">Tech Partners</span>
+          </p>
+        </div>
+        <div
+          class="flex flex-wrap justify-center items-center gap-x-12 gap-y-6 opacity-70"
+        >
+          <!-- Logos are monochrome/light grey as per Design System -->
+          <span
+            class="text-xl font-bold text-primary-text/50 hover:text-accent transition duration-300"
+            >ScaleUp</span
+          >
+          <span
+            class="text-xl font-bold text-primary-text/50 hover:text-accent transition duration-300"
+            >InnovateX</span
+          >
+          <span
+            class="text-xl font-bold text-primary-text/50 hover:text-accent transition duration-300"
+            >AgencyFlow</span
+          >
+          <span
+            class="text-xl font-bold text-primary-text/50 hover:text-accent transition duration-300 hidden sm:inline-block"
+            >DataCore</span
+          >
+          <span
+            class="text-xl font-bold text-primary-text/50 hover:text-accent transition duration-300 hidden lg:inline-block"
+            >EcomPro</span
+          >
+        </div>
+      </section>
+
+      <!-- Category 2: Building Rapport & Authority -->
+
+      <!-- Section 3. About Me: My Mission -->
+      <section id="about" class="max-w-7xl mx-auto px-6 py-section-py">
+        <!-- Section Heading (Animated) -->
+        <div
+          x-intersect:enter="$el.classList.add('opacity-100', 'translate-y-0')"
+          class="opacity-0 translate-y-4 transition duration-700 ease-out"
+          x-data="{}"
+          x-ref="sectionHead"
+        >
+          <p class="text-accent uppercase font-medium tracking-widest mb-2">
+            WHO I AM
+          </p>
+          <h2 class="text-h2-size font-bold text-primary-text mb-12">
+            My Mission: Engineering
+            <span class="text-accent">Digital Excellence</span>
+          </h2>
+        </div>
+
+        <div class="grid md:grid-cols-12 gap-10">
+          <div class="md:col-span-8 space-y-6 text-p-size md:text-lg">
+            <p class="text-primary-text font-medium">
+              I'm not just a developer; I'm an architect of digital solutions.
+              My mission is to blend cutting-edge technology with pragmatic
+              execution, ensuring every line of code adds tangible business
+              value. I thrive on building systems that are not only functional
+              but also fast, secure, and future-proof.
+            </p>
+            <p>
+              With a deep foundation in **Freelance Full-Stack Web Development**
+              and a passion for modern JavaScript frameworks (React, Node.js), I
+              focus on creating seamless user experiences powered by highly
+              optimized back-end architecture. I believe in meticulous planning,
+              rigorous testing, and a collaborative process that keeps clients
+              informed and involved from the first sketch to the final
+              deployment.
+            </p>
+          </div>
+          <div
+            class="md:col-span-4 space-y-4 bg-component-bg p-card-p rounded-card shadow-lg"
+          >
+            <h3 class="text-h3-size text-primary-text font-bold">
+              Core Philosophies
+            </h3>
+            <ul class="space-y-3">
+              <li class="flex items-center text-secondary-text">
+                <span class="material-icons-outlined text-accent mr-3"
+                  >bolt</span
+                >
+                Performance First: Sub-100ms API responses.
+              </li>
+              <li class="flex items-center text-secondary-text">
+                <span class="material-icons-outlined text-accent mr-3"
+                  >code</span
+                >
+                Clean, Documented, Maintainable Code.
+              </li>
+              <li class="flex items-center text-secondary-text">
+                <span class="material-icons-outlined text-accent mr-3"
+                  >security</span
+                >
+                Scalability & Enterprise-Grade Security.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4. Services / What I Deliver (3-column grid of Service Cards) -->
+      <section id="services" class="max-w-7xl mx-auto px-6 py-section-py">
+        <!-- Section Heading -->
+        <div
+          x-intersect:enter="$el.classList.add('opacity-100', 'translate-y-0')"
+          class="opacity-0 translate-y-4 transition duration-700 ease-out"
+          x-data="{}"
+          x-ref="sectionHead"
+        >
+          <p class="text-accent uppercase font-medium tracking-widest mb-2">
+            MY EXPERTISE
+          </p>
+          <h2 class="text-h2-size font-bold text-primary-text mb-12">
+            Services <span class="text-accent">I Deliver</span>
+          </h2>
+        </div>
+
+        <!-- Services Grid (3-column) -->
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Service Card 1 -->
+          <div
+            class="bg-component-bg p-card-p rounded-card transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10 hover:-translate-y-1"
+          >
+            <span class="material-icons-outlined text-accent text-5xl mb-4"
+              >app_settings_alt</span
+            >
+            <h3 class="text-h3-size font-bold text-primary-text mb-2">
+              Full-Stack Application Development
+            </h3>
+            <p class="text-secondary-text mb-4">
+              Building end-to-end web applications, from responsive front-ends
+              to robust, scalable APIs and database architecture.
+            </p>
+            <a
+              href="#projects"
+              class="text-accent uppercase font-medium text-sm hover:text-primary-text transition duration-300"
+            >
+              See Case Studies
+              <span class="material-icons-outlined text-base align-middle ml-1"
+                >arrow_forward</span
+              >
+            </a>
+          </div>
+
+          <!-- Service Card 2 -->
+          <div
+            class="bg-component-bg p-card-p rounded-card transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10 hover:-translate-y-1"
+          >
+            <span class="material-icons-outlined text-accent text-5xl mb-4"
+              >tune</span
+            >
+            <h3 class="text-h3-size font-bold text-primary-text mb-2">
+              Performance & Optimization
+            </h3>
+            <p class="text-secondary-text mb-4">
+              Identifying and eliminating bottlenecks. Delivering near-instant
+              load times and high Lighthouse scores for improved SEO and UX.
+            </p>
+            <a
+              href="#results"
+              class="text-accent uppercase font-medium text-sm hover:text-primary-text transition duration-300"
+            >
+              View Metrics
+              <span class="material-icons-outlined text-base align-middle ml-1"
+                >arrow_forward</span
+              >
+            </a>
+          </div>
+
+          <!-- Service Card 3 -->
+          <div
+            class="bg-component-bg p-card-p rounded-card transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10 hover:-translate-y-1"
+          >
+            <span class="material-icons-outlined text-accent text-5xl mb-4"
+              >security</span
+            >
+            <h3 class="text-h3-size font-bold text-primary-text mb-2">
+              API & Microservices Architecture
+            </h3>
+            <p class="text-secondary-text mb-4">
+              Designing and building fast, secure, and documented RESTful or
+              GraphQL APIs using Node.js/Express or similar platforms.
+            </p>
+            <a
+              href="#tech-stack"
+              class="text-accent uppercase font-medium text-sm hover:text-primary-text transition duration-300"
+            >
+              My Tools
+              <span class="material-icons-outlined text-base align-middle ml-1"
+                >arrow_forward</span
+              >
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5. My Tech Stack / Tools (Visual Credibility) -->
+      <section id="tech-stack" class="max-w-7xl mx-auto px-6 py-section-py">
+        <!-- Section Heading -->
+        <div
+          x-intersect:enter="$el.classList.add('opacity-100', 'translate-y-0')"
+          class="opacity-0 translate-y-4 transition duration-700 ease-out"
+          x-data="{}"
+          x-ref="sectionHead"
+        >
+          <p class="text-accent uppercase font-medium tracking-widest mb-2">
+            THE ENGINE ROOM
+          </p>
+          <h2 class="text-h2-size font-bold text-primary-text mb-12">
+            My <span class="text-accent">Tech Stack</span>
+          </h2>
+        </div>
+
+        <p
+          class="text-center text-lg text-secondary-text mb-8 max-w-3xl mx-auto"
+        >
+          I specialize in the modern MERN/PERN stack, focusing on tools that
+          guarantee speed, scalability, and efficiency.
+        </p>
+
+        <!-- Tech Icons Grid -->
+        <div
+          class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-6 justify-items-center"
+        >
+          <!-- Tech Card 1 -->
+          <div
+            class="bg-component-bg p-4 rounded-card text-center w-full transition duration-300 hover:bg-accent/10"
+          >
+            <span class="text-5xl text-accent">R</span>
+            <p class="text-sm text-primary-text mt-1">React / Next.js</p>
+          </div>
+          <!-- Tech Card 2 -->
+          <div
+            class="bg-component-bg p-4 rounded-card text-center w-full transition duration-300 hover:bg-accent/10"
+          >
+            <span class="text-5xl text-accent">N</span>
+            <p class="text-sm text-primary-text mt-1">Node.js / Express</p>
+          </div>
+          <!-- Tech Card 3 -->
+          <div
+            class="bg-component-bg p-4 rounded-card text-center w-full transition duration-300 hover:bg-accent/10"
+          >
+            <span class="text-5xl text-accent">M</span>
+            <p class="text-sm text-primary-text mt-1">MongoDB / SQL</p>
+          </div>
+          <!-- Tech Card 4 -->
+          <div
+            class="bg-component-bg p-4 rounded-card text-center w-full transition duration-300 hover:bg-accent/10"
+          >
+            <span class="text-5xl text-accent">T</span>
+            <p class="text-sm text-primary-text mt-1">TypeScript</p>
+          </div>
+          <!-- Tech Card 5 -->
+          <div
+            class="bg-component-bg p-4 rounded-card text-center w-full transition duration-300 hover:bg-accent/10"
+          >
+            <span class="text-5xl text-accent">A</span>
+            <p class="text-sm text-primary-text mt-1">AWS / Vercel</p>
+          </div>
+          <!-- Tech Card 6 -->
+          <div
+            class="bg-component-bg p-4 rounded-card text-center w-full transition duration-300 hover:bg-accent/10"
+          >
+            <span class="text-5xl text-accent">T</span>
+            <p class="text-sm text-primary-text mt-1">Tailwind CSS</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Category 3: Hard Proof & Credibility -->
+
+      <!-- Section 6. Quantifiable Results / KPIs (High-impact numbers) -->
+      <section id="results" class="max-w-7xl mx-auto px-6 py-section-py">
+        <!-- Section Heading -->
+        <div
+          x-intersect:enter="$el.classList.add('opacity-100', 'translate-y-0')"
+          class="opacity-0 translate-y-4 transition duration-700 ease-out"
+          x-data="{}"
+          x-ref="sectionHead"
+        >
+          <p class="text-accent uppercase font-medium tracking-widest mb-2">
+            PROOF OF VALUE
+          </p>
+          <h2 class="text-h2-size font-bold text-primary-text mb-12">
+            My Impact in <span class="text-accent">Numbers</span>
+          </h2>
+        </div>
+
+        <!-- KPI Grid (4-column) -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- KPI 1: Performance -->
+          <div
+            class="bg-component-bg p-card-p rounded-card text-center transition duration-300 hover:border-b-4 hover:border-accent"
+          >
+            <p class="text-5xl font-bold text-accent mb-2">92+</p>
+            <p class="text-lg font-medium text-primary-text">
+              Average Lighthouse Score
+            </p>
+            <p class="text-sm text-secondary-text mt-1">
+              Focus on Core Web Vitals.
+            </p>
+          </div>
+
+          <!-- KPI 2: Efficiency/Speed -->
+          <div
+            class="bg-component-bg p-card-p rounded-card text-center transition duration-300 hover:border-b-4 hover:border-accent"
+          >
+            <p class="text-5xl font-bold text-accent mb-2">30%</p>
+            <p class="text-lg font-medium text-primary-text">
+              Reduction in Load Time
+            </p>
+            <p class="text-sm text-secondary-text mt-1">
+              Across multiple projects.
+            </p>
+          </div>
+
+          <!-- KPI 3: Scalability/Uptime -->
+          <div
+            class="bg-component-bg p-card-p rounded-card text-center transition duration-300 hover:border-b-4 hover:border-accent"
+          >
+            <p class="text-5xl font-bold text-accent mb-2">99.9%</p>
+            <p class="text-lg font-medium text-primary-text">
+              Guaranteed Uptime
+            </p>
+            <p class="text-sm text-secondary-text mt-1">
+              For mission-critical applications.
+            </p>
+          </div>
+
+          <!-- KPI 4: Code Quality -->
+          <div
+            class="bg-component-bg p-card-p rounded-card text-center transition duration-300 hover:border-b-4 hover:border-accent"
+          >
+            <p class="text-5xl font-bold text-accent mb-2">10k+</p>
+            <p class="text-lg font-medium text-primary-text">
+              Lines of Tested Code
+            </p>
+            <p class="text-sm text-secondary-text mt-1">
+              With full test coverage.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 7. Featured Projects (3-column Project Cards) -->
+      <section id="projects" class="max-w-7xl mx-auto px-6 py-section-py">
+        <!-- Section Heading -->
+        <div
+          x-intersect:enter="$el.classList.add('opacity-100', 'translate-y-0')"
+          class="opacity-0 translate-y-4 transition duration-700 ease-out"
+          x-data="{}"
+          x-ref="sectionHead"
+        >
+          <p class="text-accent uppercase font-medium tracking-widest mb-2">
+            MY WORK
+          </p>
+          <h2 class="text-h2-size font-bold text-primary-text mb-12">
+            Featured <span class="text-accent">Web Development</span> Projects
+          </h2>
+        </div>
+
+        <!-- Projects Grid (3-column) -->
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Project Card 1 -->
+          <div
+            class="bg-component-bg rounded-card overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10 hover:-translate-y-1"
+          >
+            <!-- Image Placeholder -->
+            <div
+              class="h-48 bg-accent/20 w-full flex items-center justify-center"
+            >
+              <span class="text-primary-text/50"
+                >Project Image: E-commerce Platform</span
+              >
+            </div>
+            <div class="p-6">
+              <p class="text-accent text-sm uppercase font-medium mb-1">
+                E-commerce / React & Node
+              </p>
+              <h3 class="text-h3-size font-bold text-primary-text mb-2">
+                Scalable Retail Platform
+              </h3>
+              <p class="text-secondary-text text-p-size mb-4">
+                Developed a high-traffic e-commerce solution supporting 10,000+
+                products and real-time inventory management.
+              </p>
+              <a
+                href="#"
+                target="_blank"
+                class="text-accent uppercase font-medium text-sm hover:text-primary-text transition duration-300"
+              >
+                Live Demo
+                <span
+                  class="material-icons-outlined text-base align-middle ml-1"
+                  >arrow_forward</span
+                >
+              </a>
+              <div class="mt-4 flex items-center text-secondary-text/70">
+                <span
+                  class="material-icons-outlined text-sm mr-1 hover:text-accent cursor-pointer"
+                  >favorite_border</span
+                >
+                1.2K Likes
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 2 -->
+          <div
+            class="bg-component-bg rounded-card overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10 hover:-translate-y-1"
+          >
+            <!-- Image Placeholder -->
+            <div
+              class="h-48 bg-accent/20 w-full flex items-center justify-center"
+            >
+              <span class="text-primary-text/50"
+                >Project Image: SaaS Dashboard</span
+              >
+            </div>
+            <div class="p-6">
+              <p class="text-accent text-sm uppercase font-medium mb-1">
+                SaaS / Next.js & TypeScript
+              </p>
+              <h3 class="text-h3-size font-bold text-primary-text mb-2">
+                Real-time Data Dashboard
+              </h3>
+              <p class="text-secondary-text text-p-size mb-4">
+                Engineered a subscription dashboard that processes and
+                visualizes complex data with sub-second latency.
+              </p>
+              <a
+                href="#"
+                target="_blank"
+                class="text-accent uppercase font-medium text-sm hover:text-primary-text transition duration-300"
+              >
+                Live Demo
+                <span
+                  class="material-icons-outlined text-base align-middle ml-1"
+                  >arrow_forward</span
+                >
+              </a>
+              <div class="mt-4 flex items-center text-secondary-text/70">
+                <span
+                  class="material-icons-outlined text-sm mr-1 hover:text-accent cursor-pointer"
+                  >favorite_border</span
+                >
+                850 Likes
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 3 -->
+          <div
+            class="bg-component-bg rounded-card overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10 hover:-translate-y-1"
+          >
+            <!-- Image Placeholder -->
+            <div
+              class="h-48 bg-accent/20 w-full flex items-center justify-center"
+            >
+              <span class="text-primary-text/50"
+                >Project Image: Headless CMS</span
+              >
+            </div>
+            <div class="p-6">
+              <p class="text-accent text-sm uppercase font-medium mb-1">
+                CMS / API Development
+              </p>
+              <h3 class="text-h3-size font-bold text-primary-text mb-2">
+                Custom Headless Content API
+              </h3>
+              <p class="text-secondary-text text-p-size mb-4">
+                Built a dedicated, high-speed content delivery API for a
+                marketing website, boosting content deployment speed.
+              </p>
+              <a
+                href="#"
+                target="_blank"
+                class="text-accent uppercase font-medium text-sm hover:text-primary-text transition duration-300"
+              >
+                Live Demo
+                <span
+                  class="material-icons-outlined text-base align-middle ml-1"
+                  >arrow_forward</span
+                >
+              </a>
+              <div class="mt-4 flex items-center text-secondary-text/70">
+                <span
+                  class="material-icons-outlined text-sm mr-1 hover:text-accent cursor-pointer"
+                  >favorite_border</span
+                >
+                520 Likes
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-12">
+          <a
+            href="#contact"
+            class="inline-block px-8 py-3 text-lg font-medium text-primary-text bg-accent rounded-full hover:bg-opacity-90 transition duration-300"
+          >
+            START YOUR PROJECT TODAY
+          </a>
+        </div>
+      </section>
+
+      <!-- Section 8. Testimonials (Slider with Alpine.js) -->
+      <section id="testimonials" class="max-w-4xl mx-auto px-6 py-section-py">
+        <!-- Section Heading -->
+        <div
+          x-intersect:enter="$el.classList.add('opacity-100', 'translate-y-0')"
+          class="opacity-0 translate-y-4 transition duration-700 ease-out"
+          x-data="{}"
+          x-ref="sectionHead"
+        >
+          <p
+            class="text-accent uppercase font-medium tracking-widest mb-2 text-center"
+          >
+            CLIENT VOICES
+          </p>
+          <h2
+            class="text-h2-size font-bold text-primary-text mb-12 text-center"
+          >
+            What People <span class="text-accent">Say About My Work</span>
+          </h2>
+        </div>
+
+        <!-- Testimonial Slider (Alpine.js) -->
+        <div
+          x-data="{ 
+                activeSlide: 0, 
+                testimonials: [
+                    { quote: 'Mahmudul is a force multiplier. His ability to deliver complex features with zero performance degradation is unmatched. Highly recommend for any scaling project.', name: 'Sarah L.', title: 'CTO, InnovateX Solutions' },
+                    { quote: 'The new API architecture he implemented reduced our primary response time by 45ms. His focus on security and clean code made the handover seamless.', name: 'James P.', title: 'Lead Engineer, DataCore' },
+                    { quote: 'Our conversion rate jumped significantly after Mahmudul optimized our checkout flow. He delivers high-impact results, not just code.', name: 'Aisha K.', title: 'Marketing Director, ScaleUp' }
+                ],
+                next() { this.activeSlide = (this.activeSlide + 1) % this.testimonials.length; },
+                prev() { this.activeSlide = (this.activeSlide - 1 + this.testimonials.length) % this.testimonials.length; }
+            }"
+          class="relative"
+        >
+          <!-- Slide Content -->
+          <div
+            x-transition:enter="transition ease-out duration-500"
+            x-transition:enter-start="opacity-0 transform scale-95"
+            x-transition:enter-end="opacity-100 transform scale-100"
+            x-transition:leave="transition ease-in duration-300 absolute w-full top-0"
+            x-transition:leave-start="opacity-100 transform scale-100"
+            x-transition:leave-end="opacity-0 transform scale-95"
+            class="bg-component-bg p-8 md:p-12 rounded-card min-h-[300px] flex flex-col justify-center text-center"
+            :key="activeSlide"
+          >
+            <span
+              class="material-icons-outlined text-accent text-6xl mb-4 mx-auto"
+              >format_quote</span
+            >
+            <p class="text-2xl italic text-primary-text mb-6 leading-relaxed">
+              "{{ testimonials[activeSlide].quote }}"
+            </p>
+            <p class="font-bold text-primary-text">
+              {{ testimonials[activeSlide].name }}
+            </p>
+            <p class="text-accent text-sm">
+              {{ testimonials[activeSlide].title }}
+            </p>
+          </div>
+
+          <!-- Navigation Buttons -->
+          <button
+            @click="prev()"
+            class="absolute top-1/2 left-0 transform -translate-y-1/2 p-3 text-secondary-text hover:text-accent transition duration-300"
+          >
+            <span class="material-icons-outlined text-4xl">arrow_back_ios</span>
+          </button>
+          <button
+            @click="next()"
+            class="absolute top-1/2 right-0 transform -translate-y-1/2 p-3 text-secondary-text hover:text-accent transition duration-300"
+          >
+            <span class="material-icons-outlined text-4xl"
+              >arrow_forward_ios</span
+            >
+          </button>
+
+          <!-- Indicator Dots -->
+          <div class="flex justify-center space-x-2 mt-6">
+            <template x-for="(testimonial, index) in testimonials" :key="index">
+              <button
+                @click="activeSlide = index"
+                :class="{'bg-accent': activeSlide === index, 'bg-divider-color': activeSlide !== index}"
+                class="w-3 h-3 rounded-full transition duration-300"
+              ></button>
+            </template>
+          </div>
+        </div>
+      </section>
+
+      <!-- Category 4: Clarification & Process -->
+
+      <!-- Section 9. My Working Process (Step-by-step Guide) -->
+      <section id="process" class="max-w-7xl mx-auto px-6 py-section-py">
+        <!-- Section Heading -->
+        <div
+          x-intersect:enter="$el.classList.add('opacity-100', 'translate-y-0')"
+          class="opacity-0 translate-y-4 transition duration-700 ease-out"
+          x-data="{}"
+          x-ref="sectionHead"
+        >
+          <p class="text-accent uppercase font-medium tracking-widest mb-2">
+            MY METHODOLOGY
+          </p>
+          <h2 class="text-h2-size font-bold text-primary-text mb-12">
+            The <span class="text-accent">4D</span> Development Process
+          </h2>
+        </div>
+
+        <!-- Process Timeline (Responsive 4-column grid) -->
+        <div class="grid md:grid-cols-4 gap-8">
+          <!-- Step 1: Discover -->
+          <div
+            class="bg-component-bg p-card-p rounded-card flex flex-col items-center text-center transition duration-300 hover:bg-accent/10"
+          >
+            <span class="text-4xl font-bold text-accent mb-3">01</span>
+            <h3 class="text-h3-size font-bold text-primary-text mb-2">
+              Discovery & Plan
+            </h3>
+            <p class="text-secondary-text text-sm">
+              Defining scope, establishing architecture, and finalizing
+              technical specifications. It starts with 'Why'.
+            </p>
+          </div>
+          <!-- Step 2: Design -->
+          <div
+            class="bg-component-bg p-card-p rounded-card flex flex-col items-center text-center transition duration-300 hover:bg-accent/10"
+          >
+            <span class="text-4xl font-bold text-accent mb-3">02</span>
+            <h3 class="text-h3-size font-bold text-primary-text mb-2">
+              Design & Prototype
+            </h3>
+            <p class="text-secondary-text text-sm">
+              Creating wireframes, UI/UX flows, and technical prototypes for
+              early feedback and validation.
+            </p>
+          </div>
+          <!-- Step 3: Develop -->
+          <div
+            class="bg-component-bg p-card-p rounded-card flex flex-col items-center text-center transition duration-300 hover:bg-accent/10"
+          >
+            <span class="text-4xl font-bold text-accent mb-3">03</span>
+            <h3 class="text-h3-size font-bold text-primary-text mb-2">
+              Develop & Test
+            </h3>
+            <p class="text-secondary-text text-sm">
+              Writing clean, tested code, utilizing CI/CD, and focusing on
+              performance optimizations (Web Vitals).
+            </p>
+          </div>
+          <!-- Step 4: Deploy -->
+          <div
+            class="bg-component-bg p-card-p rounded-card flex flex-col items-center text-center transition duration-300 hover:bg-accent/10"
+          >
+            <span class="text-4xl font-bold text-accent mb-3">04</span>
+            <h3 class="text-h3-size font-bold text-primary-text mb-2">
+              Deploy & Iterate
+            </h3>
+            <p class="text-secondary-text text-sm">
+              Secure cloud deployment, performance monitoring, and ongoing
+              maintenance/feature iteration.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 10. Pricing / Packages (3-column Pricing Cards) -->
+      <section
+        id="pricing"
+        class="max-w-7xl mx-auto px-6 py-section-py bg-component-bg/50"
+      >
+        <!-- Section Heading -->
+        <div
+          x-intersect:enter="$el.classList.add('opacity-100', 'translate-y-0')"
+          class="opacity-0 translate-y-4 transition duration-700 ease-out"
+          x-data="{}"
+          x-ref="sectionHead"
+        >
+          <p
+            class="text-accent uppercase font-medium tracking-widest mb-2 text-center"
+          >
+            INVESTMENT
+          </p>
+          <h2
+            class="text-h2-size font-bold text-primary-text mb-12 text-center"
+          >
+            Flexible <span class="text-accent">Development Packages</span>
+          </h2>
+        </div>
+
+        <!-- Pricing Grid (3-column) -->
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Pricing Card 1: Starter -->
+          <div
+            class="bg-component-bg p-card-p rounded-card text-center border-t-4 border-divider-color transition-all duration-300 hover:border-accent"
+          >
+            <p class="text-lg uppercase text-primary-text font-bold mb-4">
+              Starter Site
+            </p>
+            <p class="text-6xl font-extrabold text-primary-text mb-2">
+              $1,500<span class="text-lg text-secondary-text"> / starting</span>
+            </p>
+            <p class="text-secondary-text mb-6">
+              Ideal for landing pages & small business websites.
+            </p>
+            <hr class="border-divider-color mb-6" />
+            <ul class="space-y-3 text-secondary-text text-left">
+              <li class="flex items-center">
+                <span class="material-icons-outlined text-accent mr-3 text-lg"
+                  >check_circle</span
+                >
+                Responsive Static Site
+              </li>
+              <li class="flex items-center">
+                <span class="material-icons-outlined text-accent mr-3 text-lg"
+                  >check_circle</span
+                >
+                Basic SEO & Performance
+              </li>
+              <li class="flex items-center">
+                <span class="material-icons-outlined text-accent mr-3 text-lg"
+                  >check_circle</span
+                >
+                3-5 Page Build
+              </li>
+              <li class="flex items-center text-secondary-text/50">
+                <span
+                  class="material-icons-outlined text-divider-color mr-3 text-lg"
+                  >close</span
+                >
+                Custom API Backend
+              </li>
+            </ul>
+            <a
+              href="#contact"
+              class="mt-8 block w-full py-3 font-medium text-primary-text bg-accent rounded-full hover:bg-opacity-90 transition duration-300"
+            >
+              Select Starter
+            </a>
+          </div>
+
+          <!-- Pricing Card 2: Custom Application (Highlighted) -->
+          <div
+            class="bg-component-bg p-card-p rounded-card text-center border-t-4 border-accent shadow-2xl shadow-accent/20 transition-all duration-300 transform scale-105"
+          >
+            <p class="text-lg uppercase text-primary-text font-bold mb-4">
+              Custom Application
+            </p>
+            <p class="text-6xl font-extrabold text-primary-text mb-2">
+              $5,000<span class="text-lg text-secondary-text"> / starting</span>
+            </p>
+            <p class="text-secondary-text mb-6">
+              For complex SaaS, E-commerce, or internal tools.
+            </p>
+            <hr class="border-divider-color mb-6" />
+            <ul class="space-y-3 text-secondary-text text-left">
+              <li class="flex items-center">
+                <span class="material-icons-outlined text-accent mr-3 text-lg"
+                  >check_circle</span
+                >
+                Full-Stack App Build (MERN/PERN)
+              </li>
+              <li class="flex items-center">
+                <span class="material-icons-outlined text-accent mr-3 text-lg"
+                  >check_circle</span
+                >
+                Custom API & Database Design
+              </li>
+              <li class="flex items-center">
+                <span class="material-icons-outlined text-accent mr-3 text-lg"
+                  >check_circle</span
+                >
+                Performance & Scalability Focus
+              </li>
+              <li class="flex items-center">
+                <span class="material-icons-outlined text-accent mr-3 text-lg"
+                  >check_circle</span
+                >
+                Full Testing & Documentation
+              </li>
+            </ul>
+            <a
+              href="#contact"
+              class="mt-8 block w-full py-3 font-medium text-primary-bg bg-accent rounded-full hover:bg-opacity-90 transition duration-300"
+            >
+              Inquire Now
+            </a>
+          </div>
+
+          <!-- Pricing Card 3: Enterprise -->
+          <div
+            class="bg-component-bg p-card-p rounded-card text-center border-t-4 border-divider-color transition-all duration-300 hover:border-accent"
+          >
+            <p class="text-lg uppercase text-primary-text font-bold mb-4">
+              Enterprise / Retainer
+            </p>
+            <p class="text-6xl font-extrabold text-primary-text mb-2">
+              Quote<span class="text-lg text-secondary-text"> / contact</span>
+            </p>
+            <p class="text-secondary-text mb-6">
+              Dedicated support and long-term partnership.
+            </p>
+            <hr class="border-divider-color mb-6" />
+            <ul class="space-y-3 text-secondary-text text-left">
+              <li class="flex items-center">
+                <span class="material-icons-outlined text-accent mr-3 text-lg"
+                  >check_circle</span
+                >
+                Priority Support & Bug Fixes
+              </li>
+              <li class="flex items-center">
+                <span class="material-icons-outlined text-accent mr-3 text-lg"
+                  >check_circle</span
+                >
+                Dedicated Weekly Hours
+              </li>
+              <li class="flex items-center">
+                <span class="material-icons-outlined text-accent mr-3 text-lg"
+                  >check_circle</span
+                >
+                Feature Development & Roadmap
+              </li>
+              <li class="flex items-center">
+                <span class="material-icons-outlined text-accent mr-3 text-lg"
+                  >check_circle</span
+                >
+                Codebase Audits & Refactoring
+              </li>
+            </ul>
+            <a
+              href="#contact"
+              class="mt-8 block w-full py-3 font-medium text-primary-text bg-accent rounded-full hover:bg-opacity-90 transition duration-300"
+            >
+              Discuss Retainer
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 11. Frequently Asked Questions (FAQ - Alpine.js Accordion) -->
+      <section id="faq" class="max-w-7xl mx-auto px-6 py-section-py">
+        <!-- Section Heading -->
+        <div
+          x-intersect:enter="$el.classList.add('opacity-100', 'translate-y-0')"
+          class="opacity-0 translate-y-4 transition duration-700 ease-out"
+          x-data="{}"
+          x-ref="sectionHead"
+        >
+          <p
+            class="text-accent uppercase font-medium tracking-widest mb-2 text-center"
+          >
+            QUICK ANSWERS
+          </p>
+          <h2
+            class="text-h2-size font-bold text-primary-text mb-12 text-center"
+          >
+            Developer <span class="text-accent">FAQ</span>
+          </h2>
+        </div>
+
+        <!-- FAQ Accordion (Alpine.js) -->
+        <div
+          x-data="{ openQuestion: null }"
+          class="max-w-3xl mx-auto space-y-4"
+        >
+          <!-- Question 1 -->
+          <div
+            class="bg-component-bg rounded-card border border-divider-color overflow-hidden"
+          >
+            <button
+              @click="openQuestion = openQuestion === 1 ? null : 1"
+              class="flex justify-between items-center w-full p-6 text-left text-primary-text hover:text-accent transition duration-300 font-medium"
+            >
+              <span class="text-lg"
+                >What frameworks do you specialize in for full-stack
+                development?</span
+              >
+              <span
+                class="material-icons-outlined transition-transform duration-300"
+                :class="{'rotate-180 text-accent': openQuestion === 1}"
+                >expand_more</span
+              >
+            </button>
+            <div
+              x-show="openQuestion === 1"
+              x-collapse.duration.300ms
+              class="px-6 pb-6 text-secondary-text border-t border-divider-color"
+            >
+              <p>
+                I primarily use the **MERN (MongoDB, Express, React, Node.js)**
+                stack and the **PERN (PostgreSQL, Express, React, Node.js)**
+                stack. I also leverage **Next.js** for server-rendered React
+                applications to ensure superior SEO and performance metrics.
+              </p>
+            </div>
+          </div>
+
+          <!-- Question 2 -->
+          <div
+            class="bg-component-bg rounded-card border border-divider-color overflow-hidden"
+          >
+            <button
+              @click="openQuestion = openQuestion === 2 ? null : 2"
+              class="flex justify-between items-center w-full p-6 text-left text-primary-text hover:text-accent transition duration-300 font-medium"
+            >
+              <span class="text-lg"
+                >Do you handle cloud deployment and infrastructure setup?</span
+              >
+              <span
+                class="material-icons-outlined transition-transform duration-300"
+                :class="{'rotate-180 text-accent': openQuestion === 2}"
+                >expand_more</span
+              >
+            </button>
+            <div
+              x-show="openQuestion === 2"
+              x-collapse.duration.300ms
+              class="px-6 pb-6 text-secondary-text border-t border-divider-color"
+            >
+              <p>
+                Yes, comprehensive deployment is part of my process. I am
+                proficient with **AWS** (EC2, S3, Lambda) for scalable
+                infrastructure and use platforms like **Vercel** and **Netlify**
+                for modern, fast deployments of front-end and serverless
+                applications.
+              </p>
+            </div>
+          </div>
+
+          <!-- Question 3 -->
+          <div
+            class="bg-component-bg rounded-card border border-divider-color overflow-hidden"
+          >
+            <button
+              @click="openQuestion = openQuestion === 3 ? null : 3"
+              class="flex justify-between items-center w-full p-6 text-left text-primary-text hover:text-accent transition duration-300 font-medium"
+            >
+              <span class="text-lg"
+                >What is your typical project timeline and pricing
+                structure?</span
+              >
+              <span
+                class="material-icons-outlined transition-transform duration-300"
+                :class="{'rotate-180 text-accent': openQuestion === 3}"
+                >expand_more</span
+              >
+            </button>
+            <div
+              x-show="openQuestion === 3"
+              x-collapse.duration.300ms
+              class="px-6 pb-6 text-secondary-text border-t border-divider-color"
+            >
+              <p>
+                Timelines vary based on complexity, but a typical custom
+                application takes 4–12 weeks. I offer tiered pricing packages
+                (see above) based on project scope, or a competitive
+                hourly/monthly retainer for ongoing work.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Category 5: Conversion & Closing -->
+
+      <!-- Section 12. Blog/Writing (Thought Leadership) -->
+      <section id="blog" class="max-w-7xl mx-auto px-6 py-section-py">
+        <!-- Section Heading -->
+        <div
+          x-intersect:enter="$el.classList.add('opacity-100', 'translate-y-0')"
+          class="opacity-0 translate-y-4 transition duration-700 ease-out"
+          x-data="{}"
+          x-ref="sectionHead"
+        >
+          <p class="text-accent uppercase font-medium tracking-widest mb-2">
+            THOUGHTS
+          </p>
+          <h2 class="text-h2-size font-bold text-primary-text mb-12">
+            Latest <span class="text-accent">Insights</span>
+          </h2>
+        </div>
+
+        <!-- Blog Grid (3-column) -->
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Blog Card 1 -->
+          <div
+            class="bg-component-bg rounded-card overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10 hover:-translate-y-1"
+          >
+            <!-- Image Placeholder -->
+            <div
+              class="h-48 bg-accent/10 w-full flex items-center justify-center"
+            >
+              <span class="text-primary-text/50">Blog Image: Serverless</span>
+            </div>
+            <div class="p-6">
+              <p class="text-secondary-text text-sm uppercase font-medium mb-1">
+                Serverless • October 2025
+              </p>
+              <h3 class="text-h3-size font-bold text-primary-text mb-2">
+                Why Your Next App Should Be Serverless
+              </h3>
+              <p class="text-secondary-text text-p-size mb-4">
+                Exploring the cost-saving and scalability benefits of modern,
+                function-based architecture.
+              </p>
+              <a
+                href="#"
+                class="text-accent uppercase font-medium text-sm hover:text-primary-text transition duration-300"
+              >
+                Read More
+                <span
+                  class="material-icons-outlined text-base align-middle ml-1"
+                  >arrow_forward</span
+                >
+              </a>
+            </div>
+          </div>
+
+          <!-- Blog Card 2 -->
+          <div
+            class="bg-component-bg rounded-card overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10 hover:-translate-y-1"
+          >
+            <!-- Image Placeholder -->
+            <div
+              class="h-48 bg-accent/10 w-full flex items-center justify-center"
+            >
+              <span class="text-primary-text/50">Blog Image: Performance</span>
+            </div>
+            <div class="p-6">
+              <p class="text-secondary-text text-sm uppercase font-medium mb-1">
+                Performance • September 2025
+              </p>
+              <h3 class="text-h3-size font-bold text-primary-text mb-2">
+                Mastering Core Web Vitals in React
+              </h3>
+              <p class="text-secondary-text text-p-size mb-4">
+                A deep dive into optimizing LCP, FID, and CLS for a flawless
+                user experience.
+              </p>
+              <a
+                href="#"
+                class="text-accent uppercase font-medium text-sm hover:text-primary-text transition duration-300"
+              >
+                Read More
+                <span
+                  class="material-icons-outlined text-base align-middle ml-1"
+                  >arrow_forward</span
+                >
+              </a>
+            </div>
+          </div>
+
+          <!-- Blog Card 3 -->
+          <div
+            class="bg-component-bg rounded-card overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10 hover:-translate-y-1"
+          >
+            <!-- Image Placeholder -->
+            <div
+              class="h-48 bg-accent/10 w-full flex items-center justify-center"
+            >
+              <span class="text-primary-text/50">Blog Image: Database</span>
+            </div>
+            <div class="p-6">
+              <p class="text-secondary-text text-sm uppercase font-medium mb-1">
+                Database • August 2025
+              </p>
+              <h3 class="text-h3-size font-bold text-primary-text mb-2">
+                Choosing SQL vs. NoSQL for Scale
+              </h3>
+              <p class="text-secondary-text text-p-size mb-4">
+                When to use Postgres over Mongo, and how to design flexible
+                schema for growth.
+              </p>
+              <a
+                href="#"
+                class="text-accent uppercase font-medium text-sm hover:text-primary-text transition duration-300"
+              >
+                Read More
+                <span
+                  class="material-icons-outlined text-base align-middle ml-1"
+                  >arrow_forward</span
+                >
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 13. Final Call to Action (CTA - HTMX Form) -->
+      <section
+        id="contact"
+        class="max-w-7xl mx-auto px-6 py-section-py bg-component-bg rounded-card"
+      >
+        <!-- Section Heading -->
+        <div
+          x-intersect:enter="$el.classList.add('opacity-100', 'translate-y-0')"
+          class="opacity-0 translate-y-4 transition duration-700 ease-out"
+          x-data="{}"
+          x-ref="sectionHead"
+        >
+          <p class="text-accent uppercase font-medium tracking-widest mb-2">
+            LET'S CONNECT
+          </p>
+          <h2 class="text-h2-size font-bold text-primary-text mb-12">
+            Start Your Next <span class="text-accent">High-Impact Project</span>
+          </h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12">
+          <!-- Left Column: Contact Details -->
+          <div class="space-y-8">
+            <p class="text-secondary-text text-lg leading-relaxed">
+              Ready to build a scalable application or need to optimize your
+              existing system for peak performance? Let's schedule a 15-minute
+              discovery call to discuss your goals.
+            </p>
+
+            <div class="space-y-4">
+              <div class="flex items-center space-x-4">
+                <span class="material-icons-outlined text-accent text-3xl"
+                  >email</span
+                >
+                <div>
+                  <p class="text-sm text-secondary-text">Email Me</p>
+                  <p class="text-primary-text font-medium">
+                    hello@mahmudul.dev
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-center space-x-4">
+                <span class="material-icons-outlined text-accent text-3xl"
+                  >location_on</span
+                >
+                <div>
+                  <p class="text-sm text-secondary-text">Location</p>
+                  <p class="text-primary-text font-medium">
+                    Dhaka, Bangladesh (Available Worldwide)
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact Image Placeholder -->
+            <div
+              class="w-full h-48 bg-primary-bg/50 rounded-card flex items-center justify-center border border-divider-color"
+            >
+              <span class="text-secondary-text/50 italic"
+                >Architectural Sketch Placeholder</span
+              >
+            </div>
+          </div>
+
+          <!-- Right Column: Contact Form (HTMX Integration) -->
+          <div id="contact-form-container">
+            <!-- HTMX Form setup: hx-post would send data to a backend endpoint. -->
+            <!-- We use a placeholder path and simulate success/error response. -->
+            <form
+              hx-post="/simulate-contact-submission"
+              hx-target="#contact-form-container"
+              hx-swap="outerHTML"
+              class="space-y-6"
+              onsubmit="setTimeout(() => { document.getElementById('contact-form-container').innerHTML = `<div class='p-8 md:p-12 bg-primary-bg rounded-card text-center border-2 border-accent'><span class='material-icons-outlined text-accent text-5xl mb-4'>check_circle</span><h3 class='text-h3-size text-primary-text font-bold mb-2'>Message Sent!</h3><p class='text-secondary-text'>Thank you for reaching out. I'll get back to you within 24 hours.</p></div>`}, 500); return false;"
+            >
+              <!-- Form Input Styling (derived from Design System) -->
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                required
+                class="w-full bg-primary-bg text-secondary-text border border-divider-color rounded-input p-3 focus:border-accent focus:outline-none transition duration-300"
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                required
+                class="w-full bg-primary-bg text-secondary-text border border-divider-color rounded-input p-3 focus:border-accent focus:outline-none transition duration-300"
+              />
+              <input
+                type="text"
+                name="subject"
+                placeholder="Project Subject"
+                required
+                class="w-full bg-primary-bg text-secondary-text border border-divider-color rounded-input p-3 focus:border-accent focus:outline-none transition duration-300"
+              />
+              <textarea
+                name="message"
+                rows="5"
+                placeholder="Tell me about your project, performance goals, and budget..."
+                required
+                class="w-full bg-primary-bg text-secondary-text border border-divider-color rounded-input p-3 focus:border-accent focus:outline-none transition duration-300"
+              ></textarea>
+
+              <!-- Submit Button -->
+              <button
+                type="submit"
+                class="w-full py-3 text-lg font-medium text-primary-bg bg-accent rounded-full hover:bg-opacity-90 transition duration-300"
+              >
+                SEND MESSAGE
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- 14. Footer -->
+      <footer
+        class="max-w-7xl mx-auto px-6 py-10 mt-12 border-t border-divider-color text-center"
+      >
+        <a href="#" class="text-h3-size font-bold text-primary-text">
+          M<span class="text-accent">.</span> Islam
+        </a>
+        <p class="text-sm text-secondary-text mt-4">
+          &copy; <span x-text="new Date().getFullYear()"></span> Mahmudul Islam.
+          All Rights Reserved. | High-Performance Web Development.
+        </p>
+        <!-- Social Icons in Footer -->
+        <div class="flex justify-center space-x-6 mt-4">
+          <a
+            href="#"
+            target="_blank"
+            class="text-secondary-text hover:text-accent transition duration-300"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 4c.14-.61.72-2 0-3.69-.94-.31-3.14.73-4.44 1.55A12.03 12.03 0 0 0 12 3c-1.85 0-3.63.5-5.32 1.41C5.69 3.1 3.49 2.05 2.56 2.36c-.73 1.69-.15 3.08 0 3.69A5.44 5.44 0 0 0 2 10.74c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 20v3"
+              />
+            </svg>
+          </a>
+          <a
+            href="#"
+            target="_blank"
+            class="text-secondary-text hover:text-accent transition duration-300"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+              />
+              <rect x="2" y="9" width="4" height="12" />
+              <circle cx="4" cy="4" r="2" />
+            </svg>
+          </a>
+        </div>
+      </footer>
+    </main>
+
+    <!-- Alpine.js Plugin for Collapse and Intersect is included via CDN -->
+  </body>
+</html>

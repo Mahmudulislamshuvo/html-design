@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 
+      Page Title: Optimized for the primary keyword "Freelance UX/UI Designer".
+    -->
+    <title>Mr. X | Freelance UX/UI Designer for User-Centric Products</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Alpine.js CDN (defer for performance) -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+
+    <!-- HTMX CDN -->
+    <script
+      src="https://unpkg.com/htmx.org@1.9.12"
+      xintegrity="sha384-HvrKAGxKDoKDoJHTDYNoC5bkyf
+uCrsbNfLq/ptRspD4pgUoVrsrXarBFeP1/7/i/"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Google Font: Space Grotesk (matches the "Technical" aesthetic) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- 
+      Inline Tailwind Configuration (as per JSON)
+      This is a common pattern when a full build step isn't available.
+      We apply the base styles directly in the <body> tag.
+    -->
+    <style type="text/tailwindcss">
+      @layer base {
+        html {
+          font-family: "Space Grotesk", sans-serif;
+        }
+      }
+    </style>
+  </head>
+
+  <!-- 
+  Body Tag:
+  - Applies base colors from the DesignSystem JSON.
+  - bg-[#0F0F0F] (primary.hex)
+  - text-[#AAAAAA] (textSecondary.hex)
+  - antialiased: Smooths font rendering.
+  - Subtle Grid Background: This uses a data-URI SVG to create the "Wireframe Overlay" 
+    visual element from the design system without any external files or <style> blocks, 
+    adhering to the constraints. The color #333333 and 0.05 opacity match the 
+    borderAndDivider color with low opacity.
+-->
+  <body
+    class="bg-[#0F0F0F] text-[#AAAAAA] font-sans antialiased bg-[url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%3E%3Cpath%20fill%3D%22%23333333%22%20fill-opacity%3D%220.05%22%20d%3D%22M0%201%20V40%20H1%20V0%20H0%20M1%200%20H40%20V1%20H0%20V0%20M0%200%20H40%20V1%20H0%20V0%20M0%201%20H1%20V40%20H0%20V1%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E')]"
+  >
+    <!-- 
+      SECTION 1: Navigation
+      - Alpine.js for mobile menu state (`x-data`, `x-show`, `@click`).
+      - Adheres to `componentStyling.navigation`: Minimalist, logo, center links, accent CTA.
+      - `sticky top-0 z-50`: Ensures it's always accessible.
+      - `backdrop-blur-md bg-[#0F0F0F]/80`: Creates a modern, glassy effect on scroll.
+      - Border color from JSON: `border-b border-[#333333]`
+    -->
+    <header
+      x-data="{ open: false }"
+      class="sticky top-0 z-50 w-full backdrop-blur-md bg-[#0F0F0F]/80 border-b border-[#333333]"
+    >
+      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+          <!-- Logo -->
+          <a href="#" class="text-2xl font-bold text-white">Mr. X</a>
+
+          <!-- Desktop Nav Links (Center) -->
+          <div class="hidden md:flex md:items-center md:space-x-8">
+            <a
+              href="#work"
+              class="text-[#AAAAAA] hover:text-white transition-colors duration-300"
+              >Work</a
+            >
+            <a
+              href="#about"
+              class="text-[#AAAAAA] hover:text-white transition-colors duration-300"
+              >About</a
+            >
+            <a
+              href="#process"
+              class="text-[#AAAAAA] hover:text-white transition-colors duration-300"
+              >Process</a
+            >
+            <a
+              href="#faq"
+              class="text-[#AAAAAA] hover:text-white transition-colors duration-300"
+              >FAQ</a
+            >
+          </div>
+
+          <!-- Desktop CTA Button (Right) -->
+          <div class="hidden md:block">
+            <!-- 
+                      Primary Button Style:
+                      - bg-[#FF5733] (accent.hex)
+                      - text-white (textPrimary.hex)
+                      - font-semibold uppercase (callToAction.weight, callToAction.textTransform)
+                      - rounded-lg (componentStyling.cards.minimal rounding)
+                      - Hover transition (interactionAndMotion.hoverEffects)
+                    -->
+            <a
+              href="#contact"
+              class="inline-block bg-[#FF5733] text-white font-semibold uppercase text-sm py-3 px-6 rounded-lg transition-transform duration-300 hover:scale-105"
+            >
+              Book a Call
+            </a>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <div class="md:hidden">
+            <button @click="open = !open" class="text-white focus:outline-none">
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  :class="{'hidden': open, 'inline-flex': !open }"
+                  class="inline-flex"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                ></path>
+                <path
+                  :class="{'inline-flex': open, 'hidden': !open }"
+                  class="hidden"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Mobile Menu (Alpine.js controlled) -->
+      <div
+        x-show="open"
+        x-transition:enter="transition ease-out duration-300 transform"
+        x-transition:enter-start="opacity-0 scale-95"
+        x-transition:enter-end="opacity-100 scale-100"
+        x-transition:leave="transition ease-in duration-200 transform"
+        x-transition:leave-start="opacity-100 scale-100"
+        x-transition:leave-end="opacity-0 scale-95"
+        class="md:hidden absolute top-20 left-0 w-full bg-[#1A1A1A] border-b border-[#333333] shadow-lg"
+        @click.away="open = false"
+      >
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <a
+            href="#work"
+            @click="open = false"
+            class="block px-3 py-2 rounded-md text-base font-medium text-[#AAAAAA] hover:text-white hover:bg-[#333333]"
+            >Work</a
+          >
+          <a
+            href="#about"
+            @click="open = false"
+            class="block px-3 py-2 rounded-md text-base font-medium text-[#AAAAAA] hover:text-white hover:bg-[#333333]"
+            >About</a
+          >
+          <a
+            href="#process"
+            @click="open = false"
+            class="block px-3 py-2 rounded-md text-base font-medium text-[#AAAAAA] hover:text-white hover:bg-[#333333]"
+            >Process</a
+          >
+          <a
+            href="#faq"
+            @click="open = false"
+            class="block px-3 py-2 rounded-md text-base font-medium text-[#AAAAAA] hover:text-white hover:bg-[#333333]"
+            >FAQ</a
+          >
+          <a
+            href="#contact"
+            @click="open = false"
+            class="block w-full text-left px-3 py-3 rounded-md text-base font-medium text-white bg-[#FF5733] uppercase"
+            >Book a Call</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Wrapper -->
+    <main class="overflow-x-hidden">
+      <!-- 
+          SECTION 2: Hero
+          - The "Hook." Establishes the Unique Value Proposition (UVP) immediately.
+          - Typography: `text-6xl font-bold text-white` (heading1) and `text-lg text-[#AAAAAA]` (body).
+          - `py-32`: Large vertical padding (layoutAndStructure.spacing.sectionGap).
+          - Alpine.js scroll reveal for a staggered animation.
+        -->
+      <section
+        class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 md:py-48 text-center"
+        x-data="{ shown: false }"
+        x-intersect.once="shown = true"
+      >
+        <div
+          x-show="shown"
+          x-transition:enter="transition ease-out duration-1000 transform"
+          x-transition:enter-start="opacity-0 translate-y-10"
+          x-transition:enter-end="opacity-100 translate-y-0"
+        >
+          <h1 class="text-4xl sm:text-6xl md:text-7xl font-bold text-white">
+            Freelance UX/UI Designer
+          </h1>
+          <p class="mt-6 text-xl sm:text-2xl text-[#AAAAAA] max-w-3xl mx-auto">
+            I build user-centric products that convert. I translate complex
+            problems into beautiful, intuitive, and highly functional digital
+            experiences.
+          </p>
+        </div>
+        <div
+          x-show="shown"
+          x-transition:enter="transition ease-out duration-1000 delay-300ms transform"
+          x-transition:enter-start="opacity-0 translate-y-10"
+          x-transition:enter-end="opacity-100 translate-y-0"
+          class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4"
+        >
+          <!-- Secondary Button Style -->
+          <a
+            href="#work"
+            class="inline-block w-full sm:w-auto border border-[#333333] text-white font-semibold uppercase text-sm py-3 px-8 rounded-lg transition-all duration-300 hover:bg-[#1A1A1A] hover:border-[#AAAAAA]"
+          >
+            View My Work
+          </a>
+          <!-- Primary Button Style -->
+          <a
+            href="#contact"
+            class="inline-block w-full sm:w-auto bg-[#FF5733] text-white font-semibold uppercase text-sm py-3 px-8 rounded-lg transition-transform duration-300 hover:scale-105"
+          >
+            Book a Discovery Call
+          </a>
+        </div>
+      </section>
+
+      <!-- 
+          SECTION 3: Logo Ticker ("Trusted By")
+          - Immediate social proof to build credibility.
+          - `py-16`: A smaller section gap.
+          - `border-y border-[#333333]`: Frames the section.
+          - `animate-pulse`: A subtle pulse to draw the eye, implying live data (even though it's static).
+          - `grayscale opacity-60`: Keeps logos subtle and on-brand with the dark theme.
+        -->
+      <section
+        class="py-16 border-y border-[#333333]"
+        x-data="{ shown: false }"
+        x-intersect.once="shown = true"
+      >
+        <div
+          x-show="shown"
+          x-transition:enter="transition ease-out duration-1000 transform"
+          x-transition:enter-start="opacity-0"
+          x-transition:enter-end="opacity-100"
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        >
+          <p
+            class="text-center text-sm font-semibold text-[#AAAAAA] uppercase tracking-wider"
+          >
+            Trusted by forward-thinking companies
+          </p>
+          <!-- 
+                  This is a simple static grid, but a "marquee" scroll could also be implemented.
+                  For a UX/UI designer, clarity beats complexity, so a static grid is often better.
+                -->
+          <div
+            class="mt-8 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-8 items-center"
+          >
+            <span
+              class="text-center text-2xl font-semibold text-[#AAAAAA] opacity-60 grayscale"
+              >TECHCORP</span
+            >
+            <span
+              class="text-center text-2xl font-semibold text-[#AAAAAA] opacity-60 grayscale"
+              >STARTUP</span
+            >
+            <span
+              class="text-center text-2xl font-semibold text-[#AAAAAA] opacity-60 grayscale"
+              >ECOMMERCE</span
+            >
+            <span
+              class="text-center text-2xl font-semibold text-[#AAAAAA] opacity-60 grayscale"
+              >FINTECH</span
+            >
+            <span
+              class="text-center text-2xl font-semibold text-[#AAAAAA] opacity-60 grayscale"
+              >SAAS CO.</span
+            >
+            <span
+              class="text-center text-2xl font-semibold text-[#AAAAAA] opacity-60 grayscale"
+              >INNOVATE</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- 
+          SECTION 4: Services / What I Do
+          - Establishes authority and defines offerings.
+          - `py-24`: Standard large section gap (layoutAndStructure.spacing.sectionGap).
+          - Card Styling: Adheres to `componentStyling.cards`.
+            - `bg-[#1A1A1A]` (secondary.hex)
+            - `border border-[#333333]` (borderAndDivider.hex)
+            - `rounded-lg` (minimal rounding)
+            - `p-8` (cardPadding)
+          - Typography: `text-3xl font-semibold text-white` (heading2) and `text-base text-[#AAAAAA]` (body).
+          - Alpine.js `x-intersect` for staggered card reveals.
+        -->
+      <section
+        id="services"
+        class="py-24"
+        x-data="{ shown: false }"
+        x-intersect.once="shown = true"
+      >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            class="text-center max-w-3xl mx-auto"
+            x-show="shown"
+            x-transition:enter="transition ease-out duration-1000 transform"
+            x-transition:enter-start="opacity-0 translate-y-10"
+            x-transition:enter-end="opacity-100 translate-y-0"
+          >
+            <h2 class="text-3xl sm:text-4xl font-semibold text-white">
+              A Partner in Problem-Solving
+            </h2>
+            <p class="mt-4 text-lg text-[#AAAAAA]">
+              My services are designed to cover the entire product lifecycle,
+              from initial concept to pixel-perfect handoff. I don't just
+              deliver mockups; I deliver outcomes.
+            </p>
+          </div>
+
+          <div
+            class="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            <!-- Service Card 1 -->
+            <div
+              class="bg-[#1A1A1A] border border-[#333333] rounded-lg p-8"
+              x-show="shown"
+              x-transition:enter="transition ease-out duration-1000 delay-200ms transform"
+              x-transition:enter-start="opacity-0 scale-95"
+              x-transition:enter-end="opacity-100 scale-100"
+            >
+              <!-- Icon Placeholder -->
+              <div
+                class="w-12 h-12 flex items-center justify-center rounded-lg bg-[#333333] text-[#FF5733]"
+              >
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17.657 18.657A8 8 0 016.343 7.343m11.314 11.314a8 8 0 01-11.314-11.314m11.314 11.314L22 22"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="mt-6 text-2xl font-semibold text-white">
+                UX Research & Strategy
+              </h3>
+              <p class="mt-3 text-base text-[#AAAAAA]">
+                I conduct deep user research, competitor analysis, and workshops
+                to build a strategic foundation that aligns user needs with your
+                business goals.
+              </p>
+            </div>
+
+            <!-- Service Card 2 -->
+            <div
+              class="bg-[#1A1A1A] border border-[#333333] rounded-lg p-8"
+              x-show="shown"
+              x-transition:enter="transition ease-out duration-1000 delay-400ms transform"
+              x-transition:enter-start="opacity-0 scale-95"
+              x-transition:enter-end="opacity-100 scale-100"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center rounded-lg bg-[#333333] text-[#FF5733]"
+              >
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="mt-6 text-2xl font-semibold text-white">
+                UI & Visual Design
+              </h3>
+              <p class="mt-3 text-base text-[#AAAAAA]">
+                I craft pixel-perfect, accessible, and beautiful interfaces that
+                are a delight to use. Your brand's identity will be woven into
+                every component.
+              </p>
+            </div>
+
+            <!-- Service Card 3 -->
+            <div
+              class="bg-[#1A1A1A] border border-[#333333] rounded-lg p-8"
+              x-show="shown"
+              x-transition:enter="transition ease-out duration-1000 delay-600ms transform"
+              x-transition:enter-start="opacity-0 scale-95"
+              x-transition:enter-end="opacity-100 scale-100"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center rounded-lg bg-[#333333] text-[#FF5733]"
+              >
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="mt-6 text-2xl font-semibold text-white">
+                Prototyping & Testing
+              </h3>
+              <p class="mt-3 text-base text-[#AAAAAA]">
+                From low-fidelity wireframes to interactive Figma prototypes, I
+                create testable products to validate assumptions with real users
+                before writing a single line of code.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 
+          SECTION 5: About Me
+          - Builds rapport and connection.
+          - Focuses on the "why" (design philosophy) rather than just a biography.
+          - Uses placeholder image that matches the theme.
+        -->
+      <section
+        id="about"
+        class="py-24 bg-[#1A1A1A] border-y border-[#333333]"
+        x-data="{ shown: false }"
+        x-intersect.once="shown = true"
+      >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <!-- Image Placeholder -->
+            <div
+              x-show="shown"
+              x-transition:enter="transition ease-out duration-1000 transform"
+              x-transition:enter-start="opacity-0 scale-90"
+              x-transition:enter-end="opacity-100 scale-100"
+            >
+              <img
+                src="https://placehold.co/800x800/1A1A1A/333333?text=Mr.+X"
+                alt="Mr. X, UX/UI Designer"
+                class="rounded-lg object-cover aspect-square"
+              />
+            </div>
+
+            <!-- Content -->
+            <div
+              x-show="shown"
+              x-transition:enter="transition ease-out duration-1000 delay-200ms transform"
+              x-transition:enter-start="opacity-0 translate-x-10"
+              x-transition:enter-end="opacity-100 translate-x-0"
+            >
+              <h2 class="text-3xl sm:text-4xl font-semibold text-white">
+                My philosophy is simple: The user's success is the product's
+                success.
+              </h2>
+              <p class="mt-6 text-lg text-[#AAAAAA]">
+                I'm Mr. X, a designer obsessed with the intersection of human
+                behavior and technology. For me, design isn't just about
+                aesthetics; it's about empathy. It's about understanding the
+                person on the other side of the screen and building a solution
+                that not only solves their problem but also feels effortless and
+                intuitive.
+              </p>
+              <p class="mt-4 text-base text-[#AAAAAA]">
+                I partner with startups and tech companies to bridge the gap
+                between complex ideas and clear, functional, and beautiful user
+                interfaces. I believe in collaboration, data-driven decisions,
+                and a design process that is transparent and inclusive.
+              </p>
+              <div class="mt-8">
+                <a
+                  href="#contact"
+                  class="inline-block border border-[#333333] text-white font-semibold uppercase text-sm py-3 px-8 rounded-lg transition-all duration-300 hover:bg-[#333333] hover:border-[#AAAAAA]"
+                >
+                  Let's Connect
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 
+          SECTION 6: My Design Toolkit
+          - Establishes technical credibility.
+          - A simple, visual grid of tools is all that's needed.
+        -->
+      <section
+        id="toolkit"
+        class="py-24"
+        x-data="{ shown: false }"
+        x-intersect.once="shown = true"
+      >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            class="text-center max-w-3xl mx-auto"
+            x-show="shown"
+            x-transition:enter="transition ease-out duration-1000 transform"
+            x-transition:enter-start="opacity-0 translate-y-10"
+            x-transition:enter-end="opacity-100 translate-y-0"
+          >
+            <h2 class="text-3xl sm:text-4xl font-semibold text-white">
+              My Design & Prototyping Toolkit
+            </h2>
+            <p class="mt-4 text-lg text-[#AAAAAA]">
+              I use industry-standard tools to ensure a seamless workflow from
+              research to handoff.
+            </p>
+          </div>
+
+          <div
+            class="mt-16 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8"
+          >
+            <!-- Tool Item -->
+            <div
+              class="flex flex-col items-center p-6 bg-[#1A1A1A] border border-[#333333] rounded-lg"
+              x-show="shown"
+              x-transition:enter="transition ease-out duration-1000 delay-100ms transform"
+              x-transition:enter-start="opacity-0 scale-90"
+              x-transition:enter-end="opacity-100 scale-100"
+            >
+              <span class="text-4xl">FIG</span>
+              <span class="mt-2 font-semibold text-white">Figma</span>
+            </div>
+            <!-- Tool Item -->
+            <div
+              class="flex flex-col items-center p-6 bg-[#1A1A1A] border border-[#333333] rounded-lg"
+              x-show="shown"
+              x-transition:enter="transition ease-out duration-1000 delay-200ms transform"
+              x-transition:enter-start="opacity-0 scale-90"
+              x-transition:enter-end="opacity-100 scale-100"
+            >
+              <span class="text-4xl">XD</span>
+              <span class="mt-2 font-semibold text-white">Adobe XD</span>
+            </div>
+            <!-- Tool Item -->
+            <div
+              class="flex flex-col items-center p-6 bg-[#1A1A1A] border border-[#333333] rounded-lg"
+              x-show="shown"
+              x-transition:enter="transition ease-out duration-1000 delay-300ms transform"
+              x-transition:enter-start="opacity-0 scale-90"
+              x-transition:enter-end="opacity-100 scale-100"
+            >
+              <span class="text-4xl">SK</span>
+              <span class="mt-2 font-semibold text-white">Sketch</span>
+            </div>
+            <!-- Tool Item -->
+            <div
+              class="flex flex-col items-center p-6 bg-[#1A1A1A] border border-[#333333] rounded-lg"
+              x-show="shown"
+              x-transition:enter="transition ease-out duration-1000 delay-400ms transform"
+              x-transition:enter-start="opacity-0 scale-90"
+              x-transition:enter-end="opacity-100 scale-100"
+            >
+              <span class="text-4xl">MR</span>
+              <span class="mt-2 font-semibold text-white">Miro</span>
+            </div>
+            <!-- Tool Item -->
+            <div
+              class="flex flex-col items-center p-6 bg-[#1A1A1A] border border-[#333333] rounded-lg"
+              x-show="shown"
+              x-transition:enter="transition ease-out duration-1000 delay-500ms transform"
+              x-transition:enter-start="opacity-0 scale-90"
+              x-transition:enter-end="opacity-100 scale-100"
+            >
+              <span class="text-4xl">NT</span>
+              <span class="mt-2 font-semibold text-white">Notion</span>
+            </div>
+            <!-- Tool Item -->
+            <div
+              class="flex flex-col items-center p-6 bg-[#1A1A1A] border border-[#333333] rounded-lg"
+              x-show="shown"
+              x-transition:enter="transition ease-out duration-1000 delay-600ms transform"
+              x-transition:enter-start="opacity-0 scale-90"
+              x-transition:enter-end="opacity-100 scale-100"
+            >
+              <span class="text-4xl">WF</span>
+              <span class="mt-2 font-semibold text-white">Webflow</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 
+          SECTION 7: Featured Project (Case Study)
+          - This is the CORE proof point.
+          - A detailed, narrative-driven breakdown of one project.
+          - Shows "Problem, Process, Outcome" which is what clients look for.
+        -->
+      <section
+        id="work"
+        class="py-24"
+        x-data="{ shown: false }"
+        x-intersect.once="shown = true"
+      >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            class="text-center max-w-3xl mx-auto"
+            x-show="shown"
+            x-transition:enter="transition ease-out duration-1000 transform"
+            x-transition:enter-start="opacity-0 translate-y-10"
+            x-transition:enter-end="opacity-100 translate-y-0"
+          >
+            <h2 class="text-3xl sm:text-4xl font-semibold text-white">
+              Featured Case Study
+            </h2>
+            <p class="mt-4 text-lg text-[#AAAAAA]">
+              A deep dive into how I solved a complex problem for a recent
+              client.
+            </p>
+          </div>
+
+          <div
+            class="mt-20 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+          >
+            <!-- Project Mockup -->
+            <div
+              class="relative"
+              x-show="shown"
+              x-transition:enter="transition ease-out duration-1000 delay-200ms transform"
+              x-transition:enter-start="opacity-0 scale-95"
+              x-transition:enter-end="opacity-100 scale-100"
+            >
+              <img
+                src="https://placehold.co/1200x900/1A1A1A/333333?text=Fintech+App+Redesign"
+                alt="Fintech App Redesign"
+                class="relative z-10 rounded-lg shadow-2xl"
+              />
+              <!-- Decorative accent -->
+              <div
+                class="absolute -bottom-4 -right-4 w-full h-full border-4 border-[#333333] rounded-lg z-0"
+              ></div>
+            </div>
+
+            <!-- Case Study Content -->
+            <div
+              x-show="shown"
+              x-transition:enter="transition ease-out duration-1000 delay-400ms transform"
+              x-transition:enter-start="opacity-0 translate-x-10"
+              x-transition:enter-end="opacity-100 translate-x-0"
+            >
+              <span class="text-sm font-semibold text-[#FF5733] uppercase"
+                >Fintech Startup</span
+              >
+              <h3 class="mt-2 text-3xl font-semibold text-white">
+                Redesigning an Investment App
+              </h3>
+
+              <div class="mt-6 space-y-4">
+                <h4 class="text-xl font-semibold text-white">The Challenge</h4>
+                <p class="text-base text-[#AAAAAA]">
+                  The client's investment app was powerful but suffering from
+                  high user drop-off during onboarding. User feedback cited a
+                  "confusing" and "overwhelming" interface.
+                </p>
+              </div>
+
+              <div class="mt-6 space-y-4">
+                <h4 class="text-xl font-semibold text-white">
+                  My Solution & Process
+                </h4>
+                <p class="text-base text-[#AAAAAA]">
+                  I initiated a 2-week design sprint, starting with user
+                  interviews to pinpoint exact friction points. I then
+                  simplified the user flow, designed a clean, component-based
+                  UI, and created an interactive prototype in Figma. We
+                  user-tested the prototype with 5 target users, iterated on
+                  feedback, and delivered a production-ready design system.
+                </p>
+              </div>
+
+              <div class="mt-6 space-y-4">
+                <h4 class="text-xl font-semibold text-white">The Outcome</h4>
+                <p class="text-base text-[#AAAAAA]">
+                  The new design led to a
+                  <strong class="text-white"
+                    >40% increase in onboarding completion</strong
+                  >
+                  and a significant rise in positive App Store reviews.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 
+          SECTION 8: More Projects
+          - Shows breadth of experience after the deep-dive.
+          - Re-uses the standard card component.
+          - `transition-all duration-300 hover:scale-105 hover:border-[#FF5733]`: Adheres to `interactionAndMotion` spec.
+        -->
+      <section
+        id="more-work"
+        class="pt-12 pb-24"
+        x-data="{ shown: false }"
+        x-intersect.once="shown = true"
+      >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h3
+            class="text-2xl font-semibold text-white text-center"
+            x-show="shown"
+            x-transition:enter="transition ease-out duration-1000 transform"
+            x-transition:enter-start="opacity-0 translate-y-10"
+            x-transition:enter-end="opacity-100 translate-y-0"
+          >
+            More of My Work
+          </h3>
+
+          <div
+            class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            <!-- Project Card 1 -->
+            <a
+              href="#"
+              class="block bg-[#1A1A1A] border border-[#333333] rounded-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:border-[#FF5733]/50 shadow-lg"
+              x-show="shown"
+              x-transition:enter="transition ease-out duration-1000 delay-200ms transform"
+              x-transition:enter-start="opacity-0 scale-95"
+              x-transition:enter-end="opacity-100 scale-100"
+            >
+              <img
+                src="https://placehold.co/600x400/1A1A1A/333333?text=SaaS+Dashboard"
+                alt="SaaS Dashboard"
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-6">
+                <h4 class="text-xl font-semibold text-white">
+                  SaaS Analytics Dashboard
+                </h4>
+                <p class="mt-2 text-sm text-[#AAAAAA]">
+                  A complete UI/UX overhaul for a B2B analytics platform.
+                </p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  <span
+                    class="text-xs font-medium text-[#FF5733] bg-[#FF5733]/10 px-2 py-0.5 rounded-full"
+                    >UI Design</span
+                  >
+                  <span
+                    class="text-xs font-medium text-[#FF5733] bg-[#FF5733]/10 px-2 py-0.5 rounded-full"
+                    >Design System</span
+                  >
+                </div>
+              </div>
+            </a>
+
+            <!-- Project Card 2 -->
+            <a
+              href="#"
+              class="block bg-[#1A1A1A] border border-[#333333] rounded-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:border-[#FF5733]/50 shadow-lg"
+              x-show="shown"
+              x-transition:enter="transition ease-out duration-1000 delay-400ms transform"
+              x-transition:enter-start="opacity-0 scale-95"
+              x-transition:enter-end="opacity-100 scale-100"
+            >
+              <img
+                src="https://placehold.co/600x400/1A1A1A/333333?text=E-commerce+Checkout"
+                alt="E-commerce Checkout Flow"
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-6">
+                <h4 class="text-xl font-semibold text-white">
+                  E-commerce Checkout Flow
+                </h4>
+                <p class="mt-2 text-sm text-[#AAAAAA]">
+                  Optimizing a mobile checkout flow to reduce cart abandonment.
+                </p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  <span
+                    class="text-xs font-medium text-[#FF5733] bg-[#FF5733]/10 px-2 py-0.5 rounded-full"
+                    >UX Research</span
+                  >
+                  <span
+                    class="text-xs font-medium text-[#FF5733] bg-[#FF5733]/10 px-2 py-0.5 rounded-full"
+                    >Conversion Optimization</span
+                  >
+                </div>
+              </div>
+            </a>
+
+            <!-- Project Card 3 -->
+            <a
+              href="#"
+              class="block bg-[#1A1A1A] border border-[#333333] rounded-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:border-[#FF5733]/50 shadow-lg"
+              x-show="shown"
+              x-transition:enter="transition ease-out duration-1000 delay-600ms transform"
+              x-transition:enter-start="opacity-0 scale-95"
+              x-transition:enter-end="opacity-100 scale-100"
+            >
+              <img
+                src="https://placehold.co/600x400/1A1A1A/333333?text=Wellness+App"
+                alt="Mobile Wellness App"
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-6">
+                <h4 class="text-xl font-semibold text-white">
+                  Mobile Wellness App
+                </h4>
+                <p class="mt-2 text-sm text-[#AAAAAA]">
+                  Designing a new habit-tracking app from scratch (0 to 1).
+                </p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  <span
+                    class="text-xs font-medium text-[#FF5733] bg-[#FF5733]/10 px-2 py-0.5 rounded-full"
+                    >Prototyping</span
+                  >
+                  <span
+                    class="text-xs font-medium text-[#FF5733] bg-[#FF5733]/10 px-2 py-0.5 rounded-full"
+                    >User Testing</span
+                  >
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 
+          SECTION 9: Quantifiable Results (KPIs)
+          - High-impact social proof for business-minded clients (PMs, Founders).
+          - `bg-[#1A1A1A]` with `border-y` to separate it visually.
+          - Large, high-contrast typography (`text-5xl font-bold text-white`).
+        -->
+      <section
+        id="results"
+        class="py-24 bg-[#1A1A1A] border-y border-[#333333]"
+        x-data="{ shown: false }"
+        x-intersect.once="shown = true"
+      >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <!-- KPI 1 -->
+            <div
+              x-show="shown"
+              x-transition:enter="transition ease-out duration-1000 delay-200ms transform"
+              x-transition:enter-start="opacity-0 translate-y-10"
+              x-transition:enter-end="opacity-100 translate-y-0"
+            >
+              <span class="block text-5xl font-bold text-[#FF5733]">+40%</span>
+              <span class="mt-2 block text-lg font-medium text-white"
+                >Onboarding Completion</span
+              >
+              <p class="mt-1 text-sm text-[#AAAAAA]">
+                For Fintech App Redesign
+              </p>
+            </div>
+            <!-- KPI 2 -->
+            <div
+              x-show="shown"
+              x-transition:enter="transition ease-out duration-1000 delay-400ms transform"
+              x-transition:enter-start="opacity-0 translate-y-10"
+              x-transition:enter-end="opacity-100 translate-y-0"
+            >
+              <span class="block text-5xl font-bold text-[#FF5733]">-25%</span>
+              <span class="mt-2 block text-lg font-medium text-white"
+                >Cart Abandonment</span
+              >
+              <p class="mt-1 text-sm text-[#AAAAAA]">
+                For E-commerce Checkout Flow
+              </p>
+            </div>
+            <!-- KPI 3 -->
+            <div
+              x-show="shown"
+              x-transition:enter="transition ease-out duration-1000 delay-600ms transform"
+              x-transition:enter-start="opacity-0 translate-y-10"
+              x-transition:enter-end="opacity-100 translate-y-0"
+            >
+              <span class="block text-5xl font-bold text-[#FF5733]"
+                >9.2/10</span
+              >
+              <span class="mt-2 block text-lg font-medium text-white"
+                >User Satisfaction</span
+              >
+              <p class="mt-1 text-sm text-[#AAAAAA]">
+                Reported by SaaS Co. users
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 
+          SECTION 10: My Working Process
+          - Clarifies "How I work," a key client question.
+          - A simple 4-step process builds confidence and sets expectations.
+        -->
+      <section
+        id="process"
+        class="py-24"
+        x-data="{ shown: false }"
+        x-intersect.once="shown = true"
+      >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            class="text-center max-w-3xl mx-auto"
+            x-show="shown"
+            x-transition:enter="transition ease-out duration-1000 transform"
+            x-transition:enter-start="opacity-0 translate-y-10"
+            x-transition:enter-end="opacity-100 translate-y-0"
+          >
+            <h2 class="text-3xl sm:text-4xl font-semibold text-white">
+              My Process: Simple & Transparent
+            </h2>
+            <p class="mt-4 text-lg text-[#AAAAAA]">
+              I follow a proven, four-step process to ensure we stay aligned and
+              deliver high-quality work, on time.
+            </p>
+          </div>
+
+          <div
+            class="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          >
+            <!-- Step 1 -->
+            <div
+              class="border-t-2 border-[#FF5733] pt-6"
+              x-show="shown"
+              x-transition:enter="transition ease-out duration-1000 delay-200ms transform"
+              x-transition:enter-start="opacity-0 translate-y-10"
+              x-transition:enter-end="opacity-100 translate-y-0"
+            >
+              <span class="text-sm font-semibold text-[#AAAAAA]"
+                >01. DISCOVER</span
+              >
+              <h3 class="mt-2 text-xl font-semibold text-white">
+                Research & Strategy
+              </h3>
+              <p class="mt-2 text-base text-[#AAAAAA]">
+                We start with a deep dive into your goals, audience, and market
+                to define the core problem.
+              </p>
+            </div>
+            <!-- Step 2 -->
+            <div
+              class="border-t-2 border-[#333333] pt-6"
+              x-show="shown"
+              x-transition:enter="transition ease-out duration-1000 delay-400ms transform"
+              x-transition:enter-start="opacity-0 translate-y-10"
+              x-transition:enter-end="opacity-100 translate-y-0"
+            >
+              <span class="text-sm font-semibold text-[#AAAAAA]"
+                >02. DEFINE</span
+              >
+              <h3 class="mt-2 text-xl font-semibold text-white">
+                Wireframes & User Flows
+              </h3>
+              <p class="mt-2 text-base text-[#AAAAAA]">
+                I map out the user journey and create low-fidelity wireframes to
+                build the product's blueprint.
+              </p>
+            </div>
+            <!-- Step 3 -->
+            <div
+              class="border-t-2 border-[#333333] pt-6"
+              x-show="shown"
+              x-transition:enter="transition ease-out duration-1000 delay-600ms transform"
+              x-transition:enter-start="opacity-0 translate-y-10"
+              x-transition:enter-end="opacity-100 translate-y-0"
+            >
+              <span class="text-sm font-semibold text-[#AAAAAA]"
+                >03. DESIGN</span
+              >
+              <h3 class="mt-2 text-xl font-semibold text-white">
+                Hi-Fi Mockups & Prototype
+              </h3>
+              <p class="mt-2 text-base text-[#AAAAAA]">
+                This is where the magic happens. I create pixel-perfect designs
+                and interactive prototypes in Figma.
+              </p>
+            </div>
+            <!-- Step 4 -->
+            <div
+              class="border-t-2 border-[#333333] pt-6"
+              x-show="shown"
+              x-transition:enter="transition ease-out duration-1000 delay-800ms transform"
+              x-transition:enter-start="opacity-0 translate-y-10"
+              x-transition:enter-end="opacity-100 translate-y-0"
+            >
+              <span class="text-sm font-semibold text-[#AAAAAA]"
+                >04. DELIVER</span
+              >
+              <h3 class="mt-2 text-xl font-semibold text-white">
+                Handoff & Support
+              </h3>
+              <p class="mt-2 text-base text-[#AAAAAA]">
+                I deliver a complete design system and all assets, ready for
+                development. I'll be there for support.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 
+          SECTION 11: Testimonials
+          - More social proof, this time qualitative.
+          - Re-uses the standard card component.
+        -->
+      <section
+        id="testimonials"
+        class="py-24 bg-[#1A1A1A] border-y border-[#333333]"
+        x-data="{ shown: false }"
+        x-intersect.once="shown = true"
+      >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            class="text-center max-w-3xl mx-auto"
+            x-show="shown"
+            x-transition:enter="transition ease-out duration-1000 transform"
+            x-transition:enter-start="opacity-0 translate-y-10"
+            x-transition:enter-end="opacity-100 translate-y-0"
+          >
+            <h2 class="text-3xl sm:text-4xl font-semibold text-white">
+              What My Clients Say
+            </h2>
+            <p class="mt-4 text-lg text-[#AAAAAA]">
+              I'm proud to have partnered with some amazing people.
+            </p>
+          </div>
+
+          <div class="mt-20 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Testimonial 1 -->
+            <div
+              class="bg-[#0F0F0F] border border-[#333333] rounded-lg p-8"
+              x-show="shown"
+              x-transition:enter="transition ease-out duration-1000 delay-200ms transform"
+              x-transition:enter-start="opacity-0 scale-95"
+              x-transition:enter-end="opacity-100 scale-100"
+            >
+              <p class="text-lg text-[#AAAAAA] italic">
+                "Mr. X is more than a designer. He's a product strategist. He
+                took our vague idea and turned it into a product our users
+                genuinely love. His process is a breath of fresh air."
+              </p>
+              <div class="mt-6">
+                <p class="text-base font-semibold text-white">Jane Doe</p>
+                <p class="text-sm text-[#AAAAAA]">CEO at Startup Inc.</p>
+              </div>
+            </div>
+            <!-- Testimonial 2 -->
+            <div
+              class="bg-[#0F0F0F] border border-[#333333] rounded-lg p-8"
+              x-show="shown"
+              x-transition:enter="transition ease-out duration-1000 delay-400ms transform"
+              x-transition:enter-start="opacity-0 scale-95"
+              x-transition:enter-end="opacity-100 scale-100"
+            >
+              <p class="text-lg text-[#AAAAAA] italic">
+                "The design system he built for us was a game-changer. It cut
+                our development time in half and brought consistency to our
+                entire platform. I can't recommend him enough."
+              </p>
+              <div class="mt-6">
+                <p class="text-base font-semibold text-white">John Smith</p>
+                <p class="text-sm text-[#AAAAAA]">Lead Engineer at TechCorp</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 
+          SECTION 12: FAQ
+          - Proactively answers client objections and questions.
+          - Alpine.js `x-data="{ open: null }"` creates an accordion.
+          - `@click="open = (open === 1 ? null : 1)"` toggles the active item.
+        -->
+      <section id="faq" class="py-24" x-data="{ open: null }">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            class="text-center max-w-3xl mx-auto"
+            x-data="{ shown: false }"
+            x-intersect.once="shown = true"
+            x-show="shown"
+            x-transition:enter="transition ease-out duration-1000 transform"
+            x-transition:enter-start="opacity-0 translate-y-10"
+            x-transition:enter-end="opacity-100 translate-y-0"
+          >
+            <h2 class="text-3xl sm:text-4xl font-semibold text-white">
+              Frequently Asked Questions
+            </h2>
+          </div>
+
+          <div class="mt-16 max-w-4xl mx-auto space-y-4">
+            <!-- FAQ Item 1 -->
+            <div
+              class="bg-[#1A1A1A] border border-[#333333] rounded-lg"
+              x-data="{ shown: false }"
+              x-intersect.once="shown = true"
+              x-show="shown"
+              x-transition:enter="transition ease-out duration-1000 delay-200ms transform"
+              x-transition:enter-start="opacity-0 translate-y-10"
+              x-transition:enter-end="opacity-100 translate-y-0"
+            >
+              <h2>
+                <button
+                  type="button"
+                  @click="open = (open === 1 ? null : 1)"
+                  class="flex items-center justify-between w-full p-6 text-left"
+                >
+                  <span class="text-lg font-medium text-white"
+                    >What are your rates?</span
+                  >
+                  <!-- Alpine transition for the icon -->
+                  <span class="ml-6 h-7 flex items-center">
+                    <svg
+                      class="h-6 w-6 transform transition-transform duration-300"
+                      :class="{ 'rotate-180': open === 1 }"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </h2>
+              <div x-show="open === 1" x-collapse class="px-6 pb-6">
+                <p class="text-base text-[#AAAAAA]">
+                  I price projects on a fixed-bid basis rather than hourly to
+                  ensure full transparency. This means you know the total cost
+                  upfront. I provide a detailed proposal after our initial
+                  discovery call, where we define the full scope of work.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div
+              class="bg-[#1A1A1A] border border-[#333333] rounded-lg"
+              x-data="{ shown: false }"
+              x-intersect.once="shown = true"
+              x-show="shown"
+              x-transition:enter="transition ease-out duration-1000 delay-300ms transform"
+              x-transition:enter-start="opacity-0 translate-y-10"
+              x-transition:enter-end="opacity-100 translate-y-0"
+            >
+              <h2>
+                <button
+                  type="button"
+                  @click="open = (open === 2 ? null : 2)"
+                  class="flex items-center justify-between w-full p-6 text-left"
+                >
+                  <span class="text-lg font-medium text-white"
+                    >How long does a typical project take?</span
+                  >
+                  <span class="ml-6 h-7 flex items-center">
+                    <svg
+                      class="h-6 w-6 transform transition-transform duration-300"
+                      :class="{ 'rotate-180': open === 2 }"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </h2>
+              <div x-show="open === 2" x-collapse class="px-6 pb-6">
+                <p class="text-base text-[#AAAAAA]">
+                  This depends on the scope. A simple landing page might take
+                  1-2 weeks. A full app redesign or new product build can take
+                  anywhere from 4-12 weeks. I will provide a clear timeline in
+                  our project proposal.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div
+              class="bg-[#1A1A1A] border border-[#333333] rounded-lg"
+              x-data="{ shown: false }"
+              x-intersect.once="shown = true"
+              x-show="shown"
+              x-transition:enter="transition ease-out duration-1000 delay-400ms transform"
+              x-transition:enter-start="opacity-0 translate-y-10"
+              x-transition:enter-end="opacity-100 translate-y-0"
+            >
+              <h2>
+                <button
+                  type="button"
+                  @click="open = (open === 3 ? null : 3)"
+                  class="flex items-center justify-between w-full p-6 text-left"
+                >
+                  <span class="text-lg font-medium text-white"
+                    >What's your current availability?</span
+                  >
+                  <span class="ml-6 h-7 flex items-center">
+                    <svg
+                      class="h-6 w-6 transform transition-transform duration-300"
+                      :class="{ 'rotate-180': open === 3 }"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </h2>
+              <div x-show="open === 3" x-collapse class="px-6 pb-6">
+                <p class="text-base text-[#AAAAAA]">
+                  I typically book projects 2-3 weeks in advance. The best way
+                  to find out is to book a discovery call, and we can discuss
+                  your timeline and my next available slot.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 
+          SECTION 13: Final Call to Action (CTA) & Contact Form
+          - The final, primary conversion point.
+          - `py-32`: Extra large padding to make it a "hero" section at the end.
+          - HTMX Form:
+            - `hx-post`: A mock endpoint. In a real scenario, this would point to a Netlify function, Formspree, etc.
+            - `hx-target="#form-response"`: Tells HTMX where to put the response.
+            - `hx-swap="innerHTML"`: Tells HTMX to replace the content of the target.
+            - `hx-indicator`: Shows a "Sending..." message during the request.
+          - Form Styling: Uses theme colors for inputs.
+        -->
+      <section
+        id="contact"
+        class="py-32 bg-[#1A1A1A] border-t border-[#333333]"
+        x-data="{ shown: false }"
+        x-intersect.once="shown = true"
+      >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            class="max-w-3xl mx-auto text-center"
+            x-show="shown"
+            x-transition:enter="transition ease-out duration-1000 transform"
+            x-transition:enter-start="opacity-0 translate-y-10"
+            x-transition:enter-end="opacity-100 translate-y-0"
+          >
+            <h2 class="text-4xl sm:text-5xl font-semibold text-white">
+              Have a project in mind?
+            </h2>
+            <p class="mt-4 text-lg text-[#AAAAAA]">
+              Let's turn your idea into a reality. Fill out the form below or
+              book a call directly. I'm excited to hear about your project.
+            </p>
+          </div>
+
+          <div
+            class="mt-16 max-w-2xl mx-auto"
+            x-show="shown"
+            x-transition:enter="transition ease-out duration-1000 delay-200ms transform"
+            x-transition:enter-start="opacity-0 translate-y-10"
+            x-transition:enter-end="opacity-100 translate-y-0"
+          >
+            <!-- 
+                      This mock form uses HTMX. For a real submission, you would need a backend endpoint.
+                      The hx-post attribute points to a non-existent URL for demo purposes.
+                      A real, simple backend (like Netlify Functions) would receive this POST 
+                      and return an HTML snippet.
+                      
+                      Example Netlify Function response for success:
+                      <p class="text-green-400">Thank you! Your message has been sent.</p>
+                      
+                      Example Netlify Function response for error:
+                      <p class="text-red-400">Something went wrong. Please try again.</p>
+                    -->
+            <form
+              id="contact-form"
+              hx-post="/.netlify/functions/submit-form"
+              hx-target="#form-response"
+              hx-swap="innerHTML"
+              hx-indicator="#form-indicator"
+              class="space-y-6"
+            >
+              <!-- Name -->
+              <div>
+                <label for="name" class="block text-sm font-medium text-white"
+                  >Name</label
+                >
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  required
+                  class="mt-1 block w-full bg-[#0F0F0F] border border-[#333333] rounded-lg shadow-sm py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-[#FF5733] focus:border-[#FF5733]"
+                />
+              </div>
+
+              <!-- Email -->
+              <div>
+                <label for="email" class="block text-sm font-medium text-white"
+                  >Email</label
+                >
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  required
+                  class="mt-1 block w-full bg-[#0F0F0F] border border-[#333333] rounded-lg shadow-sm py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-[#FF5733] focus:border-[#FF5733]"
+                />
+              </div>
+
+              <!-- Message -->
+              <div>
+                <label
+                  for="message"
+                  class="block text-sm font-medium text-white"
+                  >Message</label
+                >
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  required
+                  class="mt-1 block w-full bg-[#0F0F0F] border border-[#333333] rounded-lg shadow-sm py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-[#FF5733] focus:border-[#FF5733]"
+                ></textarea>
+              </div>
+
+              <!-- Submit Button & Indicators -->
+              <div class="flex items-center justify-between">
+                <!-- This div will be populated by the HTMX response -->
+                <div id="form-response" class="text-base">
+                  <!-- 
+                                  Manually add a success message here for demo purposes, 
+                                  as the hx-post will fail. A real form would start empty.
+                                  hx-target will replace this.
+                                -->
+                  <p class="text-sm text-[#AAAAAA]">(HTMX form ready)</p>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                  <!-- HTMX loading indicator -->
+                  <div id="form-indicator" class="htmx-indicator">
+                    <span class="text-sm text-[#AAAAAA]">Sending...</span>
+                  </div>
+
+                  <button
+                    type="submit"
+                    class="inline-block bg-[#FF5733] text-white font-semibold uppercase text-sm py-3 px-8 rounded-lg transition-transform duration-300 hover:scale-105 disabled:opacity-50"
+                  >
+                    Send Message
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- 
+          SECTION 14: Footer
+          - Standard multi-column footer.
+          - Adheres to layout spec.
+        -->
+      <footer class="py-16 border-t border-[#333333]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- Column 1: Logo & Copyright -->
+            <div class="space-y-4">
+              <a href="#" class="text-2xl font-bold text-white">Mr. X</a>
+              <p class="text-sm text-[#AAAAAA]">
+                © 2025 Mr. X. All rights reserved.
+              </p>
+              <p class="text-sm text-[#AAAAAA]">
+                Designing user-centric digital products.
+              </p>
+            </div>
+
+            <!-- Column 2: Navigation -->
+            <div>
+              <h5
+                class="text-sm font-semibold text-white uppercase tracking-wider"
+              >
+                Navigation
+              </h5>
+              <ul class="mt-4 space-y-2">
+                <li>
+                  <a
+                    href="#work"
+                    class="text-base text-[#AAAAAA] hover:text-white"
+                    >Work</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#about"
+                    class="text-base text-[#AAAAAA] hover:text-white"
+                    >About</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#process"
+                    class="text-base text-[#AAAAAA] hover:text-white"
+                    >Process</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#faq"
+                    class="text-base text-[#AAAAAA] hover:text-white"
+                    >FAQ</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <!-- Column 3: Socials -->
+            <div>
+              <h5
+                class="text-sm font-semibold text-white uppercase tracking-wider"
+              >
+                Connect
+              </h5>
+              <ul class="mt-4 space-y-2">
+                <li>
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-base text-[#AAAAAA] hover:text-white"
+                    >Dribbble</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-base text-[#AAAAAA] hover:text-white"
+                    >LinkedIn</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-base text-[#AAAAAA] hover:text-white"
+                    >Behance</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <!-- Column 4: Contact -->
+            <div>
+              <h5
+                class="text-sm font-semibold text-white uppercase tracking-wider"
+              >
+                Get in Touch
+              </h5>
+              <ul class="mt-4 space-y-2">
+                <li>
+                  <a
+                    href="mailto:hello@mrx.design"
+                    class="text-base text-[#AAAAAA] hover:text-white"
+                    >hello@mrx.design</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#contact"
+                    class="text-base text-[#FF5733] hover:text-white"
+                    >Book a Discovery Call</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Sumona - Graphics Designer | Brand Identity and Conversion-Focused Visuals
+    </title>
+    <meta
+      name="description"
+      content="World-class Graphics Designer specializing in brand identity, digital marketing collateral, and high-impact web visuals that drive conversion and engagement."
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <!-- Font Awesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "primary-bg": "#0A0A0E",
+              "secondary-bg": "#1A1A22",
+              "text-primary": "#F0F0F0",
+              "text-secondary": "#A0A0A0",
+              "accent-primary-v": "#8A2BE2", // Deep Violet
+              "accent-secondary-l": "#BFFF00", // Electric Lime
+              "cta-start": "#007BFF", // Bright Blue Start
+              "cta-end": "#00CFFF", // Bright Blue End
+            },
+            borderRadius: {
+              xl: "12px",
+            },
+            maxWidth: {
+              "7xl": "1400px",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      /* Modern Sans-Serif font setup */
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap");
+      body {
+        font-family: "Inter", sans-serif;
+        scroll-behavior: smooth;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Gradient Button Utility */
+      .btn-gradient {
+        background-image: linear-gradient(
+          to right,
+          var(--tw-color-cta-start),
+          var(--tw-color-cta-end)
+        );
+        transition: all 0.3s ease;
+      }
+      .btn-gradient:hover {
+        box-shadow: 0 0 15px rgba(0, 123, 255, 0.6);
+        transform: translateY(-2px);
+      }
+
+      /* Accent Glow Effect */
+      .glow-effect {
+        box-shadow: 0 0 10px rgba(138, 43, 226, 0.4),
+          inset 0 0 5px rgba(138, 43, 226, 0.2);
+      }
+
+      /* Text Tight Spacing for Headings */
+      .tracking-tight-custom {
+        letter-spacing: -0.05em;
+      }
+
+      /* Scrollbar styling for dark mode */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #1a1a22;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #8a2be2;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+
+  <body class="bg-primary-bg text-text-primary antialiased">
+    <!-- NAVIGATION (Header) -->
+    <header
+      x-data="{ open: false }"
+      x-init="$watch('open', value => document.body.style.overflow = value ? 'hidden' : 'auto')"
+      class="sticky top-5 z-50 mx-2"
+    >
+      <div
+        class="max-w-5xl mx-auto px-6 py-3 flex justify-between items-center bg-green-800/60 backdrop-blur-lg rounded-full border border-white/10 shadow-xl"
+      >
+        <a href="#" class="text-3xl font-bold tracking-wider text-white">
+          Dznr
+        </a>
+
+        <nav class="hidden lg:flex space-x-8 text-green-100 font-medium">
+          <a href="#projects" class="hover:text-white transition duration-200">
+            Work
+          </a>
+          <a href="#services" class="hover:text-white transition duration-200">
+            Services
+          </a>
+          <a href="#process" class="hover:text-white transition duration-200">
+            Process
+          </a>
+          <a href="#faq" class="hover:text-white transition duration-200">
+            FAQs
+          </a>
+          <a href="#about" class="hover:text-white transition duration-200">
+            About Me
+          </a>
+        </nav>
+
+        <a
+          href="#contact"
+          class="hidden lg:block text-lime-300 font-bold text-lg hover:text-lime-200 transition duration-200"
+        >
+          Book a Call &rarr;
+        </a>
+
+        <div class="lg:hidden">
+          <button
+            @click="open = !open"
+            class="text-white p-2 focus:outline-none"
+          >
+            <i class="fas fa-bars text-xl" x-show="!open"></i>
+            <i class="fas fa-times text-xl" x-show="open" x-cloak></i>
+          </button>
+        </div>
+      </div>
+      <!-- mobile -->
+      <div
+        @click.away="open = false"
+        class="lg:hidden absolute w-full px-4 mt-2"
+        x-show="open"
+        x-transition.origin.top
+        x-cloak
+      >
+        <nav
+          @click="open = false"
+          class="flex flex-col space-y-4 p-6 text-text-primary text-lg font-medium bg-secondary-bg/95 backdrop-blur-md rounded-xl shadow-xl"
+        >
+          <a href="#projects" class="py-2 hover:text-accent-secondary-l"
+            >Work</a
+          >
+          <a href="#services" class="py-2 hover:text-accent-secondary-l"
+            >Services</a
+          >
+          <a href="#process" class="py-2 hover:text-accent-secondary-l"
+            >Process</a
+          >
+          <a href="#faq" class="py-2 hover:text-accent-secondary-l">FAQs</a>
+          <a href="#about" class="py-2 hover:text-accent-secondary-l">About</a>
+          <a
+            href="#contact"
+            class="btn-gradient px-4 py-3 rounded-xl text-text-primary font-semibold text-center mt-4"
+          >
+            Start a Project
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- 1. HERO SECTION (The Hook & Introduction) -->
+      <section
+        class="py-26 md:py-40 relative overflow-hidden"
+        style="opacity: 1"
+      >
+        <div
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+          x-data="{ loaded: false }"
+          x-init="setTimeout(() => loaded = true, 50)"
+        >
+          <!-- High-Impact Headline -->
+          <h1
+            class="text-6xl md:text-8xl lg:text-9xl font-extrabold tracking-tight-custom leading-tight mb-6 transition-all duration-1000 ease-out transform translate-y-4 opacity-0"
+            :class="loaded && 'translate-y-0 opacity-100'"
+          >
+            I Design Brands That
+            <span
+              class="text-accent-secondary-l glow-effect bg-clip-text text-transparent bg-gradient-to-r from-accent-secondary-l to-accent-secondary-l/70"
+              >Convert</span
+            >.
+          </h1>
+
+          <!-- Unique Value Proposition -->
+          <p
+            class="text-xl md:text-2xl text-text-secondary max-w-4xl mx-auto mb-10 transition-all duration-1000 ease-out delay-300 transform translate-y-4 opacity-0"
+            :class="loaded && 'translate-y-0 opacity-100'"
+          >
+            I’m Sumona, a Graphics Designer focused on creating strategic visual
+            identities and collateral that solve business problems and **drive
+            measurable results**.
+          </p>
+
+          <!-- Primary CTA -->
+          <a
+            href="#contact"
+            class="inline-block btn-gradient px-10 py-4 text-lg rounded-xl text-text-primary font-bold shadow-2xl shadow-cta-start/50 transition-all duration-1000 ease-out delay-500 transform translate-y-4 opacity-0"
+            :class="loaded && 'translate-y-0 opacity-100'"
+          >
+            Book a Brand Audit <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+
+          <!-- Background Abstract Art (Violet/Lime Glow) -->
+          <div
+            class="absolute inset-0 z-[-1] opacity-20 md:opacity-10 pointer-events-none"
+          >
+            <div
+              class="absolute top-1/4 left-1/4 w-96 h-96 bg-accent-primary-v rounded-full filter blur-3xl opacity-30 animate-pulse"
+            ></div>
+            <div
+              class="absolute bottom-1/4 right-1/4 w-72 h-72 bg-accent-secondary-l rounded-full filter blur-3xl opacity-30 animate-pulse delay-500"
+            ></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. LOGO TICKER / "TRUSTED BY" -->
+      <section
+        class="py-12 border-t border-b border-secondary-bg overflow-hidden"
+      >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p
+            class="text-center text-sm font-semibold uppercase text-text-secondary mb-8 tracking-wider"
+          >
+            Trusted by Visionaries
+          </p>
+          <div class="flex space-x-12 animate-marquee whitespace-nowrap">
+            <!-- Dummy Logo Ticker Items. Replace SVG with actual logos -->
+            <span class="text-3xl font-bold text-text-secondary/50"
+              >SynergyCorp</span
+            >
+            <span class="text-3xl font-bold text-text-secondary/50"
+              >ApexFounders</span
+            >
+            <span class="text-3xl font-bold text-text-secondary/50"
+              >Growtix</span
+            >
+            <span class="text-3xl font-bold text-text-secondary/50"
+              >FutureLabs</span
+            >
+            <span class="text-3xl font-bold text-text-secondary/50"
+              >ElysianTech</span
+            >
+            <span class="text-3xl font-bold text-text-secondary/50"
+              >SynergyCorp</span
+            >
+            <span class="text-3xl font-bold text-text-secondary/50"
+              >ApexFounders</span
+            >
+            <span class="text-3xl font-bold text-text-secondary/50"
+              >Growtix</span
+            >
+            <span class="text-3xl font-bold text-text-secondary/50"
+              >FutureLabs</span
+            >
+            <span class="text-3xl font-bold text-text-secondary/50"
+              >ElysianTech</span
+            >
+          </div>
+        </div>
+        <style>
+          @keyframes marquee {
+            0% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(-50%);
+            }
+          }
+          .animate-marquee {
+            animation: marquee 30s linear infinite;
+            display: flex; /* Ensure logos stay on one line for animation */
+          }
+        </style>
+      </section>
+
+      <!-- 3. ABOUT ME: THE DESIGNER NARRATIVE -->
+      <section id="about" class="py-28">
+        <div
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-16 items-center"
+        >
+          <div
+            class="aspect-video bg-secondary-bg rounded-xl glow-effect overflow-hidden"
+          >
+            <img
+              src="https://placehold.co/1200x675/1A1A22/8A2BE2?text=Designer+Profile+Visual"
+              alt="Sumona's professional profile visual"
+              class="w-full h-full object-cover opacity-80 transition-opacity duration-300 hover:opacity-100"
+              onerror="this.src='https://placehold.co/1200x675/1A1A22/8A2BE2?text=Designer+Profile+Visual'"
+            />
+          </div>
+          <div>
+            <h2
+              class="text-4xl md:text-5xl font-bold tracking-tight-custom mb-6 text-text-primary"
+            >
+              Beyond Pixels: My Mission is
+              <span class="text-accent-primary-v">Impact</span>.
+            </h2>
+            <p class="text-lg text-text-secondary mb-6 leading-relaxed">
+              I'm not just a designer; I'm a visual strategist. My passion lies
+              in taking complex business goals and translating them into simple,
+              beautiful, and highly effective visual languages. I believe that
+              good design is invisible, but **great design** is a powerful
+              engine for growth.
+            </p>
+            <p class="text-lg text-text-secondary mb-8 leading-relaxed">
+              For the last eight years, I have specialized in brand systems and
+              digital collateral that significantly reduce customer friction and
+              boost engagement. If you need a partner who understands the
+              business side of aesthetics, **I’m ready to start.**
+            </p>
+            <a
+              href="#projects"
+              class="text-accent-secondary-l font-semibold text-lg hover:underline transition duration-200"
+            >
+              See My Full Story <i class="fas fa-long-arrow-alt-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. MY CORE SERVICES / WHAT I DO -->
+      <section
+        id="services"
+        class="py-28 bg-secondary-bg border-t border-b border-primary-bg"
+      >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <span
+            class="text-sm font-medium uppercase text-accent-secondary-l mb-2 block"
+            >My Offerings</span
+          >
+          <h2
+            class="text-4xl md:text-5xl font-bold tracking-tight-custom mb-16 text-text-primary"
+          >
+            Strategic Design Solutions for Modern Brands.
+          </h2>
+
+          <div class="grid md:grid-cols-3 gap-8">
+            <!-- Service Card 1: Branding -->
+            <div
+              class="p-8 bg-primary-bg rounded-xl text-left glow-effect hover:glow-effect-hover transition duration-300 transform hover:-translate-y-1"
+            >
+              <i class="fas fa-sitemap text-4xl text-accent-primary-v mb-4"></i>
+              <h3 class="text-2xl font-semibold mb-3 text-text-primary">
+                Visual Identity Systems
+              </h3>
+              <p class="text-text-secondary">
+                Full-spectrum branding: logos, color palettes, typography, and
+                voice guidelines to ensure total market consistency.
+              </p>
+            </div>
+            <!-- Service Card 2: Digital -->
+            <div
+              class="p-8 bg-primary-bg rounded-xl text-left glow-effect hover:glow-effect-hover transition duration-300 transform hover:-translate-y-1"
+            >
+              <i
+                class="fas fa-laptop-code text-4xl text-accent-primary-v mb-4"
+              ></i>
+              <h3 class="text-2xl font-semibold mb-3 text-text-primary">
+                Web & UI/UX Design
+              </h3>
+              <p class="text-text-secondary">
+                Creating wireframes, mockups, and final production assets for
+                responsive websites and high-converting landing pages.
+              </p>
+            </div>
+            <!-- Service Card 3: Marketing -->
+            <div
+              class="p-8 bg-primary-bg rounded-xl text-left glow-effect hover:glow-effect-hover transition duration-300 transform hover:-translate-y-1"
+            >
+              <i
+                class="fas fa-bullhorn text-4xl text-accent-primary-v mb-4"
+              ></i>
+              <h3 class="text-2xl font-semibold mb-3 text-text-primary">
+                Marketing Collateral
+              </h3>
+              <p class="text-text-secondary">
+                Design for digital ads, social media campaigns, print materials,
+                and data-driven presentations that sell.
+              </p>
+            </div>
+          </div>
+
+          <style>
+            .glow-effect-hover {
+              box-shadow: 0 0 20px rgba(138, 43, 226, 0.6),
+                inset 0 0 10px rgba(138, 43, 226, 0.3);
+            }
+          </style>
+        </div>
+      </section>
+
+      <!-- 5. MY TECH STACK / TOOLS -->
+      <section class="py-20">
+        <div
+          id="tech-stack"
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+        >
+          <span
+            class="text-sm font-medium uppercase text-accent-secondary-l mb-2 block"
+            >My Toolkit</span
+          >
+          <h3
+            class="text-3xl font-bold tracking-tight-custom mb-12 text-text-primary"
+          >
+            Industry-Leading Tools for Flawless Execution.
+          </h3>
+
+          <div class="flex flex-wrap justify-center gap-6">
+            <!-- Tech/Tool Badges -->
+            <div
+              class="flex items-center bg-secondary-bg px-6 py-3 rounded-xl border border-accent-primary-v/30 text-text-primary hover:bg-accent-primary-v/20 transition duration-300"
+            >
+              <i class="fab fa-figma text-2xl mr-3 text-accent-secondary-l"></i>
+              Figma
+            </div>
+            <div
+              class="flex items-center bg-secondary-bg px-6 py-3 rounded-xl border border-accent-primary-v/30 text-text-primary hover:bg-accent-primary-v/20 transition duration-300"
+            >
+              <i
+                class="fas fa-bezier-curve text-2xl mr-3 text-accent-secondary-l"
+              ></i>
+              Adobe Illustrator
+            </div>
+            <div
+              class="flex items-center bg-secondary-bg px-6 py-3 rounded-xl border border-accent-primary-v/30 text-text-primary hover:bg-accent-primary-v/20 transition duration-300"
+            >
+              <i
+                class="fas fa-camera-retro text-2xl mr-3 text-accent-secondary-l"
+              ></i>
+              Adobe Photoshop
+            </div>
+            <div
+              class="flex items-center bg-secondary-bg px-6 py-3 rounded-xl border border-accent-primary-v/30 text-text-primary hover:bg-accent-primary-v/20 transition duration-300"
+            >
+              <i
+                class="fas fa-layer-group text-2xl mr-3 text-accent-secondary-l"
+              ></i>
+              Adobe InDesign
+            </div>
+            <div
+              class="flex items-center bg-secondary-bg px-6 py-3 rounded-xl border border-accent-primary-v/30 text-text-primary hover:bg-accent-primary-v/20 transition duration-300"
+            >
+              <i
+                class="fas fa-pen-fancy text-2xl mr-3 text-accent-secondary-l"
+              ></i>
+              Procreate / Tablets
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. FEATURED PROJECTS (Hard Proof) -->
+      <section
+        id="projects"
+        class="py-28 bg-secondary-bg border-t border-b border-primary-bg"
+      >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <span
+            class="text-sm font-medium uppercase text-accent-secondary-l mb-2 block text-center"
+            >My Work</span
+          >
+          <h2
+            class="text-4xl md:text-5xl font-bold tracking-tight-custom mb-16 text-text-primary text-center"
+          >
+            Case Studies of Visual Problem Solving.
+          </h2>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Project Card 1 -->
+            <div
+              class="group bg-primary-bg rounded-xl overflow-hidden shadow-2xl transition duration-500 transform hover:scale-[1.02] hover:shadow-accent-primary-v/40"
+            >
+              <div
+                class="aspect-video overflow-hidden border-b border-secondary-bg"
+              >
+                <img
+                  src="https://placehold.co/800x450/1A1A22/BFFF00?text=Brand+Identity+Project"
+                  alt="E-commerce Rebrand Case Study"
+                  class="w-full h-full object-cover transition duration-500 group-hover:opacity-70"
+                  onerror="this.src='https://placehold.co/800x450/1A1A22/BFFF00?text=Brand+Identity+Project'"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="text-2xl font-semibold text-text-primary mb-2">
+                  E-commerce Rebrand
+                </h3>
+                <p class="text-text-secondary mb-4">
+                  Problem: Dated visual identity caused low trust. Solution:
+                  Modern, minimalist redesign.
+                </p>
+                <a
+                  href="#"
+                  class="text-accent-secondary-l font-semibold group-hover:underline"
+                >
+                  View Full Case Study
+                  <i class="fas fa-arrow-right ml-1 text-sm"></i>
+                </a>
+              </div>
+            </div>
+            <!-- Project Card 2 -->
+            <div
+              class="group bg-primary-bg rounded-xl overflow-hidden shadow-2xl transition duration-500 transform hover:scale-[1.02] hover:shadow-accent-primary-v/40"
+            >
+              <div
+                class="aspect-video overflow-hidden border-b border-secondary-bg"
+              >
+                <img
+                  src="https://placehold.co/800x450/1A1A22/BFFF00?text=SaaS+UI/UX+Design"
+                  alt="SaaS Platform UI/UX Mockup"
+                  class="w-full h-full object-cover transition duration-500 group-hover:opacity-70"
+                  onerror="this.src='https://placehold.co/800x450/1A1A22/BFFF00?text=SaaS+UI/UX+Design'"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="text-2xl font-semibold text-text-primary mb-2">
+                  SaaS Dashboard UX
+                </h3>
+                <p class="text-text-secondary mb-4">
+                  Problem: Overly complex data visualization. Solution: Clean,
+                  high-contrast, intuitive dashboard design.
+                </p>
+                <a
+                  href="#"
+                  class="text-accent-secondary-l font-semibold group-hover:underline"
+                >
+                  View Full Case Study
+                  <i class="fas fa-arrow-right ml-1 text-sm"></i>
+                </a>
+              </div>
+            </div>
+            <!-- Project Card 3 -->
+            <div
+              class="group bg-primary-bg rounded-xl overflow-hidden shadow-2xl transition duration-500 transform hover:scale-[1.02] hover:shadow-accent-primary-v/40"
+            >
+              <div
+                class="aspect-video overflow-hidden border-b border-secondary-bg"
+              >
+                <img
+                  src="https://placehold.co/800x450/1A1A22/BFFF00?text=Marketing+Campaign+Assets"
+                  alt="Digital Ad Campaign Assets"
+                  class="w-full h-full object-cover transition duration-500 group-hover:opacity-70"
+                  onerror="this.src='https://placehold.co/800x450/1A1A22/BFFF00?text=Marketing+Campaign+Assets'"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="text-2xl font-semibold text-text-primary mb-2">
+                  High-Converting Ad Campaigns
+                </h3>
+                <p class="text-text-secondary mb-4">
+                  Problem: Low CTR on social ads. Solution: A/B tested,
+                  emotionally resonant visual language.
+                </p>
+                <a
+                  href="#"
+                  class="text-accent-secondary-l font-semibold group-hover:underline"
+                >
+                  View Full Case Study
+                  <i class="fas fa-arrow-right ml-1 text-sm"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. TESTIMONIALS CAROUSEL -->
+      <section
+        class="py-28"
+        x-data="{ currentTestimonial: 0, testimonials: [
+            { quote: 'Sumona’s rebrand work was transformational. We saw a 30% increase in lead quality almost instantly. Her process is thorough, and the results speak for themselves.', author: 'Alex V.', title: 'CEO, Tech Startup' },
+            { quote: 'The attention to detail on our new product packaging design was flawless. She balanced creative flair with print-ready precision, delivering ahead of schedule.', author: 'Jamie K.', title: 'Marketing Director, CPG' },
+            { quote: 'Working with Sumona is like working with an internal brand strategist. She doesn\'t just design; she elevates our business thinking through visuals.', author: 'Chris R.', title: 'Brand Manager, Fortune 500' }
+        ] }"
+      >
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <span
+            class="text-sm font-medium uppercase text-accent-secondary-l mb-2 block"
+            >Client Endorsements</span
+          >
+          <h2
+            class="text-4xl md:text-5xl font-bold tracking-tight-custom mb-12 text-text-primary"
+          >
+            Trust Built on Proven Partnerships.
+          </h2>
+
+          <div class="relative min-h-[250px] flex items-center justify-center">
+            <template x-for="(testimonial, index) in testimonials" :key="index">
+              <div
+                x-show="currentTestimonial === index"
+                x-transition:enter="transition ease-out duration-700"
+                x-transition:enter-start="opacity-0 transform scale-95"
+                x-transition:enter-end="opacity-100 transform scale-100"
+                x-transition:leave="transition ease-in duration-500"
+                x-transition:leave-start="opacity-100 transform scale-100"
+                x-transition:leave-end="opacity-0 transform scale-95"
+                class="absolute w-full p-6"
+              >
+                <p class="text-2xl italic text-text-primary mb-6">
+                  <i
+                    class="fas fa-quote-left text-accent-primary-v/50 mr-2"
+                  ></i>
+                  <span x-text="testimonial.quote"></span>
+                </p>
+                <p
+                  class="text-lg font-semibold text-text-primary"
+                  x-text="testimonial.author"
+                ></p>
+                <p
+                  class="text-sm text-text-secondary"
+                  x-text="testimonial.title"
+                ></p>
+              </div>
+            </template>
+          </div>
+
+          <!-- Carousel Indicators -->
+          <div class="flex justify-center space-x-2 mt-4">
+            <template x-for="(testimonial, index) in testimonials" :key="index">
+              <button
+                @click="currentTestimonial = index"
+                :class="{'bg-accent-secondary-l': currentTestimonial === index, 'bg-text-secondary/50 hover:bg-text-secondary': currentTestimonial !== index}"
+                class="w-2 h-2 rounded-full transition-colors duration-300"
+              ></button>
+            </template>
+          </div>
+        </div>
+        <!-- Auto-advance logic -->
+        <script>
+          document.addEventListener("alpine:init", () => {
+            Alpine.data("carousel", () => ({
+              init() {
+                setInterval(() => {
+                  this.currentTestimonial =
+                    (this.currentTestimonial + 1) % this.testimonials.length;
+                }, 7000); // Change testimonial every 7 seconds
+              },
+            }));
+          });
+        </script>
+      </section>
+
+      <!-- 8. QUANTIFIABLE IMPACT (KPIs) -->
+      <section
+        class="py-28 bg-secondary-bg border-t border-b border-primary-bg"
+      >
+        <div
+          id="kpi-section"
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+        >
+          <span
+            class="text-sm font-medium uppercase text-accent-secondary-l mb-2 block"
+            >Metrics That Matter</span
+          >
+          <h2
+            class="text-4xl md:text-5xl font-bold tracking-tight-custom mb-16 text-text-primary"
+          >
+            Real Results, Designed for Business Growth.
+          </h2>
+
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- KPI Card 1 -->
+            <div class="p-6 bg-primary-bg rounded-xl glow-effect">
+              <p class="text-6xl font-extrabold text-accent-secondary-l mb-2">
+                45%
+              </p>
+              <h3 class="text-xl font-semibold text-text-primary">
+                Avg. Conversion Lift
+              </h3>
+              <p class="text-text-secondary text-sm">
+                On digital marketing landing pages.
+              </p>
+            </div>
+            <!-- KPI Card 2 -->
+            <div class="p-6 bg-primary-bg rounded-xl glow-effect">
+              <p class="text-6xl font-extrabold text-accent-secondary-l mb-2">
+                9/10
+              </p>
+              <h3 class="text-xl font-semibold text-text-primary">
+                Client Retention Rate
+              </h3>
+              <p class="text-text-secondary text-sm">
+                Success built on communication and reliability.
+              </p>
+            </div>
+            <!-- KPI Card 3 -->
+            <div class="p-6 bg-primary-bg rounded-xl glow-effect">
+              <p class="text-6xl font-extrabold text-accent-secondary-l mb-2">
+                80%
+              </p>
+              <h3 class="text-xl font-semibold text-text-primary">
+                Brand Recall Increase
+              </h3>
+              <p class="text-text-secondary text-sm">
+                Post-redesign studies across multiple industries.
+              </p>
+            </div>
+            <!-- KPI Card 4 -->
+            <div class="p-6 bg-primary-bg rounded-xl glow-effect">
+              <p class="text-6xl font-extrabold text-accent-secondary-l mb-2">
+                350+
+              </p>
+              <h3 class="text-xl font-semibold text-text-primary">
+                Completed Assets
+              </h3>
+              <p class="text-text-secondary text-sm">
+                Successfully deployed visual systems and assets.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 9. MY WORKING PROCESS (The "How") -->
+      <section id="process" class="py-28">
+        <div
+          id="process"
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+        >
+          <span
+            class="text-sm font-medium uppercase text-accent-secondary-l mb-2 block"
+            >My Method</span
+          >
+          <h2
+            class="text-4xl md:text-5xl font-bold tracking-tight-custom mb-16 text-text-primary"
+          >
+            A Predictable, Collaborative, 4-Step Visual Process.
+          </h2>
+
+          <div class="relative">
+            <!-- Process Line -->
+            <div
+              class="absolute hidden md:block w-full h-1 bg-accent-primary-v/30 top-1/2 transform -translate-y-1/2"
+            ></div>
+
+            <div class="grid md:grid-cols-4 gap-12 text-left relative z-10">
+              <!-- Step 1 -->
+              <div
+                class="p-6 bg-secondary-bg rounded-xl border-t-4 border-accent-primary-v shadow-lg transform hover:scale-[1.05] transition duration-300"
+              >
+                <div
+                  class="w-10 h-10 flex items-center justify-center bg-accent-primary-v rounded-full text-text-primary text-xl font-bold mb-4 mx-auto md:mx-0"
+                >
+                  1
+                </div>
+                <h3 class="text-2xl font-semibold mb-2 text-text-primary">
+                  Discover & Strategize
+                </h3>
+                <p class="text-text-secondary">
+                  Deep dive into your brand, audience, and goals. Define the key
+                  visual problem we need to solve.
+                </p>
+              </div>
+              <!-- Step 2 -->
+              <div
+                class="p-6 bg-secondary-bg rounded-xl border-t-4 border-accent-primary-v shadow-lg transform hover:scale-[1.05] transition duration-300"
+              >
+                <div
+                  class="w-10 h-10 flex items-center justify-center bg-accent-primary-v rounded-full text-text-primary text-xl font-bold mb-4 mx-auto md:mx-0"
+                >
+                  2
+                </div>
+                <h3 class="text-2xl font-semibold mb-2 text-text-primary">
+                  Design & Develop
+                </h3>
+                <p class="text-text-secondary">
+                  Concept creation, iteration on mockups, and building out the
+                  core visual assets (brand guide, wireframes, etc.).
+                </p>
+              </div>
+              <!-- Step 3 -->
+              <div
+                class="p-6 bg-secondary-bg rounded-xl border-t-4 border-accent-primary-v shadow-lg transform hover:scale-[1.05] transition duration-300"
+              >
+                <div
+                  class="w-10 h-10 flex items-center justify-center bg-accent-primary-v rounded-full text-text-primary text-xl font-bold mb-4 mx-auto md:mx-0"
+                >
+                  3
+                </div>
+                <h3 class="text-2xl font-semibold mb-2 text-text-primary">
+                  Refine & Validate
+                </h3>
+                <p class="text-text-secondary">
+                  Feedback loops, necessary revisions, and ensuring the final
+                  files are technically perfect for deployment (print/web
+                  ready).
+                </p>
+              </div>
+              <!-- Step 4 -->
+              <div
+                class="p-6 bg-secondary-bg rounded-xl border-t-4 border-accent-primary-v shadow-lg transform hover:scale-[1.05] transition duration-300"
+              >
+                <div
+                  class="w-10 h-10 flex items-center justify-center bg-accent-primary-v rounded-full text-text-primary text-xl font-bold mb-4 mx-auto md:mx-0"
+                >
+                  4
+                </div>
+                <h3 class="text-2xl font-semibold mb-2 text-text-primary">
+                  Delivery & Handover
+                </h3>
+                <p class="text-text-secondary">
+                  Complete handover of all final source files, usage
+                  instructions, and continued support for a defined period.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10. PRICING STRUCTURE (High-Level Qualification) -->
+      <section
+        class="py-28 bg-secondary-bg border-t border-b border-primary-bg"
+      >
+        <div
+          id="pricing"
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+        >
+          <span
+            class="text-sm font-medium uppercase text-accent-secondary-l mb-2 block"
+            >Investment</span
+          >
+          <h2
+            class="text-4xl md:text-5xl font-bold tracking-tight-custom mb-16 text-text-primary"
+          >
+            Flexible Packages for Focused Goals.
+          </h2>
+
+          <div class="grid lg:grid-cols-3 gap-8 items-stretch">
+            <!-- Package 1: Starter -->
+            <div
+              class="p-8 bg-primary-bg rounded-xl border border-secondary-bg flex flex-col justify-between transform hover:scale-[1.02] transition duration-300"
+            >
+              <div>
+                <h3 class="text-3xl font-bold text-text-primary mb-2">
+                  Visual Audit
+                </h3>
+                <p class="text-text-secondary mb-6">
+                  A clear blueprint for future design improvements.
+                </p>
+                <p class="text-4xl font-extrabold text-accent-primary-v mb-8">
+                  Starting at $1,500
+                </p>
+                <ul class="text-text-secondary space-y-3 text-left mb-10">
+                  <li class="flex items-center">
+                    <i
+                      class="fas fa-check-circle text-accent-secondary-l mr-3"
+                    ></i>
+                    Brand Consistency Report
+                  </li>
+                  <li class="flex items-center">
+                    <i
+                      class="fas fa-check-circle text-accent-secondary-l mr-3"
+                    ></i>
+                    Competitor Visual Analysis
+                  </li>
+                  <li class="flex items-center">
+                    <i
+                      class="fas fa-check-circle text-accent-secondary-l mr-3"
+                    ></i>
+                    1-Hour Strategy Session
+                  </li>
+                </ul>
+              </div>
+              <a
+                href="#contact"
+                class="w-full text-center py-3 rounded-xl border border-accent-primary-v text-accent-primary-v font-semibold hover:bg-accent-primary-v/20 transition duration-300"
+              >
+                Request Audit
+              </a>
+            </div>
+
+            <!-- Package 2: Standard (Recommended) -->
+            <div
+              class="p-8 bg-primary-bg rounded-xl border-4 border-accent-secondary-l flex flex-col justify-between shadow-2xl shadow-accent-secondary-l/30 transform scale-[1.05]"
+            >
+              <div>
+                <div
+                  class="bg-accent-secondary-l/20 text-accent-secondary-l text-sm font-bold px-3 py-1 rounded-full inline-block mb-3"
+                >
+                  RECOMMENDED
+                </div>
+                <h3 class="text-3xl font-bold text-text-primary mb-2">
+                  Brand Identity System
+                </h3>
+                <p class="text-text-secondary mb-6">
+                  Full identity creation for long-term growth.
+                </p>
+                <p class="text-5xl font-extrabold text-accent-secondary-l mb-8">
+                  Project Based
+                </p>
+                <ul class="text-text-secondary space-y-3 text-left mb-10">
+                  <li class="flex items-center">
+                    <i
+                      class="fas fa-check-circle text-accent-secondary-l mr-3"
+                    ></i>
+                    Comprehensive Logo & Usage Guide
+                  </li>
+                  <li class="flex items-center">
+                    <i
+                      class="fas fa-check-circle text-accent-secondary-l mr-3"
+                    ></i>
+                    Typography & Color Palette System
+                  </li>
+                  <li class="flex items-center">
+                    <i
+                      class="fas fa-check-circle text-accent-secondary-l mr-3"
+                    ></i>
+                    3 Core Marketing Assets (e.g., templates)
+                  </li>
+                </ul>
+              </div>
+              <a
+                href="#contact"
+                class="w-full text-center btn-gradient px-4 py-3 rounded-xl text-text-primary font-bold shadow-xl shadow-cta-start/50"
+              >
+                Inquire for Quote
+              </a>
+            </div>
+
+            <!-- Package 3: Premium -->
+            <div
+              class="p-8 bg-primary-bg rounded-xl border border-secondary-bg flex flex-col justify-between transform hover:scale-[1.02] transition duration-300"
+            >
+              <div>
+                <h3 class="text-3xl font-bold text-text-primary mb-2">
+                  Ongoing Retainer
+                </h3>
+                <p class="text-text-secondary mb-6">
+                  Dedicated design support on a monthly basis.
+                </p>
+                <p class="text-4xl font-extrabold text-accent-primary-v mb-8">
+                  Monthly $4,000+
+                </p>
+                <ul class="text-text-secondary space-y-3 text-left mb-10">
+                  <li class="flex items-center">
+                    <i
+                      class="fas fa-check-circle text-accent-secondary-l mr-3"
+                    ></i>
+                    Priority Access & Fast Turnaround
+                  </li>
+                  <li class="flex items-center">
+                    <i
+                      class="fas fa-check-circle text-accent-secondary-l mr-3"
+                    ></i>
+                    Unlimited Revisions within Scope
+                  </li>
+                  <li class="flex items-center">
+                    <i
+                      class="fas fa-check-circle text-accent-secondary-l mr-3"
+                    ></i>
+                    Strategy & Consultation Included
+                  </li>
+                </ul>
+              </div>
+              <a
+                href="#contact"
+                class="w-full text-center py-3 rounded-xl border border-accent-primary-v text-accent-primary-v font-semibold hover:bg-accent-primary-v/20 transition duration-300"
+              >
+                Check Availability
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 11. FREQUENTLY ASKED QUESTIONS (FAQ) -->
+      <section class="py-28">
+        <div id="faq" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <span
+            class="text-sm font-medium uppercase text-accent-secondary-l mb-2 block text-center"
+            >Clarification</span
+          >
+          <h2
+            class="text-4xl md:text-5xl font-bold tracking-tight-custom mb-16 text-text-primary text-center"
+          >
+            Common Questions, Simplified Answers.
+          </h2>
+
+          <div x-data="{ open: null }">
+            <!-- FAQ Item 1 (Alpine.js Accordion) -->
+            <div class="border-b border-secondary-bg py-4">
+              <button
+                @click="open = (open === 1 ? null : 1)"
+                class="flex justify-between items-center w-full text-left text-xl font-semibold text-text-primary hover:text-accent-secondary-l transition duration-300"
+              >
+                What is your revision policy?
+                <i
+                  class="fas fa-chevron-down transform transition-transform duration-300"
+                  :class="{ 'rotate-180': open === 1 }"
+                ></i>
+              </button>
+              <div
+                x-show="open === 1"
+                x-collapse
+                x-cloak
+                class="mt-3 text-text-secondary leading-relaxed pr-8"
+              >
+                My standard project rates include two rounds of significant
+                revisions and one final minor polish round. This structured
+                approach ensures we stay focused and efficient, but I am always
+                flexible to accommodate minor tweaks.
+              </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div class="border-b border-secondary-bg py-4">
+              <button
+                @click="open = (open === 2 ? null : 2)"
+                class="flex justify-between items-center w-full text-left text-xl font-semibold text-text-primary hover:text-accent-secondary-l transition duration-300"
+              >
+                What is the typical turnaround time for a brand identity
+                project?
+                <i
+                  class="fas fa-chevron-down transform transition-transform duration-300"
+                  :class="{ 'rotate-180': open === 2 }"
+                ></i>
+              </button>
+              <div
+                x-show="open === 2"
+                x-collapse
+                x-cloak
+                class="mt-3 text-text-secondary leading-relaxed pr-8"
+              >
+                A comprehensive visual identity project typically takes 4-6
+                weeks, depending on the complexity and your responsiveness
+                during the feedback stages. We prioritize quality and clear
+                communication over rushed deadlines.
+              </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div class="border-b border-secondary-bg py-4">
+              <button
+                @click="open = (open === 3 ? null : 3)"
+                class="flex justify-between items-center w-full text-left text-xl font-semibold text-text-primary hover:text-accent-secondary-l transition duration-300"
+              >
+                Do you provide source files?
+                <i
+                  class="fas fa-chevron-down transform transition-transform duration-300"
+                  :class="{ 'rotate-180': open === 3 }"
+                ></i>
+              </button>
+              <div
+                x-show="open === 3"
+                x-collapse
+                x-cloak
+                class="mt-3 text-text-secondary leading-relaxed pr-8"
+              >
+                Absolutely. Upon final sign-off and payment, you receive all
+                necessary source files (AI, PSD, Figma, etc.) alongside
+                production-ready formats (PNG, JPG, SVG, PDF) and a detailed
+                style guide.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 12. THOUGHT LEADERSHIP (Blog Snippet) -->
+      <section
+        class="py-28 bg-secondary-bg border-t border-b border-primary-bg"
+      >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <span
+            class="text-sm font-medium uppercase text-accent-secondary-l mb-2 block text-center"
+            >Thought Leadership</span
+          >
+          <h2
+            class="text-4xl md:text-5xl font-bold tracking-tight-custom mb-16 text-text-primary text-center"
+          >
+            My Latest Ideas on Design Strategy.
+          </h2>
+
+          <div class="grid md:grid-cols-3 gap-8">
+            <!-- Article 1 -->
+            <a
+              href="#"
+              class="p-6 bg-primary-bg rounded-xl border border-secondary-bg hover:border-accent-secondary-l/50 transition duration-300 transform hover:-translate-y-1"
+            >
+              <h3 class="text-xl font-semibold text-text-primary mb-2">
+                The Unseen Cost of Template Design
+              </h3>
+              <p class="text-text-secondary text-sm mb-4">
+                Why custom visual strategy always outperforms off-the-shelf
+                solutions in the long run.
+              </p>
+              <span class="text-accent-primary-v font-medium text-sm"
+                >Read Article →</span
+              >
+            </a>
+            <!-- Article 2 -->
+            <a
+              href="#"
+              class="p-6 bg-primary-bg rounded-xl border border-secondary-bg hover:border-accent-secondary-l/50 transition duration-300 transform hover:-translate-y-1"
+            >
+              <h3 class="text-xl font-semibold text-text-primary mb-2">
+                Designing for Accessibility: It's Not a Niche, It's an
+                Obligation
+              </h3>
+              <p class="text-text-secondary text-sm mb-4">
+                Practical steps to ensure your designs are inclusive and
+                compliant.
+              </p>
+              <span class="text-accent-primary-v font-medium text-sm"
+                >Read Article →</span
+              >
+            </a>
+            <!-- Article 3 -->
+            <a
+              href="#"
+              class="p-6 bg-primary-bg rounded-xl border border-secondary-bg hover:border-accent-secondary-l/50 transition duration-300 transform hover:-translate-y-1"
+            >
+              <h3 class="text-xl font-semibold text-text-primary mb-2">
+                Bridging the Gap Between Print and Digital Color
+              </h3>
+              <p class="text-text-secondary text-sm mb-4">
+                A guide to managing color profiles (CMYK vs. RGB) for brand
+                consistency.
+              </p>
+              <span class="text-accent-primary-v font-medium text-sm"
+                >Read Article →</span
+              >
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 13. FINAL CALL TO ACTION (CTA) & CONTACT FORM (HTMX) -->
+      <section id="contact" class="py-32">
+        <div
+          class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center bg-secondary-bg p-10 md:p-16 rounded-xl glow-effect shadow-2xl shadow-accent-primary-v/30"
+        >
+          <h2
+            class="text-5xl md:text-6xl font-bold tracking-tight-custom mb-4 text-text-primary"
+          >
+            Ready to Elevate Your Brand?
+          </h2>
+          <p class="text-xl text-text-secondary mb-10 max-w-2xl mx-auto">
+            Let’s discuss your vision and create a strategic visual identity
+            that drives measurable business outcomes.
+          </p>
+
+          <!-- Contact Form (HTMX Integration) -->
+          <form
+            hx-post="/submit-inquiry"
+            hx-target="#form-message"
+            hx-swap="outerHTML"
+            class="space-y-6 text-left"
+            id="contact-form"
+          >
+            <div>
+              <label
+                for="name"
+                class="block text-text-secondary mb-2 font-medium"
+                >Your Name</label
+              >
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                class="w-full p-4 rounded-xl bg-primary-bg border border-secondary-bg text-text-primary focus:border-accent-primary-v focus:ring focus:ring-accent-primary-v/30 transition duration-300"
+                placeholder="John Doe"
+              />
+            </div>
+            <div>
+              <label
+                for="email"
+                class="block text-text-secondary mb-2 font-medium"
+                >Your Email</label
+              >
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="w-full p-4 rounded-xl bg-primary-bg border border-secondary-bg text-text-primary focus:border-accent-primary-v focus:ring focus:ring-accent-primary-v/30 transition duration-300"
+                placeholder="hello@company.com"
+              />
+            </div>
+            <div>
+              <label
+                for="project"
+                class="block text-text-secondary mb-2 font-medium"
+                >Tell me about your project</label
+              >
+              <textarea
+                id="project"
+                name="project"
+                rows="4"
+                required
+                class="w-full p-4 rounded-xl bg-primary-bg border border-secondary-bg text-text-primary focus:border-accent-primary-v focus:ring focus:ring-accent-primary-v/30 transition duration-300"
+                placeholder="I need a full brand refresh and a set of social media templates..."
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full btn-gradient px-8 py-4 text-lg rounded-xl text-text-primary font-bold shadow-2xl shadow-cta-start/50 mt-4"
+            >
+              Send Inquiry & Get Started <i class="fas fa-paper-plane ml-2"></i>
+            </button>
+
+            <!-- HTMX Target for Status Messages -->
+            <div id="form-message" class="mt-4 text-center">
+              <!-- Simulated HTMX response (replace with server-side logic) -->
+              <textarea
+                hx-trigger="load"
+                hx-get="data:text/html;charset=utf-8,<p class='text-accent-secondary-l font-semibold'>Waiting for submission...</p>"
+                style="display: none"
+              ></textarea>
+              <!-- After successful submission, HTMX would swap the content with: 
+                        <p class="text-accent-secondary-l font-semibold p-4 bg-primary-bg rounded-xl">Thank you, Sumona! Your message has been received and I'll be in touch within 24 hours.</p>
+                        -->
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- 14. FOOTER -->
+    <footer class="bg-primary-bg border-t border-secondary-bg py-12">
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-text-secondary"
+      >
+        <div
+          class="flex flex-col md:flex-row justify-between items-center mb-8"
+        >
+          <div
+            class="text-2xl font-bold tracking-tight text-text-primary mb-4 md:mb-0"
+          >
+            Sumona<span class="text-accent-secondary-l">.Design</span>
+          </div>
+
+          <nav class="space-x-6">
+            <a
+              href="#about"
+              class="hover:text-accent-secondary-l transition duration-200"
+              >About</a
+            >
+            <a
+              href="#projects"
+              class="hover:text-accent-secondary-l transition duration-200"
+              >Work</a
+            >
+            <a
+              href="#contact"
+              class="hover:text-accent-secondary-l transition duration-200"
+              >Contact</a
+            >
+          </nav>
+
+          <div class="flex space-x-6 text-xl mt-4 md:mt-0">
+            <a
+              href="#"
+              class="hover:text-accent-primary-v transition duration-200"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+            <a
+              href="#"
+              class="hover:text-accent-primary-v transition duration-200"
+              ><i class="fab fa-dribbble"></i
+            ></a>
+            <a
+              href="#"
+              class="hover:text-accent-primary-v transition duration-200"
+              ><i class="fab fa-instagram"></i
+            ></a>
+          </div>
+        </div>
+        <p class="text-sm">
+          &copy; 2025 Sumona. All rights reserved. Designed and built with a
+          focus on conversion.
+        </p>
+      </div>
+    </footer>
+
+    <!-- General Fade-In Animation Styles for x-intersect -->
+    <style>
+      .fade-in-up {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      section {
+        transform: translateY(40px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      }
+    </style>
+  </body>
+</html>

@@ -1,0 +1,2009 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 
+      Aura | Digital Conversion Architect
+      Portfolio for: Chris (Tattoo Artist)
+      Primary Keyword: Custom Tattoo Artist & Designer
+      Design System: Dark, Card-based, #F9004D Accent
+    -->
+    <title>Chris - Custom Tattoo Artist & Designer</title>
+
+    <!-- HTMX & Alpine.js -->
+    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Font: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Custom Tailwind Configuration -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "primary-bg": "#101010",
+              "component-bg": "#1E1E1E",
+              "primary-text": "#FFFFFF",
+              "secondary-text": "#C4C4C4",
+              accent: "#F9004D",
+              divider: "#333333",
+            },
+            fontFamily: {
+              sans: ["Poppins", "sans-serif"],
+            },
+            lineHeight: {
+              relaxed: "1.7", // Maps to 1.7
+            },
+            borderRadius: {
+              lg: "10px", // Maps to "Medium (e.g., 10px)"
+              md: "4px", // Maps to "Small (e.g., 4px)"
+            },
+            spacing: {
+              // Maps to "Generous (e.g., 24px - 30px)"
+              "card-p": "30px",
+            },
+            boxShadow: {
+              "accent-glow": "0 0 15px rgba(249, 0, 77, 0.3)", // Subtle hover glow
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-primary-bg font-sans text-secondary-text" x-data>
+    <!-- 
+      SECTION 1: Header & Navigation
+      Strategy: Sticky header for persistent navigation. Matches 'Sticky at the top' spec.
+      Alpine.js for mobile menu state.
+    -->
+    <header
+      x-data="{ mobileMenuOpen: false }"
+      class="sticky top-0 z-50 w-full bg-component-bg/80 backdrop-blur-lg border-b border-divider"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+          <!-- Logo -->
+          <a href="#" class="text-2xl font-bold text-primary-text">
+            Chris<span class="text-accent">.</span>
+          </a>
+
+          <!-- Desktop Navigation -->
+          <nav class="hidden md:flex space-x-8">
+            <a
+              href="#home"
+              class="font-medium text-primary-text hover:text-accent transition-colors duration-300"
+              >Home</a
+            >
+            <a
+              href="#styles"
+              class="font-medium text-secondary-text hover:text-accent transition-colors duration-300"
+              >My Styles</a
+            >
+            <a
+              href="#portfolio"
+              class="font-medium text-secondary-text hover:text-accent transition-colors duration-300"
+              >Portfolio</a
+            >
+            <a
+              href="#about"
+              class="font-medium text-secondary-text hover:text-accent transition-colors duration-300"
+              >About</a
+            >
+            <a
+              href="#booking"
+              class="font-medium text-secondary-text hover:text-accent transition-colors duration-300"
+              >Booking</a
+            >
+          </nav>
+
+          <!-- Mobile Menu Button -->
+          <div class="md:hidden">
+            <button
+              @click="mobileMenuOpen = !mobileMenuOpen"
+              class="text-secondary-text hover:text-accent"
+            >
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16m-7 6h7"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Menu (Alpine.js) -->
+      <div
+        x-show="mobileMenuOpen"
+        @click.away="mobileMenuOpen = false"
+        x-transition:enter="transition ease-out duration-200"
+        x-transition:enter-start="opacity-0 scale-95"
+        x-transition:enter-end="opacity-100 scale-100"
+        x-transition:leave="transition ease-in duration-150"
+        x-transition:leave-start="opacity-100 scale-100"
+        x-transition:leave-end="opacity-0 scale-95"
+        class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden z-50"
+      >
+        <div
+          class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-component-bg border border-divider divide-y-2 divide-divider"
+        >
+          <div class="pt-5 pb-6 px-5">
+            <div class="flex items-center justify-between">
+              <a href="#" class="text-2xl font-bold text-primary-text">
+                Chris<span class="text-accent">.</span>
+              </a>
+              <button
+                @click="mobileMenuOpen = false"
+                class="text-secondary-text hover:text-accent"
+              >
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+            <nav class="mt-6 grid gap-y-8">
+              <a
+                href="#home"
+                @click="mobileMenuOpen = false"
+                class="font-medium text-primary-text hover:text-accent transition-colors duration-300"
+                >Home</a
+              >
+              <a
+                href="#styles"
+                @click="mobileMenuOpen = false"
+                class="font-medium text-secondary-text hover:text-accent transition-colors duration-300"
+                >My Styles</a
+              >
+              <a
+                href="#portfolio"
+                @click="mobileMenuOpen = false"
+                class="font-medium text-secondary-text hover:text-accent transition-colors duration-300"
+                >Portfolio</a
+              >
+              <a
+                href="#about"
+                @click="mobileMenuOpen = false"
+                class="font-medium text-secondary-text hover:text-accent transition-colors duration-300"
+                >About</a
+              >
+              <a
+                href="#booking"
+                @click="mobileMenuOpen = false"
+                class="font-medium text-secondary-text hover:text-accent transition-colors duration-300"
+                >Booking</a
+              >
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- 
+          SECTION 2: Hero Section
+          Strategy: The Hook. A clear UVP (Unique Value Prop) that establishes expertise.
+          Matches 2-col layout spec with 'eyebrow', H1, and sub-headline.
+          Alpine.js used for a subtle typing effect simulation (by iterating classes).
+        -->
+      <section
+        id="home"
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32"
+        x-data="{ visible: false }"
+        x-intersect:once="visible = true"
+      >
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          <!-- Left Column: Text Content -->
+          <div
+            :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+            class="transition-all duration-700 ease-out"
+          >
+            <span
+              class="text-accent font-medium uppercase text-sm tracking-widest"
+              >WELCOME TO MY STUDIO</span
+            >
+            <h1 class="text-5xl md:text-6xl font-bold text-primary-text mt-4">
+              Hi, I'm Chris
+            </h1>
+
+            <!-- Sub-headline with "typing" effect -->
+            <div
+              x-data="{
+                        roles: ['a Custom Artist.', 'a Black & Grey Specialist.', 'a Visual Storyteller.'],
+                        currentRole: 0,
+                        init() {
+                            setInterval(() => {
+                                this.currentRole = (this.currentRole + 1) % this.roles.length;
+                            }, 2500);
+                        }
+                    }"
+              class="mt-4"
+            >
+              <h2 class="text-3xl md:text-4xl font-bold text-primary-text h-12">
+                <span
+                  x-text="roles[currentRole]"
+                  x-transition:enter="transition ease-out duration-300"
+                  x-transition:enter-start="opacity-0 -translate-y-2"
+                  x-transition:enter-end="opacity-100 translate-y-0"
+                  x-transition:leave="transition ease-in duration-200"
+                  x-transition:leave-start="opacity-100 translate-y-0"
+                  x-transition:leave-end="opacity-0 translate-y-2"
+                  class="inline-block"
+                ></span>
+              </h2>
+            </div>
+
+            <p class="text-lg text-secondary-text leading-relaxed mt-6">
+              I transform your ideas into permanent art. With a focus on
+              fine-line detail and black & grey realism, I create bespoke
+              tattoos that tell your unique story.
+            </p>
+
+            <!-- Social Icons -->
+            <div class="mt-10 flex space-x-6">
+              <a
+                href="#"
+                class="text-secondary-text hover:text-accent transition-colors duration-300"
+                aria-label="Instagram"
+              >
+                <svg
+                  class="w-6 h-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  role="img"
+                >
+                  <path
+                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.148 3.227-1.669 4.771-4.919 4.919-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.07-1.646-.07-4.85s.012-3.584.07-4.85c.148-3.227 1.669-4.771 4.919-4.919 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.059 1.689.073 4.948.073s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="#"
+                class="text-secondary-text hover:text-accent transition-colors duration-300"
+                aria-label="Facebook"
+              >
+                <svg
+                  class="w-6 h-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  role="img"
+                >
+                  <path
+                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="#"
+                class="text-secondary-text hover:text-accent transition-colors duration-300"
+                aria-label="TikTok"
+              >
+                <svg
+                  class="w-6 h-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  role="img"
+                >
+                  <path
+                    d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.22-3.44-3.34-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.79-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Column: Image -->
+          <div
+            :class="visible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'"
+            class="transition-all duration-700 ease-out delay-200"
+          >
+            <img
+              src="https://placehold.co/600x700/1E1E1E/C4C4C4?text=Chris+Smiling"
+              alt="Chris, Tattoo Artist"
+              class="rounded-lg w-full h-auto object-cover shadow-lg"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- 
+          SECTION 3: "Featured In" Ticker (Clients)
+          Strategy: Immediate social proof. Matches 'clients' 3-column (or more) grid.
+          Shows industry credibility (conventions, magazines, sponsors).
+        -->
+      <section class="py-16 bg-component-bg">
+        <div
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+          x-data="{ visible: false }"
+          x-intersect:once.margin.-100px="visible = true"
+        >
+          <div
+            class="text-center mb-12"
+            :class="visible ? 'opacity-100' : 'opacity-0'"
+            class="transition-opacity duration-700"
+          >
+            <h3 class="text-secondary-text font-medium tracking-wider">
+              FEATURED IN & SPONSORED BY
+            </h3>
+          </div>
+          <div
+            :class="visible ? 'opacity-100' : 'opacity-0'"
+            class="transition-opacity duration-700 delay-200 grid grid-cols-2 md:grid-cols-5 gap-8 items-center"
+          >
+            <img
+              src="https://placehold.co/200x100/1E1E1E/C4C4C4?text=INKED+MAG"
+              alt="Inked Magazine Logo"
+              class="grayscale opacity-60 hover:opacity-100 transition-opacity duration-300"
+            />
+            <img
+              src="https://placehold.co/200x100/1E1E1E/C4C4C4?text=Cheyenne"
+              alt="Cheyenne Tattoo Equipment Logo"
+              class="grayscale opacity-60 hover:opacity-100 transition-opacity duration-300"
+            />
+            <img
+              src="https://placehold.co/200x100/1E1E1E/C4C4C4?text=Tattoo+Life"
+              alt="Tattoo Life Logo"
+              class="grayscale opacity-60 hover:opacity-100 transition-opacity duration-300"
+            />
+            <img
+              src="https://placehold.co/200x100/1E1E1E/C4C4C4?text=World+Famous+Ink"
+              alt="World Famous Ink Logo"
+              class="grayscale opacity-60 hover:opacity-100 transition-opacity duration-300"
+            />
+            <img
+              src="https://placehold.co/200x100/1E1E1E/C4C4C4?text=InkMasters+'24"
+              alt="InkMasters Convention Logo"
+              class="grayscale opacity-60 hover:opacity-100 transition-opacity duration-300"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- 
+          SECTION 4: My Styles (Services)
+          Strategy: Defines capabilities. Uses the 'serviceCard' 3-column spec.
+          Each card acts as a mini-sales pitch for a specific style.
+        -->
+      <section id="styles" class="py-24 md:py-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <!-- Section Heading -->
+          <div
+            class="text-center mb-16"
+            x-data="{ visible: false }"
+            x-intersect:once="visible = true"
+            :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+            class="transition-all duration-700 ease-out"
+          >
+            <span
+              class="text-accent font-medium uppercase text-sm tracking-widest"
+              >MY SPECIALTIES</span
+            >
+            <h2 class="text-4xl md:text-5xl font-bold text-primary-text mt-2">
+              What I Do
+            </h2>
+          </div>
+
+          <!-- 3-Column Grid -->
+          <div
+            class="grid grid-cols-1 md:grid-cols-3 gap-8"
+            x-data="{ visible: false }"
+            x-intersect:once.margin.-100px="visible = true"
+          >
+            <!-- Card 1: Black & Grey -->
+            <div
+              :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+              class="transition-all duration-700 ease-out delay-0 bg-component-bg rounded-lg p-card-p border border-transparent hover:border-accent hover:shadow-accent-glow"
+            >
+              <svg
+                class="w-12 h-12 text-accent mb-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.486H7.343v-2.343z"
+                ></path>
+              </svg>
+              <h3 class="text-2xl font-bold text-primary-text mb-4">
+                Black & Grey Realism
+              </h3>
+              <p class="text-secondary-text leading-relaxed mb-6">
+                From subtle portraits to dramatic landscapes, I use depth and
+                shadow to bring your vision to life with timeless realism.
+              </p>
+              <a
+                href="#portfolio"
+                class="inline-flex items-center text-sm uppercase font-medium text-secondary-text hover:text-accent transition-colors duration-300 group"
+              >
+                See My Work
+                <span
+                  class="ml-2 transform transition-transform duration-300 group-hover:translate-x-1"
+                  >&rarr;</span
+                >
+              </a>
+            </div>
+
+            <!-- Card 2: Fine Line & Micro -->
+            <div
+              :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+              class="transition-all duration-700 ease-out delay-200 bg-component-bg rounded-lg p-card-p border border-transparent hover:border-accent hover:shadow-accent-glow"
+            >
+              <svg
+                class="w-12 h-12 text-accent mb-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+                ></path>
+              </svg>
+              <h3 class="text-2xl font-bold text-primary-text mb-4">
+                Fine Line & Micro
+              </h3>
+              <p class="text-secondary-text leading-relaxed mb-6">
+                Delicate, precise, and subtle. Perfect for intricate script,
+                botanical illustrations, and small, meaningful symbols.
+              </p>
+              <a
+                href="#portfolio"
+                class="inline-flex items-center text-sm uppercase font-medium text-secondary-text hover:text-accent transition-colors duration-300 group"
+              >
+                See My Work
+                <span
+                  class="ml-2 transform transition-transform duration-300 group-hover:translate-x-1"
+                  >&rarr;</span
+                >
+              </a>
+            </div>
+
+            <!-- Card 3: Custom Lettering -->
+            <div
+              :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+              class="transition-all duration-700 ease-out delay-400 bg-component-bg rounded-lg p-card-p border border-transparent hover:border-accent hover:shadow-accent-glow"
+            >
+              <svg
+                class="w-12 h-12 text-accent mb-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M17.657 17.657l.707.707M12 21v-1"
+                ></path>
+              </svg>
+              <h3 class="text-2xl font-bold text-primary-text mb-4">
+                Custom Lettering
+              </h3>
+              <p class="text-secondary-text leading-relaxed mb-6">
+                Your words, my script. I design 100% original lettering, from
+                bold Chicano-style to elegant, flowing script, to make your
+                message impactful.
+              </p>
+              <a
+                href="#portfolio"
+                class="inline-flex items-center text-sm uppercase font-medium text-secondary-text hover:text-accent transition-colors duration-300 group"
+              >
+                See My Work
+                <span
+                  class="ml-2 transform transition-transform duration-300 group-hover:translate-x-1"
+                  >&rarr;</span
+                >
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 
+          SECTION 5: Featured Work (Portfolio)
+          Strategy: The core proof. Uses the 'portfolioCard' 3-column spec.
+          Shows the final product. High-res images are critical.
+        -->
+      <section id="portfolio" class="py-24 md:py-32 bg-component-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <!-- Section Heading -->
+          <div
+            class="text-center mb-16"
+            x-data="{ visible: false }"
+            x-intersect:once="visible = true"
+            :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+            class="transition-all duration-700 ease-out"
+          >
+            <span
+              class="text-accent font-medium uppercase text-sm tracking-widest"
+              >MY PORTFOLIO</span
+            >
+            <h2 class="text-4xl md:text-5xl font-bold text-primary-text mt-2">
+              Latest Work
+            </h2>
+          </div>
+
+          <!-- 3-Column Grid -->
+          <div
+            class="grid grid-cols-1 md:grid-cols-3 gap-8"
+            x-data="{ visible: false }"
+            x-intersect:once.margin.-100px="visible = true"
+          >
+            <!-- Project Card 1 -->
+            <div
+              :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+              class="transition-all duration-700 ease-out delay-0 bg-primary-bg rounded-lg overflow-hidden group border border-divider hover:border-accent hover:shadow-accent-glow"
+            >
+              <img
+                src="https://placehold.co/600x400/101010/C4C4C4?text=Healed+Sleeve"
+                alt="Black and grey realism sleeve tattoo"
+                class="w-full h-64 object-cover transform transition-transform duration-500 group-hover:scale-105"
+              />
+              <div class="p-6">
+                <div class="flex justify-between items-center mb-2">
+                  <span class="text-accent font-medium text-sm">REALISM</span>
+                  <div
+                    class="flex items-center space-x-1 text-secondary-text cursor-pointer hover:text-accent"
+                  >
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                      ></path>
+                    </svg>
+                    <span class="text-sm">312</span>
+                  </div>
+                </div>
+                <h3 class="text-xl font-bold text-primary-text">
+                  "Odysseus" Sleeve
+                </h3>
+                <p class="text-secondary-text text-sm leading-relaxed mt-2">
+                  Full sleeve in 8 sessions. Healed 6 months.
+                </p>
+              </div>
+            </div>
+
+            <!-- Project Card 2 -->
+            <div
+              :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+              class="transition-all duration-700 ease-out delay-200 bg-primary-bg rounded-lg overflow-hidden group border border-divider hover:border-accent hover:shadow-accent-glow"
+            >
+              <img
+                src="https://placehold.co/600x400/101010/C4C4C4?text=Micro+Tattoo"
+                alt="Fine line micro tattoo"
+                class="w-full h-64 object-cover transform transition-transform duration-500 group-hover:scale-105"
+              />
+              <div class="p-6">
+                <div class="flex justify-between items-center mb-2">
+                  <span class="text-accent font-medium text-sm">FINE LINE</span>
+                  <div
+                    class="flex items-center space-x-1 text-secondary-text cursor-pointer hover:text-accent"
+                  >
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                      ></path>
+                    </svg>
+                    <span class="text-sm">528</span>
+                  </div>
+                </div>
+                <h3 class="text-xl font-bold text-primary-text">
+                  Botanical Sternum
+                </h3>
+                <p class="text-secondary-text text-sm leading-relaxed mt-2">
+                  Single needle design for a first-timer. Fresh.
+                </p>
+              </div>
+            </div>
+
+            <!-- Project Card 3 -->
+            <div
+              :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+              class="transition-all duration-700 ease-out delay-400 bg-primary-bg rounded-lg overflow-hidden group border border-divider hover:border-accent hover:shadow-accent-glow"
+            >
+              <img
+                src="https://placehold.co/600x400/101010/C4C4C4?text=Custom+Script"
+                alt="Custom lettering tattoo"
+                class="w-full h-64 object-cover transform transition-transform duration-500 group-hover:scale-105"
+              />
+              <div class="p-6">
+                <div class="flex justify-between items-center mb-2">
+                  <span class="text-accent font-medium text-sm">LETTERING</span>
+                  <div
+                    class="flex items-center space-x-1 text-secondary-text cursor-pointer hover:text-accent"
+                  >
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                      ></path>
+                    </svg>
+                    <span class="text-sm">195</span>
+                  </div>
+                </div>
+                <h3 class="text-xl font-bold text-primary-text">
+                  "Veni Vidi Vici"
+                </h3>
+                <p class="text-secondary-text text-sm leading-relaxed mt-2">
+                  Custom freehand script for a chest piece. Fresh.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 
+          SECTION 6: About Me
+          Strategy: Builds rapport and establishes the "artist" persona, not just "technician".
+          2-col layout as specified.
+        -->
+      <section id="about" class="py-24 md:py-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center"
+            x-data="{ visible: false }"
+            x-intersect:once.margin.-100px="visible = true"
+          >
+            <!-- Image -->
+            <div
+              :class="visible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'"
+              class="transition-all duration-700 ease-out"
+            >
+              <img
+                src="https://placehold.co/600x700/1E1E1E/C4C4C4?text=Chris+Working"
+                alt="Chris drawing a tattoo design"
+                class="rounded-lg w-full h-auto object-cover"
+              />
+            </div>
+
+            <!-- Text Content -->
+            <div
+              :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+              class="transition-all duration-700 ease-out delay-200"
+            >
+              <span
+                class="text-accent font-medium uppercase text-sm tracking-widest"
+                >ABOUT ME</span
+              >
+              <h2 class="text-4xl md:text-5xl font-bold text-primary-text mt-2">
+                My Artistic Journey
+              </h2>
+              <p class="text-lg text-secondary-text leading-relaxed mt-6">
+                For me, tattooing isn't just a job; it's a collaboration. I
+                started drawing before I could walk, and that passion for art
+                led me from canvas to skin. I've spent over a decade honing my
+                craft, focusing on how to make ink flow with the body, how to
+                create pieces that not only look good today but age gracefully
+                for decades to come.
+              </p>
+              <p class="text-secondary-text leading-relaxed mt-4">
+                My studio is a private, appointment-only space designed for
+                comfort and creativity. My goal is to provide a safe,
+                professional, and inspiring environment where we can work
+                together to create something truly permanent and personal.
+              </p>
+              <a
+                href="#contact"
+                class="inline-flex items-center text-sm uppercase font-medium text-secondary-text hover:text-accent transition-colors duration-300 group mt-8"
+              >
+                Book a Consultation
+                <span
+                  class="ml-2 transform transition-transform duration-300 group-hover:translate-x-1"
+                  >&rarr;</span
+                >
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 
+          SECTION 7: Studio Safety & Hygiene
+          Strategy: A custom, high-trust section. Addresses the #1 client fear (safety) head-on.
+          Uses icons and clear statements to build maximum credibility.
+        -->
+      <section id="safety" class="py-24 md:py-32 bg-component-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center"
+            x-data="{ visible: false }"
+            x-intersect:once.margin.-100px="visible = true"
+          >
+            <!-- Text Content -->
+            <div
+              :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+              class="transition-all duration-700 ease-out"
+            >
+              <span
+                class="text-accent font-medium uppercase text-sm tracking-widest"
+                >YOUR SAFETY IS MY PRIORITY</span
+              >
+              <h2 class="text-4xl md:text-5xl font-bold text-primary-text mt-2">
+                A Clean & Safe Studio
+              </h2>
+              <p class="text-lg text-secondary-text leading-relaxed mt-6">
+                There is no compromise when it comes to hygiene. I treat my
+                studio with the same standards as a medical facility to ensure
+                your complete safety and peace of mind.
+              </p>
+              <ul class="space-y-4 mt-8">
+                <li class="flex items-center">
+                  <svg
+                    class="w-6 h-6 text-accent mr-3 flex-shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    ></path>
+                  </svg>
+                  <span class="text-secondary-text"
+                    >100% disposable, single-use needles and tubes.</span
+                  >
+                </li>
+                <li class="flex items-center">
+                  <svg
+                    class="w-6 h-6 text-accent mr-3 flex-shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    ></path>
+                  </svg>
+                  <span class="text-secondary-text"
+                    >Hospital-grade autoclave sterilization for all
+                    non-disposable equipment.</span
+                  >
+                </li>
+                <li class="flex items-center">
+                  <svg
+                    class="w-6 h-6 text-accent mr-3 flex-shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    ></path>
+                  </svg>
+                  <span class="text-secondary-text"
+                    >All surfaces disinfected with medical-grade virucide before
+                    and after each client.</span
+                  >
+                </li>
+                <li class="flex items-center">
+                  <svg
+                    class="w-6 h-6 text-accent mr-3 flex-shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    ></path>
+                  </svg>
+                  <span class="text-secondary-text"
+                    >Certified in Bloodborne Pathogens & Infection Control (OSHA
+                    Compliant).</span
+                  >
+                </li>
+              </ul>
+            </div>
+            <!-- Image -->
+            <div
+              :class="visible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'"
+              class="transition-all duration-700 ease-out delay-200"
+            >
+              <img
+                src="https://placehold.co/600x700/1E1E1E/C4C4C4?text=Clean+Studio+Setup"
+                alt="Clean and sterile tattoo station"
+                class="rounded-lg w-full h-auto object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 
+          SECTION 8: Testimonials
+          Strategy: Social proof. Uses a slider as specified in the 'testimonials' layout.
+          Alpine.js controls the active slide state.
+        -->
+      <section id="testimonials" class="py-24 md:py-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <!-- Section Heading -->
+          <div
+            class="text-center mb-16"
+            x-data="{ visible: false }"
+            x-intersect:once="visible = true"
+            :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+            class="transition-all duration-700 ease-out"
+          >
+            <span
+              class="text-accent font-medium uppercase text-sm tracking-widest"
+              >TESTIMONIALS</span
+            >
+            <h2 class="text-4xl md:text-5xl font-bold text-primary-text mt-2">
+              What My Clients Say
+            </h2>
+          </div>
+
+          <!-- Slider -->
+          <div
+            x-data="{
+                    activeSlide: 1,
+                    slideCount: 3,
+                    next() { this.activeSlide = this.activeSlide === this.slideCount ? 1 : this.activeSlide + 1 },
+                    prev() { this.activeSlide = this.activeSlide === 1 ? this.slideCount : this.activeSlide - 1 }
+                }"
+            class="max-w-3xl mx-auto relative"
+            x-data="{ visible: false }"
+            x-intersect:once.margin.-100px="visible = true"
+          >
+            <!-- Slides -->
+            <div
+              class="relative overflow-hidden w-full h-80"
+              :class="visible ? 'opacity-100' : 'opacity-0'"
+              class="transition-opacity duration-700"
+            >
+              <!-- Slide 1 -->
+              <div
+                x-show="activeSlide === 1"
+                x-transition:enter="transition ease-out duration-500"
+                x-transition:enter-start="opacity-0"
+                x-transition:enter-end="opacity-100"
+                x-transition:leave="transition ease-in duration-300"
+                x-transition:leave-start="opacity-100"
+                x-transition:leave-end="opacity-0"
+                class="absolute inset-0 bg-component-bg rounded-lg p-card-p flex flex-col justify-center items-center text-center border border-divider"
+              >
+                <img
+                  src="https://placehold.co/80x80/101010/C4C4C4?text=Client"
+                  alt="Client photo"
+                  class="w-20 h-20 rounded-full mb-4"
+                />
+                <p class="text-xl text-primary-text leading-relaxed">
+                  "Chris is a true artist. He took my jumbled ideas and turned
+                  them into a masterpiece. The studio was spotless, and he made
+                  me feel comfortable the entire time."
+                </p>
+                <h4 class="text-primary-text font-bold text-lg mt-6">
+                  Sarah K.
+                </h4>
+                <span class="text-secondary-text text-sm"
+                  >"Odysseus" Sleeve</span
+                >
+              </div>
+              <!-- Slide 2 -->
+              <div
+                x-show="activeSlide === 2"
+                x-transition:enter="transition ease-out duration-500"
+                x-transition:enter-start="opacity-0"
+                x-transition:enter-end="opacity-100"
+                x-transition:leave="transition ease-in duration-300"
+                x-transition:leave-start="opacity-100"
+                x-transition:leave-end="opacity-0"
+                class="absolute inset-0 bg-component-bg rounded-lg p-card-p flex flex-col justify-center items-center text-center border border-divider"
+              >
+                <img
+                  src="https://placehold.co/80x80/101010/C4C4C4?text=Client"
+                  alt="Client photo"
+                  class="w-20 h-20 rounded-full mb-4"
+                />
+                <p class="text-xl text-primary-text leading-relaxed">
+                  "My first tattoo! I was so nervous, but Chris's
+                  professionalism and the clean, private studio were amazing.
+                  The fine-line work is more delicate than I imagined possible."
+                </p>
+                <h4 class="text-primary-text font-bold text-lg mt-6">
+                  Michael B.
+                </h4>
+                <span class="text-secondary-text text-sm"
+                  >Botanical Sternum</span
+                >
+              </div>
+              <!-- Slide 3 -->
+              <div
+                x-show="activeSlide === 3"
+                x-transition:enter="transition ease-out duration-500"
+                x-transition:enter-start="opacity-0"
+                x-transition:enter-end="opacity-100"
+                x-transition:leave="transition ease-in duration-300"
+                x-transition:leave-start="opacity-100"
+                x-transition:leave-end="opacity-0"
+                class="absolute inset-0 bg-component-bg rounded-lg p-card-p flex flex-col justify-center items-center text-center border border-divider"
+              >
+                <img
+                  src="https://placehold.co/80x80/101010/C4C4C4?text=Client"
+                  alt="Client photo"
+                  class="w-20 h-20 rounded-full mb-4"
+                />
+                <p class="text-xl text-primary-text leading-relaxed">
+                  "I'm a collector, and Chris is one of the best. His line work
+                  is solid, his shading is smooth, and his designs are original.
+                  10/10, will be back for more."
+                </p>
+                <h4 class="text-primary-text font-bold text-lg mt-6">
+                  David L.
+                </h4>
+                <span class="text-secondary-text text-sm">Custom Script</span>
+              </div>
+            </div>
+
+            <!-- Controls -->
+            <button
+              @click="prev()"
+              class="absolute -left-16 top-1/2 -translate-y-1/2 text-secondary-text hover:text-accent p-2 transition-colors duration-300"
+            >
+              <svg
+                class="w-8 h-8"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 19l-7-7 7-7"
+                ></path>
+              </svg>
+            </button>
+            <button
+              @click="next()"
+              class="absolute -right-16 top-1/2 -translate-y-1/2 text-secondary-text hover:text-accent p-2 transition-colors duration-300"
+            >
+              <svg
+                class="w-8 h-8"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 
+          SECTION 9: My Gear (Tech Stack)
+          Strategy: A "Tech Stack" for an artist. Shows commitment to quality materials, which implies a better, safer result for the client.
+        -->
+      <section class="py-24 md:py-32 bg-component-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <!-- Section Heading -->
+          <div
+            class="text-center mb-16"
+            x-data="{ visible: false }"
+            x-intersect:once="visible = true"
+            :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+            class="transition-all duration-700 ease-out"
+          >
+            <span
+              class="text-accent font-medium uppercase text-sm tracking-widest"
+              >MY TOOLS</span
+            >
+            <h2 class="text-4xl md:text-5xl font-bold text-primary-text mt-2">
+              Only The Best
+            </h2>
+            <p
+              class="max-w-2xl mx-auto text-lg text-secondary-text leading-relaxed mt-4"
+            >
+              Quality art requires quality tools. I exclusively use
+              industry-leading, vegan-friendly inks and top-tier equipment for
+              every tattoo.
+            </p>
+          </div>
+          <!-- 3-Column Grid -->
+          <div
+            class="grid grid-cols-1 md:grid-cols-3 gap-8"
+            x-data="{ visible: false }"
+            x-intersect:once.margin.-100px="visible = true"
+          >
+            <div
+              :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+              class="transition-all duration-700 ease-out delay-0 bg-primary-bg rounded-lg p-card-p text-center border border-divider"
+            >
+              <img
+                src="https://placehold.co/150x80/101010/C4C4C4?text=Cheyenne"
+                alt="Cheyenne Logo"
+                class="h-12 mx-auto mb-4 grayscale opacity-70"
+              />
+              <h3 class="text-xl font-bold text-primary-text">
+                Cheyenne Machines
+              </h3>
+              <p class="text-secondary-text mt-2">
+                For unparalleled precision, consistency, and minimal skin
+                trauma.
+              </p>
+            </div>
+            <div
+              :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+              class="transition-all duration-700 ease-out delay-200 bg-primary-bg rounded-lg p-card-p text-center border border-divider"
+            >
+              <img
+                src="https://placehold.co/150x80/101010/C4C4C4?text=World+Famous"
+                alt="World Famous Ink Logo"
+                class="h-12 mx-auto mb-4 grayscale opacity-70"
+              />
+              <h3 class="text-xl font-bold text-primary-text">
+                World Famous Ink
+              </h3>
+              <p class="text-secondary-text mt-2">
+                Vibrant, vegan-friendly, and EU-approved inks for rich, lasting
+                color.
+              </p>
+            </div>
+            <div
+              :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+              class="transition-all duration-700 ease-out delay-400 bg-primary-bg rounded-lg p-card-p text-center border border-divider"
+            >
+              <img
+                src="https://placehold.co/150x80/101010/C4C4C4?text=Recovery"
+                alt="Recovery Derm Shield Logo"
+                class="h-12 mx-auto mb-4 grayscale opacity-70"
+              />
+              <h3 class="text-xl font-bold text-primary-text">
+                Recovery Derm Shield
+              </h3>
+              <p class="text-secondary-text mt-2">
+                Providing a medical-grade barrier for a safer, cleaner, and
+                faster heal.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 
+          SECTION 10: The Booking Process (Working Process)
+          Strategy: Clarifies the "How." Demystifies the process, making it less intimidating for new clients and setting clear expectations.
+        -->
+      <section id="booking" class="py-24 md:py-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <!-- Section Heading -->
+          <div
+            class="text-center mb-16"
+            x-data="{ visible: false }"
+            x-intersect:once="visible = true"
+            :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+            class="transition-all duration-700 ease-out"
+          >
+            <span
+              class="text-accent font-medium uppercase text-sm tracking-widest"
+              >HOW IT WORKS</span
+            >
+            <h2 class="text-4xl md:text-5xl font-bold text-primary-text mt-2">
+              My Booking Process
+            </h2>
+          </div>
+
+          <!-- 4-Step Process -->
+          <div
+            class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center"
+            x-data="{ visible: false }"
+            x-intersect:once.margin.-100px="visible = true"
+          >
+            <div
+              :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+              class="transition-all duration-700 ease-out delay-0"
+            >
+              <div
+                class="flex items-center justify-center w-16 h-16 bg-component-bg border-2 border-accent rounded-full mx-auto mb-4"
+              >
+                <span class="text-2xl font-bold text-accent">1</span>
+              </div>
+              <h3 class="text-xl font-bold text-primary-text mb-2">
+                Submit Your Idea
+              </h3>
+              <p class="text-secondary-text">
+                Fill out the consultation form with your design, placement, and
+                size.
+              </p>
+            </div>
+            <div
+              :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+              class="transition-all duration-700 ease-out delay-200"
+            >
+              <div
+                class="flex items-center justify-center w-16 h-16 bg-component-bg border-2 border-accent rounded-full mx-auto mb-4"
+              >
+                <span class="text-2xl font-bold text-accent">2</span>
+              </div>
+              <h3 class="text-xl font-bold text-primary-text mb-2">
+                Consultation
+              </h3>
+              <p class="text-secondary-text">
+                We'll discuss your idea, refine the design, and get a price
+                quote.
+              </p>
+            </div>
+            <div
+              :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+              class="transition-all duration-700 ease-out delay-400"
+            >
+              <div
+                class="flex items-center justify-center w-16 h-16 bg-component-bg border-2 border-accent rounded-full mx-auto mb-4"
+              >
+                <span class="text-2xl font-bold text-accent">3</span>
+              </div>
+              <h3 class="text-xl font-bold text-primary-text mb-2">
+                Deposit & Design
+              </h3>
+              <p class="text-secondary-text">
+                A deposit secures your date, and I begin drawing your custom
+                piece.
+              </p>
+            </div>
+            <div
+              :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+              class="transition-all duration-700 ease-out delay-600"
+            >
+              <div
+                class="flex items-center justify-center w-16 h-16 bg-component-bg border-2 border-accent rounded-full mx-auto mb-4"
+              >
+                <span class="text-2xl font-bold text-accent">4</span>
+              </div>
+              <h3 class="text-xl font-bold text-primary-text mb-2">
+                Tattoo Day
+              </h3>
+              <p class="text-secondary-text">
+                We finalize the design, and you leave with a piece of permanent
+                art.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 
+          SECTION 11: Guest Spots & Awards (Resume)
+          Strategy: Industry authority. Matches the 'resume' 2-col layout spec.
+          'resumeCard' is used to list achievements and travel dates.
+        -->
+      <section id="experience" class="py-24 md:py-32 bg-component-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <!-- Section Heading -->
+          <div
+            class="text-center mb-16"
+            x-data="{ visible: false }"
+            x-intersect:once="visible = true"
+            :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+            class="transition-all duration-700 ease-out"
+          >
+            <span
+              class="text-accent font-medium uppercase text-sm tracking-widest"
+              >EXPERIENCE & AWARDS</span
+            >
+            <h2 class="text-4xl md:text-5xl font-bold text-primary-text mt-2">
+              Industry Recognition
+            </h2>
+          </div>
+
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 gap-16"
+            x-data="{ visible: false }"
+            x-intersect:once.margin.-100px="visible = true"
+          >
+            <!-- Column 1: Awards -->
+            <div
+              :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+              class="transition-all duration-700 ease-out delay-0"
+            >
+              <h3 class="text-3xl font-bold text-primary-text mb-8">
+                Awards & Features
+              </h3>
+              <div class="space-y-6">
+                <!-- Resume Card 1 -->
+                <div class="bg-primary-bg rounded-lg p-6 border border-divider">
+                  <div class="flex justify-between items-center mb-2">
+                    <h4 class="text-xl font-bold text-primary-text">
+                      Best in Show
+                    </h4>
+                    <span class="text-accent font-medium text-sm"
+                      >INKMASTERS '24</span
+                    >
+                  </div>
+                  <p class="text-secondary-text text-sm">
+                    Awarded for large-scale black & grey realism.
+                  </p>
+                  <hr class="border-divider my-4" />
+                </div>
+                <!-- Resume Card 2 -->
+                <div class="bg-primary-bg rounded-lg p-6 border border-divider">
+                  <div class="flex justify-between items-center mb-2">
+                    <h4 class="text-xl font-bold text-primary-text">
+                      Artist Spotlight
+                    </h4>
+                    <span class="text-accent font-medium text-sm"
+                      >INKED MAGAZINE</span
+                    >
+                  </div>
+                  <p class="text-secondary-text text-sm">
+                    Featured in the 'Rising Stars' September 2023 issue.
+                  </p>
+                  <hr class="border-divider my-4" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Column 2: Guest Spots -->
+            <div
+              :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+              class="transition-all duration-700 ease-out delay-200"
+            >
+              <h3 class="text-3xl font-bold text-primary-text mb-8">
+                Upcoming Guest Spots
+              </h3>
+              <div class="space-y-6">
+                <!-- Resume Card 3 -->
+                <div class="bg-primary-bg rounded-lg p-6 border border-divider">
+                  <div class="flex justify-between items-center mb-2">
+                    <h4 class="text-xl font-bold text-primary-text">
+                      Miami, FL
+                    </h4>
+                    <span class="text-accent font-medium text-sm"
+                      >OCT 14-18, 2025</span
+                    >
+                  </div>
+                  <p class="text-secondary-text text-sm">
+                    @ Love/Hate Tattoos. Books opening soon.
+                  </p>
+                  <hr class="border-divider my-4" />
+                </div>
+                <!-- Resume Card 4 -->
+                <div class="bg-primary-bg rounded-lg p-6 border border-divider">
+                  <div class="flex justify-between items-center mb-2">
+                    <h4 class="text-xl font-bold text-primary-text">
+                      London, UK
+                    </h4>
+                    <span class="text-accent font-medium text-sm"
+                      >NOV 05-12, 2025</span
+                    >
+                  </div>
+                  <p class="text-secondary-text text-sm">
+                    @ The London Tattoo Convention.
+                  </p>
+                  <hr class="border-divider my-4" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 
+          SECTION 12: Aftercare Guide
+          Strategy: Builds trust by showing you care about the client *after* they've paid.
+          Positions you as a long-term partner in their art.
+        -->
+      <section id="aftercare" class="py-24 md:py-32">
+        <div
+          class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+          x-data="{ visible: false }"
+          x-intersect:once.margin.-100px="visible = true"
+          :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+          class="transition-all duration-700 ease-out"
+        >
+          <span
+            class="text-accent font-medium uppercase text-sm tracking-widest"
+            >AFTERCARE</span
+          >
+          <h2 class="text-4xl md:text-5xl font-bold text-primary-text mt-2">
+            Protecting Your Art
+          </h2>
+          <p class="text-lg text-secondary-text leading-relaxed mt-6">
+            Your tattoo is only half my work; the other half is your aftercare.
+            A great tattoo can be ruined by poor healing. I provide detailed,
+            written instructions and a "second skin" bandage with every piece to
+            ensure it heals perfectly and stays vibrant for life. Your
+            commitment to aftercare is a commitment to the art itself.
+          </p>
+        </div>
+      </section>
+
+      <!-- 
+          SECTION 13: Pricing Tiers
+          Strategy: Qualifies leads. Matches 'pricing' 3-col layout.
+          Even for artists, this sets expectations.
+        -->
+      <section id="pricing" class="py-24 md:py-32 bg-component-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <!-- Section Heading -->
+          <div
+            class="text-center mb-16"
+            x-data="{ visible: false }"
+            x-intersect:once="visible = true"
+            :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+            class="transition-all duration-700 ease-out"
+          >
+            <span
+              class="text-accent font-medium uppercase text-sm tracking-widest"
+              >PRICING</span
+            >
+            <h2 class="text-4xl md:text-5xl font-bold text-primary-text mt-2">
+              Rates & Bookings
+            </h2>
+          </div>
+
+          <!-- 3-Column Grid -->
+          <div
+            class="grid grid-cols-1 md:grid-cols-3 gap-8"
+            x-data="{ visible: false }"
+            x-intersect:once.margin.-100px="visible = true"
+          >
+            <!-- Card 1: Shop Minimum -->
+            <div
+              :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+              class="transition-all duration-700 ease-out delay-0 bg-primary-bg rounded-lg p-card-p text-center border border-divider hover:border-accent hover:shadow-accent-glow"
+            >
+              <h3 class="text-2xl font-bold text-primary-text mb-2">
+                Shop Minimum
+              </h3>
+              <span class="text-5xl font-bold text-primary-text">$150</span>
+              <p class="text-secondary-text mt-2">
+                For small, simple pieces that take under an hour.
+              </p>
+              <ul class="text-left space-y-2 my-8 text-secondary-text">
+                <li class="flex items-center">
+                  <svg
+                    class="w-5 h-5 text-accent mr-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="m5 13 4 4L19 7"
+                    ></path></svg
+                  >Micro Tattoos
+                </li>
+                <li class="flex items-center">
+                  <svg
+                    class="w-5 h-5 text-accent mr-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="m5 13 4 4L19 7"
+                    ></path></svg
+                  >Simple Script
+                </li>
+                <li class="flex items-center">
+                  <svg
+                    class="w-5 h-5 text-accent mr-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="m5 13 4 4L19 7"
+                    ></path></svg
+                  >Symbols
+                </li>
+              </ul>
+              <a
+                href="#contact"
+                class="inline-flex items-center text-sm uppercase font-medium text-secondary-text hover:text-accent transition-colors duration-300 group"
+              >
+                Book Now
+                <span
+                  class="ml-2 transform transition-transform duration-300 group-hover:translate-x-1"
+                  >&rarr;</span
+                >
+              </a>
+            </div>
+
+            <!-- Card 2: Half Day -->
+            <div
+              :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+              class="transition-all duration-700 ease-out delay-200 bg-primary-bg rounded-lg p-card-p text-center border-2 border-accent shadow-accent-glow"
+            >
+              <h3 class="text-2xl font-bold text-primary-text mb-2">
+                Half Day Session
+              </h3>
+              <span class="text-5xl font-bold text-primary-text">$800</span>
+              <p class="text-secondary-text mt-2">
+                For medium-sized, detailed pieces (3-4 hours).
+              </p>
+              <ul class="text-left space-y-2 my-8 text-secondary-text">
+                <li class="flex items-center">
+                  <svg
+                    class="w-5 h-5 text-accent mr-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="m5 13 4 4L19 7"
+                    ></path></svg
+                  >Detailed Forearm Pieces
+                </li>
+                <li class="flex items-center">
+                  <svg
+                    class="w-5 h-5 text-accent mr-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="m5 13 4 4L19 7"
+                    ></path></svg
+                  >Intricate Designs
+                </li>
+                <li class="flex items-center">
+                  <svg
+                    class="w-5 h-5 text-accent mr-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="m5 13 4 4L19 7"
+                    ></path></svg
+                  >Start of a Sleeve
+                </li>
+              </ul>
+              <a
+                href="#contact"
+                class="inline-flex items-center text-sm uppercase font-medium text-accent hover:text-primary-text transition-colors duration-300 group"
+              >
+                Book Now
+                <span
+                  class="ml-2 transform transition-transform duration-300 group-hover:translate-x-1"
+                  >&rarr;</span
+                >
+              </a>
+            </div>
+
+            <!-- Card 3: Full Day -->
+            <div
+              :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+              class="transition-all duration-700 ease-out delay-400 bg-primary-bg rounded-lg p-card-p text-center border border-divider hover:border-accent hover:shadow-accent-glow"
+            >
+              <h3 class="text-2xl font-bold text-primary-text mb-2">
+                Full Day Session
+              </h3>
+              <span class="text-5xl font-bold text-primary-text">$1,500</span>
+              <p class="text-secondary-text mt-2">
+                For large-scale work like sleeves and back pieces (6-8 hours).
+              </p>
+              <ul class="text-left space-y-2 my-8 text-secondary-text">
+                <li class="flex items-center">
+                  <svg
+                    class="w-5 h-5 text-accent mr-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="m5 13 4 4L19 7"
+                    ></path></svg
+                  >Sleeve Work
+                </li>
+                <li class="flex items-center">
+                  <svg
+                    class="w-5 h-5 text-accent mr-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="m5 13 4 4L19 7"
+                    ></path></svg
+                  >Back Pieces
+                </li>
+                <li class="flex items-center">
+                  <svg
+                    class="w-5 h-5 text-accent mr-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="m5 13 4 4L19 7"
+                    ></path></svg
+                  >Complex Cover-ups
+                </li>
+              </ul>
+              <a
+                href="#contact"
+                class="inline-flex items-center text-sm uppercase font-medium text-secondary-text hover:text-accent transition-colors duration-300 group"
+              >
+                Book Now
+                <span
+                  class="ml-2 transform transition-transform duration-300 group-hover:translate-x-1"
+                  >&rarr;</span
+                >
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 
+          SECTION 14: Frequently Asked Questions (FAQ)
+          Strategy: Overcomes common objections and questions, qualifying leads and saving time.
+          Alpine.js used for the accordion functionality.
+        -->
+      <section id="faq" class="py-24 md:py-32">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <!-- Section Heading -->
+          <div
+            class="text-center mb-16"
+            x-data="{ visible: false }"
+            x-intersect:once="visible = true"
+            :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+            class="transition-all duration-700 ease-out"
+          >
+            <span
+              class="text-accent font-medium uppercase text-sm tracking-widest"
+              >FAQ</span
+            >
+            <h2 class="text-4xl md:text-5xl font-bold text-primary-text mt-2">
+              Got Questions?
+            </h2>
+          </div>
+
+          <div
+            class="space-y-6"
+            x-data="{ open: null, visible: false }"
+            x-intersect:once.margin.-100px="visible = true"
+            :class="visible ? 'opacity-100' : 'opacity-0'"
+            class="transition-opacity duration-700"
+          >
+            <!-- Question 1 -->
+            <div class="bg-component-bg rounded-lg border border-divider">
+              <button
+                @click="open = open === 1 ? null : 1"
+                class="w-full flex justify-between items-center text-left p-6"
+              >
+                <span class="text-lg font-bold text-primary-text"
+                  >Do you take walk-ins?</span
+                >
+                <span
+                  :class="{ 'rotate-45': open === 1 }"
+                  class="transform transition-transform duration-300 text-accent text-2xl"
+                  >+</span
+                >
+              </button>
+              <div
+                x-show="open === 1"
+                x-collapse
+                class="px-6 pb-6 text-secondary-text leading-relaxed"
+              >
+                <p>
+                  My studio is private and by appointment only to ensure every
+                  client gets my full attention. Please book a consultation
+                  through the contact form to get started.
+                </p>
+              </div>
+            </div>
+            <!-- Question 2 -->
+            <div class="bg-component-bg rounded-lg border border-divider">
+              <button
+                @click="open = open === 2 ? null : 2"
+                class="w-full flex justify-between items-center text-left p-6"
+              >
+                <span class="text-lg font-bold text-primary-text"
+                  >How do I prepare for my tattoo session?</span
+                >
+                <span
+                  :class="{ 'rotate-45': open === 2 }"
+                  class="transform transition-transform duration-300 text-accent text-2xl"
+                  >+</span
+                >
+              </button>
+              <div
+                x-show="open === 2"
+                x-collapse
+                class="px-6 pb-6 text-secondary-text leading-relaxed"
+              >
+                <p>
+                  Get a good night's sleep, eat a solid meal beforehand, and
+                  stay hydrated. Do not drink alcohol 24 hours before your
+                  session. Wear comfortable clothing that allows easy access to
+                  the tattoo area.
+                </p>
+              </div>
+            </div>
+            <!-- Question 3 -->
+            <div class="bg-component-bg rounded-lg border border-divider">
+              <button
+                @click="open = open === 3 ? null : 3"
+                class="w-full flex justify-between items-center text-left p-6"
+              >
+                <span class="text-lg font-bold text-primary-text"
+                  >Do you do cover-ups?</span
+                >
+                <span
+                  :class="{ 'rotate-45': open === 3 }"
+                  class="transform transition-transform duration-300 text-accent text-2xl"
+                  >+</span
+                >
+              </button>
+              <div
+                x-show="open === 3"
+                x-collapse
+                class="px-6 pb-6 text-secondary-text leading-relaxed"
+              >
+                <p>
+                  I take cover-up projects on a case-by-case basis. They are
+                  complex and require a consultation to see if your goals are
+                  achievable. Please send a clear photo of your existing tattoo
+                  when you fill out the booking form.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 
+          SECTION 15: Final Call to Action & Contact Form
+          Strategy: The final conversion point. 2-col layout as specified.
+          Uses HTMX to handle form submission to a placeholder endpoint.
+          This shows how to wire it up for production.
+        -->
+      <section id="contact" class="py-24 md:py-32 bg-component-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 gap-16"
+            x-data="{ visible: false }"
+            x-intersect:once.margin.-100px="visible = true"
+          >
+            <!-- Left Column: Contact Info -->
+            <div
+              :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+              class="transition-all duration-700 ease-out"
+            >
+              <span
+                class="text-accent font-medium uppercase text-sm tracking-widest"
+                >CONTACT</span
+              >
+              <h2 class="text-4xl md:text-5xl font-bold text-primary-text mt-2">
+                Book Your Consultation
+              </h2>
+              <p class="text-lg text-secondary-text leading-relaxed mt-6">
+                Ready to start your next piece? Fill out the form with as much
+                detail as possible, and I'll get back to you within 48 hours to
+                discuss your project.
+              </p>
+              <div class="mt-8 space-y-4">
+                <div class="flex items-center">
+                  <svg
+                    class="w-6 h-6 text-accent mr-3"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M17.657 16.657 13.414 20.9a1.998 1.998 0 0 1-2.827 0l-4.244-4.243a8 8 0 1 1 11.314 0z"
+                    ></path>
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15 11a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"
+                    ></path>
+                  </svg>
+                  <span class="text-secondary-text"
+                    >123 Ink St, Arts District, Your City</span
+                  >
+                </div>
+                <div class="flex items-center">
+                  <svg
+                    class="w-6 h-6 text-accent mr-3"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"
+                    ></path>
+                  </svg>
+                  <span class="text-secondary-text">chris.ink@example.com</span>
+                </div>
+              </div>
+              <img
+                src="https://placehold.co/600x400/1E1E1E/C4C4C4?text=Studio+Exterior+Photo"
+                alt="Tattoo studio exterior"
+                class="rounded-lg w-full h-auto object-cover mt-8"
+              />
+            </div>
+
+            <!-- Right Column: HTMX Form -->
+            <div
+              :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+              class="transition-all duration-700 ease-out delay-200"
+            >
+              <form
+                x-data="{ responseMessage: '' }"
+                hx-post="https://httpbin.org/post"
+                hx-target="#form-response"
+                hx-swap="innerHTML"
+                hx-indicator="#form-spinner"
+                @htmx:after-request="if ($event.detail.successful) { 
+                                  responseMessage = '<div class=\'text-green-400 p-4 bg-green-900/20 rounded-md border border-green-700\'>Thank you! Your request has been sent. I will get back to you soon.</div>';
+                                  $event.target.reset();
+                              } else { 
+                                  responseMessage = '<div class=\'text-red-400 p-4 bg-red-900/20 rounded-md border border-red-700\'>An error occurred. Please try again.</div>';
+                              }
+                              document.getElementById('form-response').innerHTML = responseMessage;"
+                class="space-y-6"
+              >
+                <div>
+                  <label for="name" class="hidden">Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    placeholder="Your Name"
+                    required
+                    class="w-full bg-primary-bg text-secondary-text border border-divider rounded-md p-3 focus:border-accent focus:ring-0 outline-none transition-colors duration-300"
+                  />
+                </div>
+
+                <div>
+                  <label for="email" class="hidden">Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="Your Email"
+                    required
+                    class="w-full bg-primary-bg text-secondary-text border border-divider rounded-md p-3 focus:border-accent focus:ring-0 outline-none transition-colors duration-300"
+                  />
+                </div>
+
+                <div>
+                  <label for="style" class="hidden">Preferred Style</label>
+                  <select
+                    name="style"
+                    id="style"
+                    required
+                    class="w-full bg-primary-bg text-secondary-text border border-divider rounded-md p-3 focus:border-accent focus:ring-0 outline-none transition-colors duration-300"
+                  >
+                    <option value="">Select Preferred Style...</option>
+                    <option value="realism">Black & Grey Realism</option>
+                    <option value="fine-line">Fine Line & Micro</option>
+                    <option value="lettering">Custom Lettering</option>
+                    <option value="other">Other/Unsure</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label for="message" class="hidden">Your Idea</label>
+                  <textarea
+                    name="message"
+                    id="message"
+                    rows="6"
+                    placeholder="Describe your idea (placement, size, inspiration...)"
+                    required
+                    class="w-full bg-primary-bg text-secondary-text border border-divider rounded-md p-3 focus:border-accent focus:ring-0 outline-none transition-colors duration-300"
+                  ></textarea>
+                </div>
+
+                <!-- HTMX Response Area -->
+                <div id="form-response"></div>
+
+                <div>
+                  <button
+                    type="submit"
+                    class="w-full flex justify-center py-3 px-6 border border-transparent rounded-lg shadow-lg text-lg font-bold text-primary-text bg-accent hover:opacity-90 transition-opacity duration-300"
+                  >
+                    Send Consultation Request
+                    <span id="form-spinner" class="htmx-indicator ml-3">
+                      <svg
+                        class="animate-spin h-5 w-5 text-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          class="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          stroke-width="4"
+                        ></circle>
+                        <path
+                          class="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                        ></path>
+                      </svg>
+                    </span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 
+      SECTION 16: Footer
+      Strategy: Simple, clean, and reinforces social links. Matches 'footer' spec.
+    -->
+    <footer class="py-16 bg-primary-bg border-t border-divider">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <a href="#" class="text-3xl font-bold text-primary-text">
+          Chris<span class="text-accent">.</span>
+        </a>
+        <!-- Social Icons -->
+        <div class="mt-6 flex justify-center space-x-6">
+          <a
+            href="#"
+            class="text-secondary-text hover:text-accent transition-colors duration-300"
+            aria-label="Instagram"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              role="img"
+            >
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.148 3.227-1.669 4.771-4.919 4.919-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.07-1.646-.07-4.85s.012-3.584.07-4.85c.148-3.227 1.669 4.771 4.919 4.919 1.266-.058 1.646.07 4.85.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.059 1.689.073 4.948.073s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+              />
+            </svg>
+          </a>
+          <a
+            href="#"
+            class="text-secondary-text hover:text-accent transition-colors duration-300"
+            aria-label="Facebook"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              role="img"
+            >
+              <path
+                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+              />
+            </svg>
+          </a>
+        </div>
+        <p class="text-secondary-text text-sm mt-6">
+          &copy; 2025 Chris Tattoos. All rights reserved. Designed by Aura.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
