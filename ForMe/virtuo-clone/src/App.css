@@ -1,0 +1,73 @@
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #111;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader-logo {
+  width: 120px;
+}
+
+.loader-logo img {
+  width: 100%;
+  animation: zoom-fade 2s linear infinite;
+}
+
+@keyframes zoom-fade {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+}
+
+.main-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  padding: 30px 0;
+}
+
+.logo img {
+  width: 100px;
+}
+
+.main-menu-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.main-menu-list li {
+  margin-left: 40px;
+}
+
+.main-menu-list li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.main-menu-list li a:hover {
+  color: #007bff;
+}
