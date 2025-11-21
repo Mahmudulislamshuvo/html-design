@@ -37,19 +37,16 @@
       rel="stylesheet"
     />
   </head>
-  <body class="bg-[#121212] text-white font-['Inter'] antialiased">
+  <body class="bg-white text-white font-['Inter'] antialiased">
     <header
       x-data="{ open: false }"
       x-init="$watch('open', value => document.body.style.overflow = value ? 'hidden' : 'auto')"
       class="sticky top-5 z-50 mx-2"
     >
       <div
-        class="max-w-5xl mx-auto px-6 py-3 flex justify-between items-center bg-green-800/60 backdrop-blur-lg rounded-full border border-white/10 shadow-xl"
+        class="max-w-5xl mx-auto px-6 py-3 flex items-center justify-between bg-green-800/60 backdrop-blur-lg rounded-full border border-white/10 shadow-xl"
       >
-        <a href="#" class="text-3xl font-bold tracking-wider text-white">
-          Dznr
-        </a>
-
+        <!-- LEFT NAV (desktop) -->
         <nav class="hidden lg:flex space-x-8 text-green-100 font-medium">
           <a href="#projects" class="hover:text-white transition duration-200">
             Work
@@ -60,37 +57,71 @@
           <a href="#process" class="hover:text-white transition duration-200">
             Process
           </a>
-          <a href="#faq" class="hover:text-white transition duration-200">
-            FAQs
-          </a>
-          <a href="#about" class="hover:text-white transition duration-200">
-            About Me
-          </a>
         </nav>
 
+        <!-- LOGO (center on desktop) -->
         <a
-          href="#contact"
-          class="hidden lg:block text-lime-300 font-bold text-lg hover:text-lime-200 transition duration-200"
+          href="#"
+          class="text-3xl font-bold tracking-wider text-white lg:absolute lg:left-1/2 lg:-translate-x-1/2"
         >
-          Book a Call &rarr;
+          Dznr
         </a>
 
-        <div class="lg:hidden">
+        <!-- RIGHT NAV + CTA (desktop) -->
+        <div
+          class="hidden lg:flex items-center space-x-8 text-green-100 font-medium"
+        >
+          <nav class="flex space-x-8">
+            <a href="#faq" class="hover:text-white transition duration-200">
+              FAQs
+            </a>
+            <a href="#about" class="hover:text-white transition duration-200">
+              About Me
+            </a>
+          </nav>
+
+          <a
+            href="#contact"
+            class="text-lime-300 font-bold text-lg hover:text-lime-200 transition duration-200"
+          >
+            Book a Call &rarr;
+          </a>
+        </div>
+
+        <!-- MOBILE MENU BUTTON -->
+        <div class="lg:hidden relative z-50">
           <button
             @click="open = !open"
-            class="text-white p-2 focus:outline-none"
+            class="flex flex-col justify-center items-center w-10 h-10 rounded-full focus:outline-none"
+            aria-label="Toggle navigation"
           >
-            <i class="fas fa-bars text-xl" x-show="!open"></i>
-            <i class="fas fa-times text-xl" x-show="open" x-cloak></i>
+            <span
+              class="block h-0.5 w-6 bg-white transform transition duration-300"
+              :class="open ? 'translate-y-1.5 rotate-45' : '-translate-y-0.5'"
+            ></span>
+            <span
+              class="block h-0.5 w-6 bg-white transform transition duration-300 my-1"
+              :class="open ? 'opacity-0 scale-x-0' : 'opacity-100 scale-x-100'"
+            ></span>
+            <span
+              class="block h-0.5 w-6 bg-white transform transition duration-300"
+              :class="open ? '-translate-y-1.5 -rotate-45' : 'translate-y-0.5'"
+            ></span>
           </button>
         </div>
       </div>
-      <!-- mobile -->
+
+      <!-- MOBILE MENU -->
       <div
         @click.away="open = false"
         class="lg:hidden absolute w-full px-4 mt-2"
         x-show="open"
-        x-transition.origin.top
+        x-transition:enter="transition ease-out duration-200"
+        x-transition:enter-start="opacity-0 -translate-y-2"
+        x-transition:enter-end="opacity-100 translate-y-0"
+        x-transition:leave="transition ease-in duration-150"
+        x-transition:leave-start="opacity-100 translate-y-0"
+        x-transition:leave-end="opacity-0 -translate-y-2"
         x-cloak
       >
         <nav
@@ -119,49 +150,171 @@
     </header>
 
     <main>
-      <section
-        class="py-24 sm:py-32 lg:py-40"
-        x-data="{ show: false }"
-        x-intersect.once="show = true"
-      >
-        <div
-          class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
-          x-show="show"
-          x-transition:enter="transition ease-out duration-1000 transform"
-          x-transition:enter-start="opacity-0 translate-y-10"
-          x-transition:enter-end="opacity-100 translate-y-0"
-        >
-          <h1
-            class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight"
-          >
-            I Help Businesses
-            <span class="text-[#F94F29]">10x Their Leads & Revenue.</span><br />
-            Not Just Their Clicks.
-          </h1>
+      <!-- HERO SECTION -->
+      <section class="relative overflow-hidden h-screen">
+        <style>
+          /* ====== Animations ====== */
+          @keyframes hero-fade-up {
+            from {
+              opacity: 0;
+              transform: translateY(24px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+          @keyframes hero-circle-pop {
+            0% {
+              transform: scale(0.6);
+              opacity: 0;
+            }
+            100% {
+              transform: scale(1);
+              opacity: 1;
+            }
+          }
+          @keyframes hero-float {
+            0%,
+            100% {
+              transform: translateY(0);
+            }
+            50% {
+              transform: translateY(-10px);
+            }
+          }
+          @keyframes hero-badge-bounce {
+            0% {
+              transform: translateY(-12px);
+              opacity: 0;
+            }
+            60% {
+              transform: translateY(3px);
+              opacity: 1;
+            }
+            100% {
+              transform: translateY(0);
+            }
+          }
+          @keyframes hero-pulse-outline {
+            0% {
+              box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.4);
+            }
+            100% {
+              box-shadow: 0 0 0 18px rgba(249, 115, 22, 0);
+            }
+          }
 
-          <p
-            class="mt-6 text-lg lg:text-xl font-medium text-[#B0B0B0] max-w-3xl mx-auto leading-relaxed"
-          >
-            I'm Mr. XYZ, a freelance digital marketing consultant focused on one
-            thing: <strong>measurable growth</strong>. Stop wasting ad spend on
-            vanity metrics and start acquiring customers who convert.
-          </p>
+          .hero-root {
+            animation: hero-fade-up 0.7s ease-out both;
+          }
+          .hero-circle {
+            animation: hero-circle-pop 0.7s ease-out 0.15s both;
+          }
+          .hero-image {
+            animation: hero-float 4.5s ease-in-out 0.4s infinite;
+          }
+          .hello-badge {
+            animation: hero-badge-bounce 0.8s ease-out 0.2s both;
+          }
+          .hero-cta-main {
+            animation: hero-pulse-outline 1.8s ease-out infinite;
+          }
+        </style>
 
-          <div
-            class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
-          >
-            <a
-              href="#contact"
-              class="w-full sm:w-auto bg-[#F94F29] text-white font-medium text-base py-4 px-8 rounded-full hover:bg-[#E04624] transition-colors duration-300"
+        <div class="max-w-6xl mx-auto px-6 pt-16 hero-root">
+          <!-- top hello badge -->
+          <div class="flex justify-center mb-4">
+            <div
+              class="hello-badge inline-flex items-center gap-2 px-4 py-1 rounded-full border border-slate-200 bg-white shadow-sm text-sm font-medium text-slate-700"
             >
-              Book My Free Strategy Call
-            </a>
-            <a
-              href="#projects"
-              class="w-full sm:w-auto bg-transparent text-white font-medium text-base py-4 px-8 rounded-full border border-white hover:bg-white hover:text-[#121212] transition-colors duration-300"
+              <span
+                class="inline-block w-2 h-2 rounded-full bg-orange-500"
+              ></span>
+              <span>Hello!</span>
+              <span class="text-xs text-orange-500 -mr-1">➜</span>
+            </div>
+          </div>
+
+          <!-- main heading -->
+          <div class="text-center z-10">
+            <h1
+              class="text-3xl sm:text-4xl lg:text-5xl xl:text-8xl font-extrabold leading-tight text-slate-900"
             >
-              See My Case Studies
-            </a>
+              I’m <span class="text-orange-500">Jenny,</span><br />
+              Product Designer
+            </h1>
+          </div>
+
+          <!-- visual / cards / stats / CTA -->
+          <div class="flex justify-between items-center">
+            <!-- Left side -->
+            <div>
+              <div
+                class="bg-white rounded-2xl shadow-xl border border-slate-100 p-4 text-left"
+              >
+                <div class="text-orange-500 text-2xl leading-none">“</div>
+                <p class="text-xs sm:text-sm text-slate-600">
+                  Jenny’s exceptional product design ensured our website’s
+                  success. Highly recommended!
+                </p>
+              </div>
+              <!-- 450+ clients (bottom-left) -->
+              <div
+                class="absolute left-4 sm:left-8 bottom-4 sm:bottom-6 text-left bg-white/90 backdrop-blur rounded-xl px-4 py-3 shadow-md"
+              >
+                <div class="text-lg font-bold text-slate-900">450+</div>
+                <div class="text-[11px] uppercase tracking-wide text-slate-500">
+                  Clients Served
+                </div>
+              </div>
+            </div>
+            <!-- middle circle and image -->
+            <div class="relative h-[450px] flex justify-center items-end">
+              <div
+                class="absolute w-[750px] h-[750px] rounded-full bg-[#FF4618] bottom-[-500px] relative"
+              >
+                <img
+                  class="absolute top-[-220px] left-0 z-50"
+                  src="./images/hero.png"
+                  alt=""
+                />
+
+                <!-- CTA group (on image) -->
+                <div
+                  class="absolute z-50 left-1/2 -translate-x-1/2 bottom-[400px] flex gap-2 bg-white p-1 rounded-full shadow-lg hero-cta-main text-xl font-bold"
+                >
+                  <button
+                    class="px-12 py-3 bg-[#FF4618] rounded-full text-white"
+                  >
+                    Portfolio
+                  </button>
+                  <button
+                    class="px-12 py-3 bg-white border border-black rounded-full text-black"
+                  >
+                    Hire Me
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Hero  right side -->
+            <div class="text-green-500">
+              <div
+                class="bg-white rounded-2xl shadow-xl border border-slate-100 px-5 py-4 text-center w-40"
+              >
+                <div class="flex justify-center mb-1 text-orange-400 text-sm">
+                  <span>★ ★ ★ ★ ★</span>
+                </div>
+                <div class="text-2xl font-bold text-slate-900 leading-tight">
+                  10 Years
+                </div>
+                <div
+                  class="text-xs uppercase tracking-wide text-slate-500 mt-1"
+                >
+                  Experts
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
