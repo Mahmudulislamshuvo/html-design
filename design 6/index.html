@@ -281,7 +281,8 @@
                 />
 
                 <img
-                  class="absolute top-0 right-[220px] h-10 w-10"
+                  class="absolute top-0 right-[px] h-10 w-10"
+                  class="absolute top-0 right-[px] h-10 w-10"
                   src="./svg/star.svg"
                   alt=""
                 />
@@ -338,7 +339,7 @@
         </div>
       </section>
 
-      <section
+      <!-- <section
         class="py-12 border-y border-[#333333] overflow-hidden"
         x-data="{ show: false }"
         x-intersect.once="show = true"
@@ -413,11 +414,11 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> -->
 
       <section
         id="services"
-        class="py-20 lg:py-32 bg-[#1E1E1E]"
+        class="py-20 lg:py-32 bg-[#262626] rounded-3xl"
         x-data="{ show: false }"
         x-intersect.once="show = true"
       >
@@ -428,50 +429,91 @@
           x-transition:enter-start="opacity-0 translate-y-10"
           x-transition:enter-end="opacity-100 translate-y-0"
         >
-          <div class="text-center max-w-2xl mx-auto">
+          <div
+            class="flex justify-between items-center border-b-2 border-[#333333] pb-6"
+          >
             <h2 class="text-3xl lg:text-4xl font-semibold text-white">
-              Your All-in-One Growth Engine
+              My <span class="text-[#C65139]">Service</span>
             </h2>
-            <p class="mt-4 text-lg text-[#B0B0B0] leading-relaxed">
+            <h5 class="mt-4 text-lg text-[#B0B0B0] leading-relaxed w-[50%]">
               I don't offer services; I offer solutions. My strategies are built
               to work together, creating a powerful, compounding effect on your
               bottom line.
-            </p>
+            </h5>
           </div>
 
           <div
             class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
+            <!-- cart design -->
             <div
-              class="bg-[#1E1E1E] rounded-2xl p-6 border border-[#333333] transition-transform duration-300 hover:scale-[1.02]"
+              class="relative w-[300px] h-[380px] bg-[#1F1F1F] rounded-[30px] p-4 flex flex-col shadow-2xl mx-auto"
             >
-              <div class="inline-block p-3 rounded-lg bg-[#F94F29]/10">
-                <svg
-                  class="h-8 w-8 text-[#F94F29]"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="2"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  />
-                </svg>
+              <div class="mb-6 px-2">
+                <h2 class="text-white text-lg font-medium tracking-wide">
+                  UI/UX Design
+                </h2>
               </div>
-              <h3 class="mt-5 text-xl font-semibold text-white">
-                PPC & Paid Media
-              </h3>
-              <p class="mt-2 text-base text-[#B0B0B0] leading-relaxed">
-                Turn $1 into $5. I build high-intent ad campaigns on Google &
-                Meta that deliver measurable ROAS, optimize your CPL, and scale
-                your revenue.
-              </p>
+
+              <div class="relative flex-1 w-full flex flex-col justify-end">
+                <!-- Background layers -->
+                <div
+                  class="absolute top-[-15px] left-1/2 -translate-x-1/2 w-[90%] h-full bg-[#2A2A2A] rounded-t-[20px] rounded-b-[24px] z-0 opacity-60 scale-95 origin-bottom"
+                ></div>
+                <div
+                  class="absolute top-[-8px] left-1/2 -translate-x-1/2 w-[95%] h-full bg-[#333333] rounded-t-[20px] rounded-b-[24px] z-0 opacity-80 scale-[0.98] origin-bottom"
+                ></div>
+
+                <!-- Main image container with proper corner cutout -->
+                <div
+                  class="relative w-full h-[260px] z-10 bg-gray-200 rounded-t-[24px] rounded-bl-[24px] rounded-br-[0px] overflow-hidden group"
+                  style="
+                    -webkit-mask-image: radial-gradient(
+                      circle at 100% 100%,
+                      transparent 28px,
+                      black 29px
+                    );
+                    mask-image: radial-gradient(
+                      circle at 100% 100%,
+                      transparent 28px,
+                      black 29px
+                    );
+                  "
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?q=80&w=1000&auto=format&fit=crop"
+                    alt="UI Design"
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"
+                  ></div>
+                </div>
+
+                <!-- Button positioned perfectly in the cutout -->
+                <button
+                  class="absolute bottom-0 right-0 w-[54px] h-[54px] bg-[#262626] rounded-full flex items-center justify-center border border-[#333] text-white shadow-lg group overflow-hidden hover:bg-[#FF5722] hover:border-[#FF5722] transition-all duration-300 z-20"
+                  style="transform: translate(8px, 8px)"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    class="w-6 h-6 text-gray-300 group-hover:text-white -rotate-45 group-hover:rotate-0 transition-transform duration-300"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                    />
+                  </svg>
+                </button>
+              </div>
             </div>
 
-            <div
+            <!-- <div
               class="bg-[#1E1E1E] rounded-2xl p-6 border border-[#333333] transition-transform duration-300 hover:scale-[1.02]"
             >
               <div class="inline-block p-3 rounded-lg bg-[#F94F29]/10">
@@ -527,7 +569,7 @@
                 retention campaigns that build relationships and drive lifetime
                 value.
               </p>
-            </div>
+            </div> -->
           </div>
         </div>
       </section>
