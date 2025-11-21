@@ -280,20 +280,39 @@
                   alt=""
                 />
 
+                <img
+                  class="absolute top-0 right-[220px] h-10 w-10"
+                  src="./svg/star.svg"
+                  alt=""
+                />
+
                 <!-- CTA group (on image) -->
                 <div
-                  class="absolute z-50 left-1/2 -translate-x-1/2 bottom-[400px] flex gap-2 bg-white p-1 rounded-full shadow-lg hero-cta-main text-xl font-bold"
+                  class="absolute z-50 left-1/2 -translate-x-1/2 bottom-[400px] pointer-events-none"
                 >
-                  <button
-                    class="px-12 py-3 bg-[#FF4618] rounded-full text-white"
+                  <!-- CTA Buttons -->
+                  <div
+                    class="flex gap-2 bg-white p-1 rounded-full shadow-lg hero-cta-main text-xl font-bold relative pointer-events-auto"
                   >
-                    Portfolio
-                  </button>
-                  <button
-                    class="px-12 py-3 bg-white border border-black rounded-full text-black"
-                  >
-                    Hire Me
-                  </button>
+                    <button
+                      class="px-12 py-3 bg-[#FF4618] rounded-full text-white whitespace-nowrap"
+                    >
+                      Portfolio
+                    </button>
+
+                    <button
+                      class="px-12 py-3 bg-white border border-black rounded-full text-black whitespace-nowrap"
+                    >
+                      Hire Me
+                    </button>
+                  </div>
+
+                  <!-- ARROW (separate from flex layout) -->
+                  <img
+                    src="./svg/Arrow.svg"
+                    alt=""
+                    class="absolute left-[-23%] -translate-x-1/2 -bottom-6 w-[150px] h-[150px] pointer-events-none"
+                  />
                 </div>
               </div>
             </div>
