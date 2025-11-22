@@ -414,7 +414,7 @@
           </div>
         </div>
       </section> -->
-
+      <!-- Cart -->
       <section
         id="services"
         class="py-20 lg:py-32 bg-[#262626] rounded-3xl"
@@ -446,23 +446,131 @@
           >
             <!-- cart design -->
             <div
-              class="relative w-[300px] h-[380px] bg-[#1F1F1F] rounded-[30px] p-4 flex flex-col shadow-2xl mx-auto"
+              class="relative w-[300px] h-[380px] bg-[#1F1F1F] rounded-[30px] flex flex-col shadow-2xl mx-auto bg-[#3B3B3B]"
             >
-              <div class="mb-6 px-2">
+              <div class="mb-6 px-2 border-b-2 border-[#343434] py-4">
                 <h2 class="text-white text-lg font-medium tracking-wide">
                   UI/UX Design
                 </h2>
               </div>
 
               <div class="relative flex-1 w-full flex flex-col justify-end">
-                <!-- Background layers -->
+                <!-- Main image container with proper corner cutout -->
                 <div
-                  class="absolute top-[-15px] left-1/2 -translate-x-1/2 w-[90%] h-full bg-[#2A2A2A] rounded-t-[20px] rounded-b-[24px] z-0 opacity-60 scale-95 origin-bottom"
-                ></div>
-                <div
-                  class="absolute top-[-8px] left-1/2 -translate-x-1/2 w-[95%] h-full bg-[#333333] rounded-t-[20px] rounded-b-[24px] z-0 opacity-80 scale-[0.98] origin-bottom"
-                ></div>
+                  class="relative w-full h-[260px] z-10 bg-gray-200 rounded-t-[24px] rounded-bl-[24px] rounded-br-[0px] overflow-hidden group"
+                  style="
+                    -webkit-mask-image: radial-gradient(
+                      circle at 100% 100%,
+                      transparent 28px,
+                      black 29px
+                    );
+                    mask-image: radial-gradient(
+                      circle at 100% 100%,
+                      transparent 28px,
+                      black 29px
+                    );
+                  "
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?q=80&w=1000&auto=format&fit=crop"
+                    alt="UI Design"
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"
+                  ></div>
+                </div>
 
+                <!-- Button positioned perfectly in the cutout -->
+                <button
+                  class="absolute bottom-0 right-0 w-[54px] h-[54px] bg-[#262626] rounded-full flex items-center justify-center border border-[#333] text-white shadow-lg group overflow-hidden hover:bg-[#FF5722] hover:border-[#FF5722] transition-all duration-300 z-20"
+                  style="transform: translate(8px, 8px)"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    class="w-6 h-6 text-gray-300 group-hover:text-white -rotate-45 group-hover:rotate-0 transition-transform duration-300"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div
+              class="relative w-[300px] h-[380px] bg-[#1F1F1F] rounded-[30px] flex flex-col shadow-2xl mx-auto bg-[#3B3B3B]"
+            >
+              <div class="mb-6 px-2 border-b-2 border-[#343434] py-4">
+                <h2 class="text-white text-lg font-medium tracking-wide">
+                  UI/UX Design
+                </h2>
+              </div>
+
+              <div class="relative flex-1 w-full flex flex-col justify-end">
+                <!-- Main image container with proper corner cutout -->
+                <div
+                  class="relative w-full h-[260px] z-10 bg-gray-200 rounded-t-[24px] rounded-bl-[24px] rounded-br-[0px] overflow-hidden group"
+                  style="
+                    -webkit-mask-image: radial-gradient(
+                      circle at 100% 100%,
+                      transparent 28px,
+                      black 29px
+                    );
+                    mask-image: radial-gradient(
+                      circle at 100% 100%,
+                      transparent 28px,
+                      black 29px
+                    );
+                  "
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?q=80&w=1000&auto=format&fit=crop"
+                    alt="UI Design"
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"
+                  ></div>
+                </div>
+
+                <!-- Button positioned perfectly in the cutout -->
+                <button
+                  class="absolute bottom-0 right-0 w-[54px] h-[54px] bg-[#262626] rounded-full flex items-center justify-center border border-[#333] text-white shadow-lg group overflow-hidden hover:bg-[#FF5722] hover:border-[#FF5722] transition-all duration-300 z-20"
+                  style="transform: translate(8px, 8px)"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    class="w-6 h-6 text-gray-300 group-hover:text-white -rotate-45 group-hover:rotate-0 transition-transform duration-300"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div
+              class="relative w-[300px] h-[380px] bg-[#1F1F1F] rounded-[30px] flex flex-col shadow-2xl mx-auto bg-[#3B3B3B]"
+            >
+              <div class="mb-6 px-2 border-b-2 border-[#343434] py-4">
+                <h2 class="text-white text-lg font-medium tracking-wide">
+                  UI/UX Design
+                </h2>
+              </div>
+
+              <div class="relative flex-1 w-full flex flex-col justify-end">
                 <!-- Main image container with proper corner cutout -->
                 <div
                   class="relative w-full h-[260px] z-10 bg-gray-200 rounded-t-[24px] rounded-bl-[24px] rounded-br-[0px] overflow-hidden group"
@@ -569,6 +677,153 @@
                 value.
               </p>
             </div> -->
+          </div>
+        </div>
+      </section>
+      <!-- timeline design -->
+      <section
+        class="py-20 lg:py-32 bg-white"
+        x-data="{ show: false }"
+        x-intersect.once="show = true"
+      >
+        <div
+          class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8"
+          x-show="show"
+          x-transition:enter="transition ease-out duration-1000 transform"
+          x-transition:enter-start="opacity-0 translate-y-10"
+          x-transition:enter-end="opacity-100 translate-y-0"
+        >
+          <div class="text-center mb-16">
+            <h2 class="text-3xl lg:text-4xl font-semibold text-white">
+              My Work Experience
+            </h2>
+          </div>
+
+          <div class="relative">
+            <div
+              class="absolute left-4 md:left-1/2 top-0 bottom-0 w-px -ml-[0.5px] border-l-2 border-dotted border-[#333333]"
+            ></div>
+
+            <div
+              class="relative grid grid-cols-[auto_1fr] md:grid-cols-[1fr_auto_1fr] gap-8 mb-12 items-start"
+            >
+              <div class="hidden md:block text-left">
+                <h3 class="text-xl font-bold text-[#565656]">
+                  Self-Employed, NYC
+                </h3>
+                <p class="text-[#B0B0B0] text-sm mt-1">Sep 2020 - July 2023</p>
+              </div>
+              <!-- Circle design -->
+              <div class="relative flex justify-center">
+                <div
+                  class="relative flex items-center justify-center w-8 h-8 z-10"
+                >
+                  <div
+                    class="absolute inset-0 border border-dashed border-[#666] rounded-full opacity-50"
+                  ></div>
+                  <div
+                    class="w-4 h-4 bg-[#F94F29] rounded-full shadow-[0_0_10px_rgba(249,79,41,0.4)]"
+                  ></div>
+                </div>
+              </div>
+
+              <div class="">
+                <div class="md:hidden mb-2">
+                  <h3 class="text-xl font-bold text-[#565656]">
+                    Self-Employed, NYC
+                  </h3>
+                  <p class="text-[#B0B0B0] text-xs mb-2">
+                    Sep 2020 - July 2023
+                  </p>
+                </div>
+
+                <h4 class="text-2xl font-semibold text-[#565656] mb-3">
+                  Visual Designer
+                </h4>
+                <p class="text-[#B0B0B0] leading-relaxed max-w-md">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="relative grid grid-cols-[auto_1fr] md:grid-cols-[1fr_auto_1fr] gap-8 mb-12 items-start"
+            >
+              <div class="hidden md:block text-left">
+                <h3 class="text-xl font-bold text-[#565656]">Insightancer</h3>
+                <p class="text-[#B0B0B0] text-sm mt-1">Aug 2016 - Sep 2020</p>
+              </div>
+
+              <div class="relative flex justify-center">
+                <div
+                  class="relative flex items-center justify-center w-8 h-8 z-10"
+                >
+                  <div
+                    class="absolute inset-0 border border-dashed border-[#666] rounded-full opacity-50"
+                  ></div>
+                  <div
+                    class="w-4 h-4 bg-[#333333] border border-[#555] rounded-full"
+                  ></div>
+                </div>
+              </div>
+
+              <div class="">
+                <div class="md:hidden mb-2">
+                  <h3 class="text-xl font-bold text-[#565656]">Insightancer</h3>
+                  <p class="text-[#B0B0B0] text-xs mb-2">Aug 2016 - Sep 2020</p>
+                </div>
+
+                <h4 class="text-2xl font-semibold text-[#565656] mb-3">
+                  UI/UX Designer
+                </h4>
+                <p class="text-[#B0B0B0] leading-relaxed max-w-md">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="relative grid grid-cols-[auto_1fr] md:grid-cols-[1fr_auto_1fr] gap-8 items-start"
+            >
+              <div class="hidden md:block text-left">
+                <h3 class="text-xl font-bold text-[#565656]">
+                  KG Design Studio
+                </h3>
+                <p class="text-[#B0B0B0] text-sm mt-1">Sep 2015 - Aug 2016</p>
+              </div>
+
+              <div class="relative flex justify-center">
+                <div
+                  class="relative flex items-center justify-center w-8 h-8 z-10"
+                >
+                  <div
+                    class="absolute inset-0 border border-dashed border-[#666] rounded-full opacity-50"
+                  ></div>
+                  <div
+                    class="w-4 h-4 bg-[#F94F29] rounded-full shadow-[0_0_10px_rgba(249,79,41,0.4)]"
+                  ></div>
+                </div>
+              </div>
+
+              <div class="">
+                <div class="md:hidden mb-2">
+                  <h3 class="text-xl font-bold text-[#565656]">
+                    KG Design Studio
+                  </h3>
+                  <p class="text-[#B0B0B0] text-xs mb-2">Sep 2015 - Aug 2016</p>
+                </div>
+
+                <h4 class="text-2xl font-semibold text-[#565656] mb-3">
+                  Web Designer
+                </h4>
+                <p class="text-[#B0B0B0] leading-relaxed max-w-md">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
