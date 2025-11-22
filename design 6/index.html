@@ -35,6 +35,13 @@
       .card-shape {
         will-change: clip-path;
       }
+      .container {
+        max-width: 1420px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
     </style>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -48,7 +55,7 @@
     <header
       x-data="{ open: false }"
       x-init="$watch('open', value => document.body.style.overflow = value ? 'hidden' : 'auto')"
-      class="sticky top-5 z-50 mx-2"
+      class="sticky top-5 z-50 container"
     >
       <div
         class="max-w-5xl mx-auto px-6 py-3 flex items-center justify-between bg-green-800/60 backdrop-blur-lg rounded-full border border-white/10 shadow-xl"
@@ -158,7 +165,7 @@
 
     <main>
       <!-- HERO SECTION -->
-      <section class="relative overflow-hidden h-screen">
+      <section class="relative overflow-hidden h-screen container">
         <style>
           /* ====== Animations ====== */
           @keyframes hero-fade-up {
@@ -1280,207 +1287,301 @@
           </div>
         </div>
       </section>
+      <!-- have an awesome project -->
+      <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2
+            class="text-3xl md:text-5xl font-bold text-[#121212] leading-tight mb-10"
+          >
+            Have An Awesome Project <br class="hidden md:block" />
+            Idea? <span class="text-[#F94F29]">Let’s Discuss</span>
+          </h2>
 
-      <section
-        class="py-20 lg:py-32 bg-[#121212]"
-        x-data="{ show: false }"
-        x-intersect.once="show = true"
-      >
-        <div
-          class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
-          x-show="show"
-          x-transition:enter="transition ease-out duration-1000 transform"
-          x-transition:enter-start="opacity-0 translate-y-10"
-          x-transition:enter-end="opacity-100 translate-y-0"
-        >
-          <div class="text-center max-w-2xl mx-auto">
-            <h2 class="text-3xl lg:text-4xl font-semibold text-white">
-              Straightforward Pricing
-            </h2>
-            <p class="mt-4 text-lg text-[#B0B0B0] leading-relaxed">
-              No confusing retainers or hidden fees. Just clear, value-based
-              packages to fit your needs.
-            </p>
+          <div
+            class="max-w-2xl mx-auto bg-white rounded-full border border-gray-300 p-1.5 flex items-center shadow-sm transition-shadow hover:shadow-md hover:border-[#F94F29]/50"
+          >
+            <div
+              class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#F94F29]/10 flex items-center justify-center flex-shrink-0 ml-1"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="w-5 h-5 md:w-6 md:h-6 text-[#F94F29]"
+              >
+                <path
+                  d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z"
+                />
+                <path
+                  d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z"
+                />
+              </svg>
+            </div>
+
+            <input
+              type="email"
+              placeholder="Enter Email Address"
+              class="flex-1 bg-transparent border-none outline-none px-4 text-gray-700 placeholder-gray-400 h-full text-sm md:text-base"
+            />
+
+            <button
+              class="bg-[#F94F29] text-white px-6 md:px-8 py-3 rounded-full font-medium text-sm md:text-base transition-transform hover:bg-[#e04524] active:scale-95 whitespace-nowrap"
+            >
+              Book Call
+            </button>
           </div>
 
-          <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div
-              class="bg-[#1E1E1E] rounded-2xl p-8 border border-[#333333] flex flex-col transition-transform duration-300 hover:scale-[1.02]"
-            >
-              <h3 class="text-xl font-semibold text-white">Strategy Audit</h3>
-              <p class="mt-2 text-base text-[#B0B0B0]">One-time deep dive.</p>
-              <p class="my-6 text-4xl font-bold text-white">
-                $1,500
-                <span class="text-base font-medium text-[#B0B0B0]"
-                  >/one-time</span
-                >
-              </p>
-              <ul class="space-y-3 text-[#B0B0B0]">
-                <li class="flex items-center">
-                  <svg
-                    class="w-5 h-5 text-[#F94F29] mr-2"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd"
-                    ></path></svg
-                  >Full Account Audit
-                </li>
-                <li class="flex items-center">
-                  <svg
-                    class="w-5 h-5 text-[#F94F29] mr-2"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd"
-                    ></path></svg
-                  >Competitor Analysis
-                </li>
-                <li class="flex items-center">
-                  <svg
-                    class="w-5 h-5 text-[#F94F29] mr-2"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd"
-                    ></path></svg
-                  >Actionable 90-Day Roadmap
-                </li>
-              </ul>
-              <a
-                href="#contact"
-                class="mt-8 bg-transparent text-white font-medium text-base py-3 px-6 rounded-full border border-white hover:bg-white hover:text-[#121212] transition-colors duration-300 text-center"
-                >Get My Audit</a
+          <div
+            class="mt-10 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 text-sm md:text-[15px] font-medium text-gray-600"
+          >
+            <div class="flex items-center gap-2">
+              <svg
+                class="w-5 h-5 text-[#F94F29]"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                stroke-width="2.5"
               >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M5 13l4 4L19 7"
+                ></path>
+              </svg>
+              <span>4.9/5 Average Ratings</span>
             </div>
 
-            <div
-              class="bg-[#1E1E1E] rounded-2xl p-8 border-2 border-[#F94F29] flex flex-col relative overflow-hidden transition-transform duration-300 hover:scale-[1.02]"
-            >
-              <span
-                class="absolute top-0 right-0 bg-[#F94F29] text-white text-xs font-semibold px-4 py-1 rounded-bl-lg"
-                >Most Popular</span
+            <div class="flex items-center gap-2">
+              <svg
+                class="w-5 h-5 text-[#F94F29]"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                stroke-width="2.5"
               >
-              <h3 class="text-xl font-semibold text-white">Monthly Retainer</h3>
-              <p class="mt-2 text-base text-[#B0B0B0]">Ongoing management.</p>
-              <p class="my-6 text-4xl font-bold text-white">
-                $4,000
-                <span class="text-base font-medium text-[#B0B0B0]">/month</span>
-              </p>
-              <ul class="space-y-3 text-[#B0B0B0]">
-                <li class="flex items-center">
-                  <svg
-                    class="w-5 h-5 text-[#F94F29] mr-2"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd"
-                    ></path></svg
-                  >Full Service Management
-                </li>
-                <li class="flex items-center">
-                  <svg
-                    class="w-5 h-5 text-[#F94F29] mr-2"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd"
-                    ></path></svg
-                  >Daily Optimization
-                </li>
-                <li class="flex items-center">
-                  <svg
-                    class="w-5 h-5 text-[#F94F29] mr-2"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd"
-                    ></path></svg
-                  >Bi-Weekly Reporting
-                </li>
-              </ul>
-              <a
-                href="#contact"
-                class="mt-8 bg-[#F94F29] text-white font-medium text-base py-3 px-6 rounded-full hover:bg-[#E04624] transition-colors duration-300 text-center"
-                >Book My Call</a
-              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M5 13l4 4L19 7"
+                ></path>
+              </svg>
+              <span>25+ Winning Awards</span>
             </div>
 
-            <div
-              class="bg-[#1E1E1E] rounded-2xl p-8 border border-[#333333] flex flex-col transition-transform duration-300 hover:scale-[1.02]"
-            >
-              <h3 class="text-xl font-semibold text-white">Project-Based</h3>
-              <p class="mt-2 text-base text-[#B0B0B0]">Custom build.</p>
-              <p class="my-6 text-4xl font-bold text-white">Custom</p>
-              <ul class="space-y-3 text-[#B0B0B0]">
-                <li class="flex items-center">
-                  <svg
-                    class="w-5 h-5 text-[#F94F29] mr-2"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd"
-                    ></path></svg
-                  >Email Funnel Build
-                </li>
-                <li class="flex items-center">
-                  <svg
-                    class="w-5 h-5 text-[#F94F29] mr-2"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd"
-                    ></path></svg
-                  >New Website SEO Setup
-                </li>
-                <li class="flex items-center">
-                  <svg
-                    class="w-5 h-5 text-[#F94F29] mr-2"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd"
-                    ></path></svg
-                  >Custom Strategy
-                </li>
-              </ul>
-              <a
-                href="#contact"
-                class="mt-8 bg-transparent text-white font-medium text-base py-3 px-6 rounded-full border border-white hover:bg-white hover:text-[#121212] transition-colors duration-300 text-center"
-                >Get a Quote</a
+            <div class="flex items-center gap-2">
+              <svg
+                class="w-5 h-5 text-[#F94F29]"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                stroke-width="2.5"
               >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M5 13l4 4L19 7"
+                ></path>
+              </svg>
+              <span>Certified Product Designer</span>
             </div>
           </div>
         </div>
       </section>
+      <!-- Blog post -->
+      <section class="py-20 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto mb-20 relative bg-[#F94F29]">
+          <div
+            class="bg-white rounded-tl-[50px] rounded-br-[100px] rounded-tr-md rounded-bl-md py-4 overflow-hidden relative rotate-[-1deg] shadow-lg hover:rotate-0 transition-transform duration-500"
+          >
+            <div class="flex whitespace-nowrap animate-marquee">
+              <div class="flex gap-8 items-center mx-4">
+                <span
+                  class="text-white text-xl md:text-2xl font-bold font-serif flex items-center gap-4"
+                  >UI Design
+                  <span class="text-orange-200 text-3xl">+</span></span
+                >
+                <span
+                  class="text-white text-xl md:text-2xl font-bold font-serif flex items-center gap-4"
+                  >App Design
+                  <span class="text-orange-200 text-3xl">+</span></span
+                >
+                <span
+                  class="text-white text-xl md:text-2xl font-bold font-serif flex items-center gap-4"
+                  >Dashboard
+                  <span class="text-orange-200 text-3xl">+</span></span
+                >
+                <span
+                  class="text-white text-xl md:text-2xl font-bold font-serif flex items-center gap-4"
+                  >Wireframe
+                  <span class="text-orange-200 text-3xl">+</span></span
+                >
+                <span
+                  class="text-white text-xl md:text-2xl font-bold font-serif flex items-center gap-4"
+                  >User Research
+                  <span class="text-orange-200 text-3xl">+</span></span
+                >
+              </div>
+              <div class="flex gap-8 items-center mx-4">
+                <span
+                  class="text-white text-xl md:text-2xl font-bold font-serif flex items-center gap-4"
+                  >UI Design
+                  <span class="text-orange-200 text-3xl">+</span></span
+                >
+                <span
+                  class="text-white text-xl md:text-2xl font-bold font-serif flex items-center gap-4"
+                  >App Design
+                  <span class="text-orange-200 text-3xl">+</span></span
+                >
+                <span
+                  class="text-white text-xl md:text-2xl font-bold font-serif flex items-center gap-4"
+                  >Dashboard
+                  <span class="text-orange-200 text-3xl">+</span></span
+                >
+                <span
+                  class="text-white text-xl md:text-2xl font-bold font-serif flex items-center gap-4"
+                  >Wireframe
+                  <span class="text-orange-200 text-3xl">+</span></span
+                >
+                <span
+                  class="text-white text-xl md:text-2xl font-bold font-serif flex items-center gap-4"
+                  >User Research
+                  <span class="text-orange-200 text-3xl">+</span></span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
 
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            class="flex flex-col md:flex-row justify-between items-end mb-12"
+          >
+            <div>
+              <h2 class="text-4xl md:text-5xl font-bold text-[#121212]">
+                From my <br />
+                blog post
+              </h2>
+            </div>
+            <a
+              href="#"
+              class="mt-6 md:mt-0 inline-flex items-center gap-2 bg-[#F94F29] text-white px-8 py-3 rounded-full font-medium transition-transform hover:scale-105 hover:shadow-lg shadow-orange-500/30"
+            >
+              View All
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                class="w-5 h-5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
+                />
+              </svg>
+            </a>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="flex flex-col group">
+              <div
+                class="w-full h-[350px] bg-gray-100 rounded-[30px] flex items-center justify-center text-gray-400 border-2 border-dashed border-gray-300"
+              >
+                [ Paste Your Card Code Here ]
+              </div>
+              <div class="mt-6 pl-2">
+                <span
+                  class="inline-block px-4 py-1.5 bg-gray-100 text-gray-600 text-xs font-medium rounded-full mb-3"
+                >
+                  UI/UX Design
+                </span>
+                <h3
+                  class="text-xl font-bold text-[#121212] leading-tight mb-3 group-hover:text-[#F94F29] transition-colors cursor-pointer"
+                >
+                  Design Unraveled: Behind the Scenes of UI/UX Magic
+                </h3>
+                <div class="flex items-center gap-4 text-sm text-gray-500">
+                  <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-[#F94F29]"></span>
+                    <span class="font-medium text-gray-700">Jenny Smith</span>
+                  </div>
+                  <span>• 22 July 2023</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col group">
+              <div
+                class="w-full h-[350px] bg-gray-100 rounded-[30px] flex items-center justify-center text-gray-400 border-2 border-dashed border-gray-300"
+              >
+                [ Paste Your Card Code Here ]
+              </div>
+              <div class="mt-6 pl-2">
+                <span
+                  class="inline-block px-4 py-1.5 bg-gray-100 text-gray-600 text-xs font-medium rounded-full mb-3"
+                >
+                  User Experience
+                </span>
+                <h3
+                  class="text-xl font-bold text-[#121212] leading-tight mb-3 group-hover:text-[#F94F29] transition-colors cursor-pointer"
+                >
+                  Beyond Aesthetics: Crafting Intuitive UX
+                </h3>
+                <div class="flex items-center gap-4 text-sm text-gray-500">
+                  <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-[#F94F29]"></span>
+                    <span class="font-medium text-gray-700">Jenny Smith</span>
+                  </div>
+                  <span>• 22 July 2023</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col group">
+              <div
+                class="w-full h-[350px] bg-gray-100 rounded-[30px] flex items-center justify-center text-gray-400 border-2 border-dashed border-gray-300"
+              >
+                [ Paste Your Card Code Here ]
+              </div>
+              <div class="mt-6 pl-2">
+                <span
+                  class="inline-block px-4 py-1.5 bg-gray-100 text-gray-600 text-xs font-medium rounded-full mb-3"
+                >
+                  Design
+                </span>
+                <h3
+                  class="text-xl font-bold text-[#121212] leading-tight mb-3 group-hover:text-[#F94F29] transition-colors cursor-pointer"
+                >
+                  Pixels & Insights: Unveiling the Art of UI/UX
+                </h3>
+                <div class="flex items-center gap-4 text-sm text-gray-500">
+                  <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-[#F94F29]"></span>
+                    <span class="font-medium text-gray-700">Jenny Smith</span>
+                  </div>
+                  <span>• 22 July 2023</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <style>
+          @keyframes marquee {
+            0% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(-50%);
+            }
+          }
+          .animate-marquee {
+            animation: marquee 20s linear infinite;
+          }
+        </style>
+      </section>
       <section
         class="py-20 lg:py-32 bg-[#1E1E1E]"
         x-data="{ show: false }"
@@ -1606,289 +1707,6 @@
                   ></path>
                 </svg>
               </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section
-        id="faq"
-        class="py-20 lg:py-32 bg-[#121212]"
-        x-data="{ openFaq: null, show: false }"
-        x-intersect.once="show = true"
-      >
-        <div
-          class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
-          x-show="show"
-          x-transition:enter="transition ease-out duration-1000 transform"
-          x-transition:enter-start="opacity-0 translate-y-10"
-          x-transition:enter-end="opacity-100 translate-y-0"
-        >
-          <div class="text-center max-w-2xl mx-auto">
-            <h2 class="text-3xl lg:text-4xl font-semibold text-white">
-              Got Questions? I've Got Answers.
-            </h2>
-            <p class="mt-4 text-lg text-[#B0B0B0] leading-relaxed">
-              Here are some common questions I get from potential clients.
-            </p>
-          </div>
-
-          <div class="mt-16 max-w-4xl mx-auto space-y-4">
-            <div class="border-b border-[#333333]">
-              <button
-                @click="openFaq = openFaq === 1 ? null : 1"
-                class="flex items-center justify-between w-full py-6 text-left"
-              >
-                <span class="text-lg font-semibold text-white"
-                  >How long until I see results?</span
-                >
-                <svg
-                  :class="{ 'rotate-180': openFaq === 1 }"
-                  class="w-5 h-5 text-[#B0B0B0] transition-transform duration-300"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M19 9l-7 7-7-7"
-                  ></path>
-                </svg>
-              </button>
-              <div x-show="openFaq === 1" x-collapse class="pb-6">
-                <p class="text-base text-[#B0B0B0] leading-relaxed">
-                  It depends. For PPC campaigns, we can see initial data and
-                  make optimizations within the first 1-2 weeks. For SEO, it's a
-                  long-term play. You can expect to see meaningful traction in
-                  3-6 months, with significant results compounding after 6-12
-                  months.
-                </p>
-              </div>
-            </div>
-
-            <div class="border-b border-[#333333]">
-              <button
-                @click="openFaq = openFaq === 2 ? null : 2"
-                class="flex items-center justify-between w-full py-6 text-left"
-              >
-                <span class="text-lg font-semibold text-white"
-                  >What's your pricing model?</span
-                >
-                <svg
-                  :class="{ 'rotate-180': openFaq === 2 }"
-                  class="w-5 h-5 text-[#B0B0B0] transition-transform duration-300"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M19 9l-7 7-7-7"
-                  ></path>
-                </svg>
-              </button>
-              <div x-show="openFaq === 2" x-collapse class="pb-6">
-                <p class="text-base text-[#B0B0B0] leading-relaxed">
-                  I offer three models to fit your needs, as seen in the
-                  "Pricing" section:
-                  <br />1. <strong>Strategy Audit:</strong> A one-time fee for a
-                  comprehensive audit and 90-day roadmap. <br />2.
-                  <strong>Monthly Retainer:</strong> My most popular option for
-                  full-service, ongoing management of your marketing channels.
-                  <br />3. <strong>Project-Based:</strong> A fixed price for a
-                  specific, one-time project like an email funnel build or a new
-                  site SEO setup.
-                </p>
-              </div>
-            </div>
-
-            <div class="border-b border-[#333333]">
-              <button
-                @click="openFaq = openFaq === 3 ? null : 3"
-                class="flex items-center justify-between w-full py-6 text-left"
-              >
-                <span class="text-lg font-semibold text-white"
-                  >Do you work with small businesses?</span
-                >
-                <svg
-                  :class="{ 'rotate-180': openFaq === 3 }"
-                  class="w-5 h-5 text-[#B0B0B0] transition-transform duration-300"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M19 9l-7 7-7-7"
-                  ></path>
-                </svg>
-              </button>
-              <div x-show="openFaq === 3" x-collapse class="pb-6">
-                <p class="text-base text-[#B0B0B0] leading-relaxed">
-                  Absolutely. I partner with businesses of all sizes, from solo
-                  founders to established enterprises. My ideal partner is any
-                  business that is serious about growth and understands that
-                  marketing is an investment, not an expense.
-                </p>
-              </div>
-            </div>
-
-            <div class="border-b border-[#333333]">
-              <button
-                @click="openFaq = openFaq === 4 ? null : 4"
-                class="flex items-center justify-between w-full py-6 text-left"
-              >
-                <span class="text-lg font-semibold text-white"
-                  >Why hire you over a large agency?</span
-                >
-                <svg
-                  :class="{ 'rotate-180': openFaq === 4 }"
-                  class="w-5 h-5 text-[#B0B0B0] transition-transform duration-300"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M19 9l-7 7-7-7"
-                  ></path>
-                </svg>
-              </button>
-              <div x-show="openFaq === 4" x-collapse class="pb-6">
-                <p class="text-base text-[#B0B0B0] leading-relaxed">
-                  Three reasons:
-                  <br />1. <strong>Accountability:</strong> You work directly
-                  with me, the expert. I don't pass your account to a junior
-                  manager. <br />2. <strong>Agility:</strong> I'm nimble. We can
-                  pivot strategy in an hour, not a week. <br />3.
-                  <strong>Transparency:</strong> My reporting is 100%
-                  transparent. You'll never wonder where your money is going or
-                  what I'm working on.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section
-        id="contact"
-        class="py-20 lg:py-32 bg-[#1E1E1E]"
-        x-data="{ show: false }"
-        x-intersect.once="show = true"
-      >
-        <div
-          class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
-          x-show="show"
-          x-transition:enter="transition ease-out duration-1000 transform"
-          x-transition:enter-start="opacity-0 translate-y-10"
-          x-transition:enter-end="opacity-100 translate-y-0"
-        >
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 class="text-3xl lg:text-4xl font-semibold text-white">
-                Ready to Stop Guessing<br />and Start Growing?
-              </h2>
-              <p class="mt-4 text-lg text-[#B0B0B0] leading-relaxed">
-                Book a free, no-obligation 30-minute strategy call. We'll audit
-                your current marketing, identify your biggest growth levers, and
-                build a clear roadmap to get you there.
-              </p>
-              <p class="mt-6 text-lg text-white">
-                This call is pure value. No hard sell, guaranteed.
-              </p>
-            </div>
-
-            <div>
-              <div id="contact-response" class="mb-4"></div>
-
-              <form
-                hx-post="https://httpbin.org/post"
-                hx-target="#contact-response"
-                hx-swap="innerHTML"
-                hx-indicator="#spinner"
-                class="space-y-8"
-              >
-                <div>
-                  <input
-                    type="text"
-                    name="name"
-                    id="name"
-                    placeholder="Your Name"
-                    required
-                    class="w-full bg-transparent border-0 border-b border-[#333333] py-3 px-1 text-white placeholder:text-[#B0B0B0] focus:border-[#F94F29] focus:ring-0 transition-colors duration-300 text-base"
-                  />
-                </div>
-
-                <div>
-                  <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    placeholder="Your Email"
-                    required
-                    class="w-full bg-transparent border-0 border-b border-[#333333] py-3 px-1 text-white placeholder:text-[#B0B0B0] focus:border-[#F94F29] focus:ring-0 transition-colors duration-300 text-base"
-                  />
-                </div>
-
-                <div>
-                  <input
-                    type="text"
-                    name="website"
-                    id="website"
-                    placeholder="Your Website (Optional)"
-                    class="w-full bg-transparent border-0 border-b border-[#333333] py-3 px-1 text-white placeholder:text-[#B0B0B0] focus:border-[#F94F29] focus:ring-0 transition-colors duration-300 text-base"
-                  />
-                </div>
-
-                <div>
-                  <textarea
-                    name="message"
-                    id="message"
-                    rows="4"
-                    placeholder="Tell me about your project..."
-                    class="w-full bg-transparent border-0 border-b border-[#333333] py-3 px-1 text-white placeholder:text-[#B0B0B0] focus:border-[#F94F29] focus:ring-0 transition-colors duration-300 text-base"
-                  ></textarea>
-                </div>
-
-                <div class="flex items-center gap-4">
-                  <button
-                    type="submit"
-                    class="bg-[#F94F29] text-white font-medium text-base py-3 px-8 rounded-full hover:bg-[#E04624] transition-colors duration-300"
-                  >
-                    Book My Free Call
-                  </button>
-                  <svg
-                    id="spinner"
-                    class="htmx-indicator animate-spin h-5 w-5 text-white"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle
-                      class="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      stroke-width="4"
-                    ></circle>
-                    <path
-                      class="opacity-75"
-                      fill="currentColor"
-                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                    ></path>
-                  </svg>
-                </div>
-              </form>
             </div>
           </div>
         </div>
