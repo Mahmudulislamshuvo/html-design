@@ -904,7 +904,7 @@
           <div class="relative">
             <button
               @click="prev()"
-              class="absolute top-1/2 -left-3 md:-left-6 -translate-y-1/2 z-30 w-12 h-12 md:w-16 md:h-16 bg-[#333333] rounded-full flex items-center justify-center text-white shadow-xl transition-transform hover:scale-110 focus:outline-none border-4 border-white"
+              class="absolute top-1/2 -left-3 md:-left-6 -translate-y-1/2 z-30 w-12 h-12 md:w-16 md:h-16 bg-[#333333] hover:bg-[#F94F29] rounded-full flex items-center justify-center text-white shadow-xl transition-transform hover:scale-110 focus:outline-none border-4 border-white"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -1003,7 +1003,7 @@
 
             <button
               @click="next()"
-              class="absolute top-1/2 -right-3 md:-right-6 -translate-y-1/2 z-30 w-12 h-12 md:w-16 md:h-16 bg-[#F94F29] rounded-full flex items-center justify-center text-white shadow-xl transition-transform hover:scale-110 focus:outline-none border-4 border-white"
+              class="absolute top-1/2 -right-3 md:-right-6 -translate-y-1/2 z-30 w-12 h-12 md:w-16 md:h-16 bg-[#333333] hover:bg-[#F94F29] rounded-full flex items-center justify-center text-white shadow-xl transition-transform hover:scale-110 focus:outline-none border-4 border-white"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -1024,568 +1024,258 @@
         </div>
       </section>
 
-      <section
-        class="py-20 lg:py-32 bg-[#121212]"
-        x-data="{ show: false }"
-        x-intersect.once="show = true"
-      >
-        <div
-          class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
-          x-show="show"
-          x-transition:enter="transition ease-out duration-1000 transform"
-          x-transition:enter-start="opacity-0 translate-y-10"
-          x-transition:enter-end="opacity-100 translate-y-0"
-        >
-          <div class="text-center max-w-2xl mx-auto">
-            <h2 class="text-3xl lg:text-4xl font-semibold text-white">
-              Results. Not Excuses.
-            </h2>
-            <p class="mt-4 text-lg text-[#B0B0B0] leading-relaxed">
-              The only metric that matters is growth. Here's a snapshot of the
-              results I've driven for my clients.
-            </p>
+      <!-- Review Section -->
+      <section class="bg-white pt-20">
+        <div class="text-center max-w-2xl mx-auto px-4 py-6">
+          <div class="flex flex-wrap justify-center gap-2 mb-4">
+            <span
+              class="px-4 py-1.5 bg-[#F3F4F6] text-gray-600 text-xs sm:text-sm font-medium rounded-full"
+            >
+              UI/UX Design
+            </span>
+            <span
+              class="px-4 py-1.5 bg-[#F3F4F6] text-gray-600 text-xs sm:text-sm font-medium rounded-full"
+            >
+              Landing Page
+            </span>
+            <span
+              class="px-4 py-1.5 bg-[#F3F4F6] text-gray-600 text-xs sm:text-sm font-medium rounded-full"
+            >
+              Wireframe
+            </span>
           </div>
 
           <div
-            class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+            class="flex items-center justify-center gap-3 mb-3 group cursor-pointer"
           >
-            <div
-              class="bg-[#1E1E1E] rounded-2xl p-8 border border-[#333333] text-center"
+            <h3
+              class="text-3xl font-bold text-[#121212] group-hover:text-[#F94F29] transition-colors"
             >
-              <span class="block text-5xl lg:text-6xl font-bold text-[#F94F29]"
-                >5.2x</span
-              >
-              <p class="mt-3 text-lg font-medium text-[#B0B0B0]">
-                Average ROAS
-              </p>
-            </div>
+              Food Express - Food Delivery Solution
+            </h3>
+
             <div
-              class="bg-[#1E1E1E] rounded-2xl p-8 border border-[#333333] text-center"
+              class="flex-shrink-0 w-6 h-6 bg-[#F94F29] text-white rounded-full flex items-center justify-center transition-transform duration-300 group-hover:rotate-45"
             >
-              <span class="block text-5xl lg:text-6xl font-bold text-[#F94F29]"
-                >45%</span
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2.5"
+                stroke="currentColor"
+                class="w-3.5 h-3.5"
               >
-              <p class="mt-3 text-lg font-medium text-[#B0B0B0]">
-                Reduction in CPL
-              </p>
-            </div>
-            <div
-              class="bg-[#1E1E1E] rounded-2xl p-8 border border-[#333333] text-center"
-            >
-              <span class="block text-5xl lg:text-6xl font-bold text-[#F94F29]"
-                >150%</span
-              >
-              <p class="mt-3 text-lg font-medium text-[#B0B0B0]">
-                Organic Traffic Growth
-              </p>
-            </div>
-            <div
-              class="bg-[#1E1E1E] rounded-2xl p-8 border border-[#333333] text-center"
-            >
-              <span class="block text-5xl lg:text-6xl font-bold text-[#F94F29]"
-                >$2M+</span
-              >
-              <p class="mt-3 text-lg font-medium text-[#B0B0B0]">
-                Attributed Revenue
-              </p>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
+                />
+              </svg>
             </div>
           </div>
-        </div>
-      </section>
 
-      <section
-        id="projects"
-        class="py-20 lg:py-32 bg-[#1E1E1E]"
-        x-data="{ show: false }"
-        x-intersect.once="show = true"
-      >
+          <p class="text-gray-500 text-sm sm:text-base leading-relaxed">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi.
+          </p>
+        </div>
         <div
-          class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
-          x-show="show"
-          x-transition:enter="transition ease-out duration-1000 transform"
-          x-transition:enter-start="opacity-0 translate-y-10"
-          x-transition:enter-end="opacity-100 translate-y-0"
+          class="bg-[#121212] rounded-3xl py-20 px-4 md:px-0 relative overflow-hidden"
+          x-data="{ 
+      activeSlide: 0, 
+      testimonials: [
+        {
+          id: 1,
+          name: 'Sarah Jenkins',
+          role: 'Product Manager, TechFlow',
+          rating: 5.0,
+          text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.',
+          image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80'
+        },
+        {
+          id: 2,
+          name: 'Henry Arthur',
+          role: 'CEO, Food Express',
+          rating: 5.0,
+          text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.',
+          image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80'
+        },
+        {
+          id: 3,
+          name: 'Joshua Arthur',
+          role: 'CTO, EV Charger',
+          rating: 5.0,
+          text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.',
+          image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80'
+        },
+        {
+          id: 4,
+          name: 'Emily Davis',
+          role: 'Marketing Lead, CreativeBox',
+          rating: 5.0,
+          text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.',
+          image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&q=80'
+        }
+      ],
+      next() {
+        this.activeSlide = (this.activeSlide + 1) % this.testimonials.length;
+      },
+      prev() {
+        this.activeSlide = (this.activeSlide - 1 + this.testimonials.length) % this.testimonials.length;
+      },
+      slideState(index) {
+        const len = this.testimonials.length;
+        if (index === this.activeSlide) return 'active';
+        if (index === (this.activeSlide - 1 + len) % len) return 'prev';
+        if (index === (this.activeSlide + 1) % len) return 'next';
+        return 'hidden';
+      }
+    }"
         >
-          <div class="text-center max-w-2xl mx-auto">
-            <h2 class="text-3xl lg:text-4xl font-semibold text-white">
-              From Clicks to Conversions
+          <!-- Heading -->
+          <div class="text-center max-w-3xl mx-auto mb-16 relative z-10">
+            <h2
+              class="text-3xl md:text-5xl font-bold text-white relative inline-block"
+            >
+              <svg
+                class="absolute -left-12 bottom-2 w-8 h-8 text-white opacity-80"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"
+                  fill="currentColor"
+                />
+              </svg>
+
+              Testimonials that <br />
+              Speak to <span class="text-[#F94F29]">My Results</span>
+
+              <svg
+                class="absolute -right-10 -top-4 w-8 h-8 text-white opacity-80"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M2 22L22 2" stroke-linecap="round" />
+                <path d="M12 22L22 12" stroke-linecap="round" />
+              </svg>
             </h2>
-            <p class="mt-4 text-lg text-[#B0B0B0] leading-relaxed">
-              Strategy is nothing without execution. Here’s how I've translated
-              plans into profits for my clients.
+            <p
+              class="text-gray-400 mt-6 text-sm md:text-base max-w-xl mx-auto leading-relaxed"
+            >
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et.
             </p>
           </div>
 
-          <div
-            class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            <div
-              class="bg-[#1E1E1E] rounded-2xl p-6 border border-[#333333] transition-transform duration-300 hover:scale-[1.02] flex flex-col"
-            >
-              <div class="flex-grow">
-                <div class="mb-4 flex flex-wrap gap-2">
-                  <span
-                    class="bg-[#121212] text-white text-sm py-2 px-4 rounded-full border border-[#333333]"
-                    >PPC</span
-                  >
-                  <span
-                    class="bg-[#121212] text-white text-sm py-2 px-4 rounded-full border border-[#333333]"
-                    >Shopify</span
-                  >
-                  <span
-                    class="bg-[#121212] text-white text-sm py-2 px-4 rounded-full border border-[#333333]"
-                    >Meta Ads</span
-                  >
-                </div>
-                <h3 class="text-xl font-semibold text-white">
-                  E-commerce ROAS Turnaround
-                </h3>
-                <p class="mt-3 text-base text-[#B0B0B0] leading-relaxed">
-                  <strong>Problem:</strong> A Shopify store with declining ad
-                  performance and a high CPL. <br /><strong>Result:</strong>
-                  Restructured campaigns, implemented new creative testing, and
-                  achieved a <strong>7.8x ROAS in 90 days.</strong>
-                </p>
-              </div>
-              <a
-                href="#"
-                class="mt-6 font-medium text-base text-[#F94F29] hover:text-[#E04624] transition-colors duration-300 inline-flex items-center"
-              >
-                View Full Case Study
-                <svg
-                  class="ml-2 h-4 w-4"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
+          <!-- Slider -->
+          <div class="relative max-w-5xl mx-auto">
+            <div class="relative h-[360px] md:h-[320px] lg:h-[300px]">
+              <template x-for="(item, index) in testimonials" :key="item.id">
+                <div
+                  class="absolute inset-0 flex justify-center items-center transition-all duration-500 ease-out"
+                  :class="{
+              'opacity-0 scale-90 translate-x-0 pointer-events-none': slideState(index) === 'hidden',
+              'z-20 opacity-100 scale-100 translate-x-0': slideState(index) === 'active',
+              'z-10 opacity-40 scale-95 -translate-x-10 md:-translate-x-24': slideState(index) === 'prev',
+              'z-10 opacity-40 scale-95 translate-x-10 md:translate-x-24': slideState(index) === 'next'
+            }"
                 >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-              </a>
+                  <div
+                    class="w-full md:w-[70%] bg-[#1E1E1E] rounded-2xl p-8 border border-[#333333] relative flex flex-col justify-between group hover:border-[#F94F29] transition-colors duration-300"
+                  >
+                    <div class="flex items-center gap-2 mb-4">
+                      <div class="flex text-[#F94F29]">
+                        <template x-for="i in 5">
+                          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                            <path
+                              d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                            />
+                          </svg>
+                        </template>
+                      </div>
+                      <span
+                        class="text-white font-bold text-sm"
+                        x-text="item.rating.toFixed(1)"
+                      ></span>
+                    </div>
+
+                    <p
+                      class="text-gray-400 text-sm leading-relaxed mb-8 relative z-10"
+                      x-text="item.text"
+                    ></p>
+
+                    <div
+                      class="absolute bottom-4 right-6 text-[#2A2A2A] font-serif text-8xl leading-none opacity-50 select-none group-hover:text-[#333] transition-colors"
+                    >
+                      “
+                    </div>
+
+                    <div class="flex items-center gap-4 mt-auto">
+                      <img
+                        :src="item.image"
+                        :alt="item.name"
+                        class="w-12 h-12 rounded-full object-cover border-2 border-[#333]"
+                      />
+                      <div>
+                        <h4
+                          class="text-white font-bold text-sm"
+                          x-text="item.name"
+                        ></h4>
+                        <p
+                          class="text-gray-500 text-xs mt-0.5"
+                          x-text="item.role"
+                        ></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </template>
             </div>
 
-            <div
-              class="bg-[#1E1E1E] rounded-2xl p-6 border border-[#333333] transition-transform duration-300 hover:scale-[1.02] flex flex-col"
-            >
-              <div class="flex-grow">
-                <div class="mb-4 flex flex-wrap gap-2">
-                  <span
-                    class="bg-[#121212] text-white text-sm py-2 px-4 rounded-full border border-[#333333]"
-                    >SEO</span
-                  >
-                  <span
-                    class="bg-[#121212] text-white text-sm py-2 px-4 rounded-full border border-[#333333]"
-                    >SaaS</span
-                  >
-                  <span
-                    class="bg-[#121212] text-white text-sm py-2 px-4 rounded-full border border-[#333333]"
-                    >Content</span
-                  >
-                </div>
-                <h3 class="text-xl font-semibold text-white">
-                  B2B SaaS Organic Lead Gen
-                </h3>
-                <p class="mt-3 text-base text-[#B0B0B0] leading-relaxed">
-                  <strong>Problem:</strong> A B2B SaaS company with flat organic
-                  traffic and few demo signups from search. <br /><strong
-                    >Result:</strong
-                  >
-                  Executed a "bottom-of-funnel" content strategy, building topic
-                  clusters that resulted in a
-                  <strong>120% increase in demo requests.</strong>
-                </p>
-              </div>
-              <a
-                href="#"
-                class="mt-6 font-medium text-base text-[#F94F29] hover:text-[#E04624] transition-colors duration-300 inline-flex items-center"
-              >
-                View Full Case Study
-                <svg
-                  class="ml-2 h-4 w-4"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-              </a>
-            </div>
-
-            <div
-              class="bg-[#1E1E1E] rounded-2xl p-6 border border-[#333333] transition-transform duration-300 hover:scale-[1.02] flex flex-col"
-            >
-              <div class="flex-grow">
-                <div class="mb-4 flex flex-wrap gap-2">
-                  <span
-                    class="bg-[#121212] text-white text-sm py-2 px-4 rounded-full border border-[#333333]"
-                    >Email</span
-                  >
-                  <span
-                    class="bg-[#121212] text-white text-sm py-2 px-4 rounded-full border border-[#333333]"
-                    >DTC</span
-                  >
-                  <span
-                    class="bg-[#121212] text-white text-sm py-2 px-4 rounded-full border border-[#333333]"
-                    >Automation</span
-                  >
-                </div>
-                <h3 class="text-xl font-semibold text-white">
-                  DTC Brand Retention Funnel
-                </h3>
-                <p class="mt-3 text-base text-[#B0B0B0] leading-relaxed">
-                  <strong>Problem:</strong> A DTC brand with high customer
-                  acquisition cost but low repeat purchase rate. <br /><strong
-                    >Result:</strong
-                  >
-                  Built a 5-step post-purchase automation that
-                  <strong
-                    >increased customer lifetime value (LTV) by 35% in 6
-                    months.</strong
-                  >
-                </p>
-              </div>
-              <a
-                href="#"
-                class="mt-6 font-medium text-base text-[#F94F29] hover:text-[#E04624] transition-colors duration-300 inline-flex items-center"
-              >
-                View Full Case Study
-                <svg
-                  class="ml-2 h-4 w-4"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section
-        id="about"
-        class="py-20 lg:py-32 bg-[#121212]"
-        x-data="{ show: false }"
-        x-intersect.once="show = true"
-      >
-        <div
-          class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
-          x-show="show"
-          x-transition:enter="transition ease-out duration-1000 transform"
-          x-transition:enter-start="opacity-0 translate-y-10"
-          x-transition:enter-end="opacity-100 translate-y-0"
-        >
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <div
-                class="w-full h-96 bg-[#1E1E1E] rounded-2xl border border-[#333333] flex items-center justify-center"
+            <!-- Controls -->
+            <div class="flex justify-center gap-4 mt-6">
+              <button
+                @click="prev()"
+                class="w-12 h-12 rounded-full bg-[#2A2A2A] hover:bg-[#F94F29] flex items-center justify-center text-white hover:bg-[#333] transition-colors focus:outline-none"
               >
                 <svg
-                  class="w-16 h-16 text-[#B0B0B0]"
-                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-6 h-6"
                   fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
                   stroke="currentColor"
+                  viewBox="0 0 24 24"
                 >
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
-                  />
+                    stroke-width="2"
+                    d="M15 19l-7-7 7-7"
+                  ></path>
                 </svg>
-              </div>
-            </div>
-            <div>
-              <h2 class="text-3xl lg:text-4xl font-semibold text-white">
-                More Than Metrics. I'm Your Partner.
-              </h2>
-              <p class="mt-6 text-lg text-[#B0B0B0] leading-relaxed">
-                I'm Mr. XYZ, a data-driven digital marketing consultant with
-                over 8 years of experience. I'm not an agency that passes you
-                off to a junior account manager. When you hire me, you get
-                <em>me</em>.
-              </p>
-              <p class="mt-4 text-lg text-[#B0B0B0] leading-relaxed">
-                My philosophy is simple:
-                <strong>transparency, accountability, and results.</strong> I
-                dive deep into your business to understand your "why," not just
-                your "what." I believe the best marketing is a blend of human
-                psychology and data-backed science. I'm here to be your
-                strategic partner, dedicated to scaling your business as if it
-                were my own.
-              </p>
-              <a
-                href="#contact"
-                class="mt-8 inline-block bg-[#F94F29] text-white font-medium text-base py-3 px-6 rounded-full hover:bg-[#E04624] transition-colors duration-300"
+              </button>
+
+              <button
+                @click="next()"
+                class="w-12 h-12 rounded-full bg-[#2A2A2A] hover:bg-[#F94F29] flex items-center justify-center text-white hover:bg-[#e04524] transition-colors focus:outline-none shadow-lg shadow-orange-900/20"
               >
-                Let's Chat
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section
-        class="py-20 lg:py-32 bg-[#1E1E1E]"
-        x-data="{ show: false }"
-        x-intersect.once="show = true"
-      >
-        <div
-          class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
-          x-show="show"
-          x-transition:enter="transition ease-out duration-1000 transform"
-          x-transition:enter-start="opacity-0 translate-y-10"
-          x-transition:enter-end="opacity-100 translate-y-0"
-        >
-          <div class="text-center max-w-2xl mx-auto">
-            <h2 class="text-3xl lg:text-4xl font-semibold text-white">
-              What My Clients Say
-            </h2>
-            <p class="mt-4 text-lg text-[#B0B0B0] leading-relaxed">
-              Don't just take my word for it. Here's what my partners have to
-              say about our work together.
-            </p>
-          </div>
-
-          <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="bg-[#1E1E1E] rounded-2xl p-8 border border-[#333333]">
-              <svg
-                class="w-10 h-10 text-[#F94F29]"
-                fill="currentColor"
-                viewBox="0 0 32 32"
-              >
-                <path
-                  d="M6,17v-8c0-3.3,2.7-6,6-6h2v3H12c-1.7,0-3,1.3-3,3v3h5v8H6z M20,17v-8c0-3.3,2.7-6,6-6h2v3h-2c-1.7,0-3,1.3-3,3v3h5v8H20z"
-                ></path>
-              </svg>
-              <p class="mt-6 text-lg text-white leading-relaxed italic">
-                "Mr. XYZ doubled our lead flow in six months while cutting our
-                ad spend by 30%. He's not just a marketer; he's a
-                revenue-driver. His reports are clear, his strategy is sharp,
-                and the results are undeniable."
-              </p>
-              <div class="mt-6 flex items-center">
-                <div
-                  class="flex-shrink-0 w-12 h-12 rounded-full bg-[#333333]"
-                ></div>
-                <div class="ml-4">
-                  <div class="text-base font-semibold text-white">Jane Doe</div>
-                  <div class="text-base font-medium text-[#B0B0B0]">
-                    CEO, ClientCo
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="bg-[#1E1E1E] rounded-2xl p-8 border border-[#333333]">
-              <svg
-                class="w-10 h-10 text-[#F94F29]"
-                fill="currentColor"
-                viewBox="0 0 32 32"
-              >
-                <path
-                  d="M6,17v-8c0-3.3,2.7-6,6-6h2v3H12c-1.7,0-3,1.3-3,3v3h5v8H6z M20,17v-8c0-3.3,2.7-6,6-6h2v3H26c-1.7,0-3,1.3-3,3v3h5v8H20z"
-                ></path>
-              </svg>
-              <p class="mt-6 text-lg text-white leading-relaxed italic">
-                "We were completely lost with SEO. Mr. XYZ came in, performed a
-                deep audit, and gave us a clear 12-month roadmap. We're now on
-                page 1 for our top 5 keywords. The transparency and expertise
-                are unmatched."
-              </p>
-              <div class="mt-6 flex items-center">
-                <div
-                  class="flex-shrink-0 w-12 h-12 rounded-full bg-[#333333]"
-                ></div>
-                <div class="ml-4">
-                  <div class="text-base font-semibold text-white">
-                    John Smith
-                  </div>
-                  <div class="text-base font-medium text-[#B0B0B0]">
-                    Founder, SaaS Startup
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section
-        class="py-20 lg:py-32 bg-[#121212]"
-        x-data="{ show: false }"
-        x-intersect.once="show = true"
-      >
-        <div
-          class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
-          x-show="show"
-          x-transition:enter="transition ease-out duration-1000 transform"
-          x-transition:enter-start="opacity-0 translate-y-10"
-          x-transition:enter-end="opacity-100 translate-y-0"
-        >
-          <div class="text-center max-w-2xl mx-auto">
-            <h2 class="text-3xl lg:text-4xl font-semibold text-white">
-              My Marketing Toolkit
-            </h2>
-            <p class="mt-4 text-lg text-[#B0B0B0] leading-relaxed">
-              I am certified and fluent in the industry-leading platforms
-              required to get the job done right.
-            </p>
-          </div>
-
-          <div
-            class="mt-16 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8"
-          >
-            <div
-              class="bg-[#1E1E1E] rounded-2xl p-6 border border-[#333333] flex items-center justify-center transition-transform duration-300 hover:scale-[1.02]"
-            >
-              <span class="text-lg font-semibold text-white">Google Ads</span>
-            </div>
-            <div
-              class="bg-[#1E1E1E] rounded-2xl p-6 border border-[#333333] flex items-center justify-center transition-transform duration-300 hover:scale-[1.02]"
-            >
-              <span class="text-lg font-semibold text-white">Meta Ads</span>
-            </div>
-            <div
-              class="bg-[#1E1E1E] rounded-2xl p-6 border border-[#333333] flex items-center justify-center transition-transform duration-300 hover:scale-[1.02]"
-            >
-              <span class="text-lg font-semibold text-white"
-                >Google Analytics</span
-              >
-            </div>
-            <div
-              class="bg-[#1E1E1E] rounded-2xl p-6 border border-[#333333] flex items-center justify-center transition-transform duration-300 hover:scale-[1.02]"
-            >
-              <span class="text-lg font-semibold text-white">Semrush</span>
-            </div>
-            <div
-              class="bg-[#1E1E1E] rounded-2xl p-6 border border-[#333333] flex items-center justify-center transition-transform duration-300 hover:scale-[1.02]"
-            >
-              <span class="text-lg font-semibold text-white">Ahrefs</span>
-            </div>
-            <div
-              class="bg-[#1E1E1E] rounded-2xl p-6 border border-[#333333] flex items-center justify-center transition-transform duration-300 hover:scale-[1.02]"
-            >
-              <span class="text-lg font-semibold text-white">HubSpot</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section
-        class="py-20 lg:py-32 bg-[#1E1E1E]"
-        x-data="{ show: false }"
-        x-intersect.once="show = true"
-      >
-        <div
-          class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
-          x-show="show"
-          x-transition:enter="transition ease-out duration-1000 transform"
-          x-transition:enter-start="opacity-0 translate-y-10"
-          x-transition:enter-end="opacity-100 translate-y-0"
-        >
-          <div class="text-center max-w-2xl mx-auto">
-            <h2 class="text-3xl lg:text-4xl font-semibold text-white">
-              Your Path to Predictable Growth
-            </h2>
-            <p class="mt-4 text-lg text-[#B0B0B0] leading-relaxed">
-              No guesswork. No "hoping for the best." Just a proven, 4-step
-              process designed for transparency and results.
-            </p>
-          </div>
-
-          <div class="mt-20 max-w-3xl mx-auto">
-            <div class="relative">
-              <div
-                class="absolute left-4 top-0 h-full w-0.5 bg-[#333333]"
-                aria-hidden="true"
-              ></div>
-
-              <div class="relative pl-12 pb-16">
-                <div
-                  class="absolute left-0 top-1 flex items-center justify-center"
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
                 >
-                  <span
-                    class="block h-8 w-8 rounded-full bg-[#F94F29] flex items-center justify-center text-base font-semibold text-white"
-                    >1</span
-                  >
-                </div>
-                <h3 class="text-xl font-semibold text-white">
-                  Discovery & Audit
-                </h3>
-                <p class="mt-2 text-base text-[#B0B0B0] leading-relaxed">
-                  We start with a deep dive into your business, goals, and
-                  existing data. I conduct a comprehensive audit of your
-                  accounts and competitors to find immediate opportunities.
-                </p>
-              </div>
-
-              <div class="relative pl-12 pb-16">
-                <div
-                  class="absolute left-0 top-1 flex items-center justify-center"
-                >
-                  <span
-                    class="block h-8 w-8 rounded-full bg-[#F94F29] flex items-center justify-center text-base font-semibold text-white"
-                    >2</span
-                  >
-                </div>
-                <h3 class="text-xl font-semibold text-white">
-                  Strategy & Roadmap
-                </h3>
-                <p class="mt-2 text-base text-[#B0B0B0] leading-relaxed">
-                  Based on the audit, I build a custom, 90-day strategic
-                  roadmap. This outlines the exact campaigns, keywords, and
-                  creative we'll launch, complete with clear KPIs.
-                </p>
-              </div>
-
-              <div class="relative pl-12 pb-16">
-                <div
-                  class="absolute left-0 top-1 flex items-center justify-center"
-                >
-                  <span
-                    class="block h-8 w-8 rounded-full bg-[#F94F29] flex items-center justify-center text-base font-semibold text-white"
-                    >3</span
-                  >
-                </div>
-                <h3 class="text-xl font-semibold text-white">
-                  Campaign Build & Launch
-                </h3>
-                <p class="mt-2 text-base text-[#B0B0B0] leading-relaxed">
-                  I handle the A-to-Z execution. This includes building
-                  campaigns, writing copy, setting up tracking, and launching
-                  everything on schedule.
-                </p>
-              </div>
-
-              <div class="relative pl-12">
-                <div
-                  class="absolute left-0 top-1 flex items-center justify-center"
-                >
-                  <span
-                    class="block h-8 w-8 rounded-full bg-[#F94F29] flex items-center justify-center text-base font-semibold text-white"
-                    >4</span
-                  >
-                </div>
-                <h3 class="text-xl font-semibold text-white">
-                  Optimize & Scale
-                </h3>
-                <p class="mt-2 text-base text-[#B0B0B0] leading-relaxed">
-                  This is where the real growth happens. I monitor performance
-                  daily, optimize bids/budgets, test new creative, and provide
-                  bi-weekly reports so you always know exactly what's working.
-                </p>
-              </div>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  ></path>
+                </svg>
+              </button>
             </div>
           </div>
         </div>
