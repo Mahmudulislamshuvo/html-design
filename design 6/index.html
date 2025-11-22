@@ -35,12 +35,33 @@
       .card-shape {
         will-change: clip-path;
       }
+
       .container {
         max-width: 1420px;
         margin-left: auto;
         margin-right: auto;
         padding-left: 1rem;
         padding-right: 1rem;
+      }
+
+      .services-track {
+        display: flex;
+        width: max-content;
+        animation: services-scroll 40s linear infinite;
+        gap: 2rem;
+      }
+
+      @keyframes services-scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      .services-track:hover {
+        animation-play-state: paused;
       }
     </style>
 
@@ -165,7 +186,7 @@
 
     <main>
       <!-- HERO SECTION -->
-      <section class="relative overflow-hidden h-screen container">
+      <section class="relative overflow-hidden h-screen">
         <style>
           /* ====== Animations ====== */
           @keyframes hero-fade-up {
@@ -236,7 +257,7 @@
           }
         </style>
 
-        <div class="max-w-6xl mx-auto px-6 pt-16 hero-root">
+        <div class="px-6 pt-16 hero-root">
           <!-- top hello badge -->
           <div class="flex justify-center mb-4">
             <div
@@ -263,28 +284,30 @@
           <!-- visual / cards / stats / CTA -->
           <div class="flex justify-between items-center">
             <!-- Left side -->
-            <div>
-              <div
-                class="bg-white rounded-2xl shadow-xl border border-slate-100 p-4 text-left"
-              >
-                <div class="text-orange-500 text-2xl leading-none">“</div>
-                <p class="text-xs sm:text-sm text-slate-600">
-                  Jenny’s exceptional product design ensured our website’s
-                  success. Highly recommended!
-                </p>
-              </div>
-              <!-- 450+ clients (bottom-left) -->
-              <div
-                class="absolute left-4 sm:left-8 bottom-4 sm:bottom-6 text-left bg-white/90 backdrop-blur rounded-xl px-4 py-3 shadow-md"
-              >
-                <div class="text-lg font-bold text-slate-900">450+</div>
-                <div class="text-[11px] uppercase tracking-wide text-slate-500">
-                  Clients Served
+            <div class="w-[30%]">
+              <div class="flex flex-col gap-10 items-start p-6 bg-white">
+                <div class="">
+                  <div
+                    class="text-6xl font-bold text-black leading-none font-serif"
+                  >
+                    “
+                  </div>
+                  <p class="text-2xl text-black leading-relaxed font-medium">
+                    Jenny’s exceptional product design ensured our website’s
+                    success. Highly recommended!
+                  </p>
+                </div>
+
+                <div>
+                  <h3 class="text-4xl font-bold text-black mb-1">450+</h3>
+                  <p class="text-xl text-black font-medium">Client Served</p>
                 </div>
               </div>
             </div>
             <!-- middle circle and image -->
-            <div class="relative h-[450px] flex justify-center items-end">
+            <div
+              class="relative h-[450px] flex justify-center items-end w-[39%]"
+            >
               <div
                 class="absolute w-[750px] h-[750px] rounded-full bg-[#FF4618] bottom-[-500px] relative"
               >
@@ -311,12 +334,6 @@
                     <button
                       class="px-12 py-3 bg-[#FF4618] rounded-full text-white whitespace-nowrap"
                     >
-                      Portfolio
-                    </button>
-
-                    <button
-                      class="px-12 py-3 bg-white border border-black rounded-full text-black whitespace-nowrap"
-                    >
                       Hire Me
                     </button>
                   </div>
@@ -325,24 +342,24 @@
                   <img
                     src="./svg/Arrow.svg"
                     alt=""
-                    class="absolute left-[-23%] -translate-x-1/2 -bottom-6 w-[150px] h-[150px] pointer-events-none"
+                    class="absolute left-[-50%] -translate-x-1/2 -bottom-6 w-[150px] h-[150px] pointer-events-none"
                   />
                 </div>
               </div>
             </div>
             <!-- Hero  right side -->
-            <div class="text-green-500">
+            <div class="w-[30%] flex items-end justify-end">
               <div
-                class="bg-white rounded-2xl shadow-xl border border-slate-100 px-5 py-4 text-center w-40"
+                class="bg-white px-5 py-4 text-end w-70 border-b-2 border-black"
               >
-                <div class="flex justify-center mb-1 text-orange-400 text-sm">
+                <div class="flex justify-end mb-1 text-orange-400 text-4xl">
                   <span>★ ★ ★ ★ ★</span>
                 </div>
-                <div class="text-2xl font-bold text-slate-900 leading-tight">
+                <div class="text-4xl font-bold text-slate-900 leading-tight">
                   10 Years
                 </div>
                 <div
-                  class="text-xs uppercase tracking-wide text-slate-500 mt-1"
+                  class="text-2xl uppercase tracking-wide text-slate-500 mt-1"
                 >
                   Experts
                 </div>
@@ -379,213 +396,578 @@
             </h5>
           </div>
 
-          <div
-            class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            <!-- cart design -->
-            <div class="relative w-full max-w-sm mx-auto group">
-              <!-- THE LIQUID CARD -->
-              <div
-                class="card-shape relative h-[380px] w-full bg-[#3B3B3B] group-hover:bg-[#FD461A] transition-colors duration-300 z-10 shadow-2xl"
-              >
-                <div class="absolute inset-0 p-6 flex flex-col">
-                  <div class="border-b-2 border-white mb-4">
-                    <h2 class="text-2xl font-bold text-white tracking-tight">
-                      UI/UX Design
-                    </h2>
-                    <p
-                      class="text-indigo-200 text-xs mt-1 mb-2 font-medium tracking-wide"
-                    >
-                      Mobile Application Project
-                    </p>
-                  </div>
-
+          <div class="mt-16 overflow-hidden relative">
+            <div class="services-track flex gap-8">
+              <div class="flex gap-8 shrink-0">
+                <div class="relative w-[320px] shrink-0 mx-auto group">
                   <div
-                    class="flex-1 relative w-full rounded-3xl overflow-hidden border-2 border-white/10 bg-white/10 backdrop-blur-md shadow-[inset_0_0_20px_rgba(255,255,255,0.05)]"
+                    class="card-shape relative h-[380px] w-full bg-[#3B3B3B] group-hover:bg-[#FD461A] transition-colors duration-300 z-10 shadow-2xl"
                   >
-                    <div
-                      class="absolute -top-10 -left-10 w-40 h-40 bg-purple-500/30 rounded-full blur-3xl mix-blend-screen"
-                    ></div>
-                    <div
-                      class="absolute bottom-16 -right-10 w-32 h-32 bg-blue-500/30 rounded-full blur-2xl mix-blend-screen"
-                    ></div>
-
-                    <div
-                      class="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-[90%] bg-slate-900 rounded-t-[2.5rem] border-x-[6px] border-t-[6px] border-slate-800 shadow-2xl flex flex-col items-center pt-3 overflow-hidden"
-                    >
+                    <div class="absolute inset-0 p-6 flex flex-col">
+                      <div class="border-b-2 border-white mb-4">
+                        <h2
+                          class="text-2xl font-bold text-white tracking-tight"
+                        >
+                          UI/UX Design
+                        </h2>
+                        <p
+                          class="text-indigo-200 text-xs mt-1 mb-2 font-medium tracking-wide"
+                        >
+                          Mobile Application Project
+                        </p>
+                      </div>
                       <div
-                        class="w-10 h-3 bg-black rounded-full mb-3 z-20 shadow-sm"
-                      ></div>
-                      <div
-                        class="w-full h-full bg-slate-800 relative px-3 space-y-2"
+                        class="flex-1 relative w-full rounded-3xl overflow-hidden border-2 border-white/10 bg-white/10 backdrop-blur-md shadow-[inset_0_0_20px_rgba(255,255,255,0.05)]"
                       >
                         <div
-                          class="w-full h-16 bg-slate-700/50 rounded-2xl"
+                          class="absolute -top-10 -left-10 w-40 h-40 bg-purple-500/30 rounded-full blur-3xl mix-blend-screen"
                         ></div>
                         <div
-                          class="w-3/4 h-3 bg-slate-700/30 rounded-full"
+                          class="absolute bottom-16 -right-10 w-32 h-32 bg-blue-500/30 rounded-full blur-2xl mix-blend-screen"
                         ></div>
                         <div
-                          class="w-1/2 h-3 bg-slate-700/30 rounded-full"
-                        ></div>
-                        <div
-                          class="w-full h-20 bg-indigo-500/10 rounded-2xl border border-white/5 mt-3"
-                        ></div>
+                          class="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-[90%] bg-slate-900 rounded-t-[2.5rem] border-x-[6px] border-t-[6px] border-slate-800 shadow-2xl flex flex-col items-center pt-3 overflow-hidden"
+                        >
+                          <div
+                            class="w-10 h-3 bg-black rounded-full mb-3 z-20 shadow-sm"
+                          ></div>
+                          <div
+                            class="w-full h-full bg-slate-800 relative px-3 space-y-2"
+                          >
+                            <div
+                              class="w-full h-16 bg-slate-700/50 rounded-2xl"
+                            ></div>
+                            <div
+                              class="w-3/4 h-3 bg-slate-700/30 rounded-full"
+                            ></div>
+                            <div
+                              class="w-1/2 h-3 bg-slate-700/30 rounded-full"
+                            ></div>
+                            <div
+                              class="w-full h-20 bg-indigo-500/10 rounded-2xl border border-white/5 mt-3"
+                            ></div>
+                          </div>
+                        </div>
                       </div>
                     </div>
+                  </div>
+                  <div
+                    class="absolute bottom-0 right-0 z-20 filter drop-shadow-xl"
+                  >
+                    <button
+                      class="w-16 h-16 bg-white group-hover:bg-[#FD461A] group-hover:text-white transition-colors duration-300 rounded-full flex items-center justify-center text-indigo-900 hover:scale-105 hover:bg-indigo-50 active:scale-95 transition-all duration-300 cursor-pointer group-hover:shadow-2xl"
+                    >
+                      <i
+                        data-lucide="arrow-up-right"
+                        class="w-6 h-6 stroke-[2.5]"
+                      ></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="relative w-[320px] shrink-0 mx-auto group">
+                  <div
+                    class="card-shape relative h-[380px] w-full bg-[#3B3B3B] group-hover:bg-[#FD461A] transition-colors duration-300 z-10 shadow-2xl"
+                  >
+                    <div class="absolute inset-0 p-6 flex flex-col">
+                      <div class="border-b-2 border-white mb-4">
+                        <h2
+                          class="text-2xl font-bold text-white tracking-tight"
+                        >
+                          Web Development
+                        </h2>
+                        <p
+                          class="text-indigo-200 text-xs mt-1 mb-2 font-medium tracking-wide"
+                        >
+                          Conversion-Focused Websites
+                        </p>
+                      </div>
+                      <div
+                        class="flex-1 relative w-full rounded-3xl overflow-hidden border-2 border-white/10 bg-white/10 backdrop-blur-md shadow-[inset_0_0_20px_rgba(255,255,255,0.05)]"
+                      >
+                        <div
+                          class="absolute -top-10 -left-10 w-40 h-40 bg-purple-500/30 rounded-full blur-3xl mix-blend-screen"
+                        ></div>
+                        <div
+                          class="absolute bottom-16 -right-10 w-32 h-32 bg-blue-500/30 rounded-full blur-2xl mix-blend-screen"
+                        ></div>
+                        <div
+                          class="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-[90%] bg-slate-900 rounded-t-[2.5rem] border-x-[6px] border-t-[6px] border-slate-800 shadow-2xl flex flex-col items-center pt-3 overflow-hidden"
+                        >
+                          <div
+                            class="w-10 h-3 bg-black rounded-full mb-3 z-20 shadow-sm"
+                          ></div>
+                          <div
+                            class="w-full h-full bg-slate-800 relative px-3 space-y-2"
+                          >
+                            <div
+                              class="w-full h-16 bg-slate-700/50 rounded-2xl"
+                            ></div>
+                            <div
+                              class="w-3/4 h-3 bg-slate-700/30 rounded-full"
+                            ></div>
+                            <div
+                              class="w-1/2 h-3 bg-slate-700/30 rounded-full"
+                            ></div>
+                            <div
+                              class="w-full h-20 bg-indigo-500/10 rounded-2xl border border-white/5 mt-3"
+                            ></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="absolute bottom-0 right-0 z-20 filter drop-shadow-xl"
+                  >
+                    <button
+                      class="w-16 h-16 bg-white group-hover:bg-[#FD461A] group-hover:text-white transition-colors duration-300 rounded-full flex items-center justify-center text-indigo-900 hover:scale-105 hover:bg-indigo-50 active:scale-95 transition-all duration-300 cursor-pointer group-hover:shadow-2xl"
+                    >
+                      <i
+                        data-lucide="arrow-up-right"
+                        class="w-6 h-6 stroke-[2.5]"
+                      ></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="relative w-[320px] shrink-0 mx-auto group">
+                  <div
+                    class="card-shape relative h-[380px] w-full bg-[#3B3B3B] group-hover:bg-[#FD461A] transition-colors duration-300 z-10 shadow-2xl"
+                  >
+                    <div class="absolute inset-0 p-6 flex flex-col">
+                      <div class="border-b-2 border-white mb-4">
+                        <h2
+                          class="text-2xl font-bold text-white tracking-tight"
+                        >
+                          Marketing Strategy
+                        </h2>
+                        <p
+                          class="text-indigo-200 text-xs mt-1 mb-2 font-medium tracking-wide"
+                        >
+                          Growth-Focused Campaigns
+                        </p>
+                      </div>
+                      <div
+                        class="flex-1 relative w-full rounded-3xl overflow-hidden border-2 border-white/10 bg-white/10 backdrop-blur-md shadow-[inset_0_0_20px_rgba(255,255,255,0.05)]"
+                      >
+                        <div
+                          class="absolute -top-10 -left-10 w-40 h-40 bg-purple-500/30 rounded-full blur-3xl mix-blend-screen"
+                        ></div>
+                        <div
+                          class="absolute bottom-16 -right-10 w-32 h-32 bg-blue-500/30 rounded-full blur-2xl mix-blend-screen"
+                        ></div>
+                        <div
+                          class="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-[90%] bg-slate-900 rounded-t-[2.5rem] border-x-[6px] border-t-[6px] border-slate-800 shadow-2xl flex flex-col items-center pt-3 overflow-hidden"
+                        >
+                          <div
+                            class="w-10 h-3 bg-black rounded-full mb-3 z-20 shadow-sm"
+                          ></div>
+                          <div
+                            class="w-full h-full bg-slate-800 relative px-3 space-y-2"
+                          >
+                            <div
+                              class="w-full h-16 bg-slate-700/50 rounded-2xl"
+                            ></div>
+                            <div
+                              class="w-3/4 h-3 bg-slate-700/30 rounded-full"
+                            ></div>
+                            <div
+                              class="w-1/2 h-3 bg-slate-700/30 rounded-full"
+                            ></div>
+                            <div
+                              class="w-full h-20 bg-indigo-500/10 rounded-2xl border border-white/5 mt-3"
+                            ></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="absolute bottom-0 right-0 z-20 filter drop-shadow-xl"
+                  >
+                    <button
+                      class="w-16 h-16 bg-white group-hover:bg-[#FD461A] group-hover:text-white transition-colors duration-300 rounded-full flex items-center justify-center text-indigo-900 hover:scale-105 hover:bg-indigo-50 active:scale-95 transition-all duration-300 cursor-pointer group-hover:shadow-2xl"
+                    >
+                      <i
+                        data-lucide="arrow-up-right"
+                        class="w-6 h-6 stroke-[2.5]"
+                      ></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="relative w-[320px] shrink-0 mx-auto group">
+                  <div
+                    class="card-shape relative h-[380px] w-full bg-[#3B3B3B] group-hover:bg-[#FD461A] transition-colors duration-300 z-10 shadow-2xl"
+                  >
+                    <div class="absolute inset-0 p-6 flex flex-col">
+                      <div class="border-b-2 border-white mb-4">
+                        <h2
+                          class="text-2xl font-bold text-white tracking-tight"
+                        >
+                          Marketing Strategy
+                        </h2>
+                        <p
+                          class="text-indigo-200 text-xs mt-1 mb-2 font-medium tracking-wide"
+                        >
+                          Growth-Focused Campaigns
+                        </p>
+                      </div>
+                      <div
+                        class="flex-1 relative w-full rounded-3xl overflow-hidden border-2 border-white/10 bg-white/10 backdrop-blur-md shadow-[inset_0_0_20px_rgba(255,255,255,0.05)]"
+                      >
+                        <div
+                          class="absolute -top-10 -left-10 w-40 h-40 bg-purple-500/30 rounded-full blur-3xl mix-blend-screen"
+                        ></div>
+                        <div
+                          class="absolute bottom-16 -right-10 w-32 h-32 bg-blue-500/30 rounded-full blur-2xl mix-blend-screen"
+                        ></div>
+                        <div
+                          class="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-[90%] bg-slate-900 rounded-t-[2.5rem] border-x-[6px] border-t-[6px] border-slate-800 shadow-2xl flex flex-col items-center pt-3 overflow-hidden"
+                        >
+                          <div
+                            class="w-10 h-3 bg-black rounded-full mb-3 z-20 shadow-sm"
+                          ></div>
+                          <div
+                            class="w-full h-full bg-slate-800 relative px-3 space-y-2"
+                          >
+                            <div
+                              class="w-full h-16 bg-slate-700/50 rounded-2xl"
+                            ></div>
+                            <div
+                              class="w-3/4 h-3 bg-slate-700/30 rounded-full"
+                            ></div>
+                            <div
+                              class="w-1/2 h-3 bg-slate-700/30 rounded-full"
+                            ></div>
+                            <div
+                              class="w-full h-20 bg-indigo-500/10 rounded-2xl border border-white/5 mt-3"
+                            ></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="absolute bottom-0 right-0 z-20 filter drop-shadow-xl"
+                  >
+                    <button
+                      class="w-16 h-16 bg-white group-hover:bg-[#FD461A] group-hover:text-white transition-colors duration-300 rounded-full flex items-center justify-center text-indigo-900 hover:scale-105 hover:bg-indigo-50 active:scale-95 transition-all duration-300 cursor-pointer group-hover:shadow-2xl"
+                    >
+                      <i
+                        data-lucide="arrow-up-right"
+                        class="w-6 h-6 stroke-[2.5]"
+                      ></i>
+                    </button>
                   </div>
                 </div>
               </div>
 
-              <!-- FLOATING BUTTON -->
-              <div class="absolute bottom-0 right-0 z-20 filter drop-shadow-xl">
-                <button
-                  class="w-16 h-16 bg-white group-hover:bg-[#FD461A] group-hover:text-white transition-colors duration-300 rounded-full flex items-center justify-center text-indigo-900 hover:scale-105 hover:bg-indigo-50 active:scale-95 transition-all duration-300 cursor-pointer group-hover:shadow-2xl"
-                >
-                  <i
-                    data-lucide="arrow-up-right"
-                    class="w-6 h-6 stroke-[2.5]"
-                  ></i>
-                </button>
-              </div>
-            </div>
-            <!-- cart design -->
-            <div class="relative w-full max-w-sm mx-auto group">
-              <!-- THE LIQUID CARD -->
-              <div
-                class="card-shape relative h-[380px] w-full bg-[#3B3B3B] group-hover:bg-[#FD461A] transition-colors duration-300 z-10 shadow-2xl"
-              >
-                <div class="absolute inset-0 p-6 flex flex-col">
-                  <div class="border-b-2 border-white mb-4">
-                    <h2 class="text-2xl font-bold text-white tracking-tight">
-                      UI/UX Design
-                    </h2>
-                    <p
-                      class="text-indigo-200 text-xs mt-1 mb-2 font-medium tracking-wide"
-                    >
-                      Mobile Application Project
-                    </p>
-                  </div>
-
+              <div class="flex gap-8 shrink-0" aria-hidden="true">
+                <div class="relative w-[320px] shrink-0 mx-auto group">
                   <div
-                    class="flex-1 relative w-full rounded-3xl overflow-hidden border-2 border-white/10 bg-white/10 backdrop-blur-md shadow-[inset_0_0_20px_rgba(255,255,255,0.05)]"
+                    class="card-shape relative h-[380px] w-full bg-[#3B3B3B] group-hover:bg-[#FD461A] transition-colors duration-300 z-10 shadow-2xl"
                   >
-                    <div
-                      class="absolute -top-10 -left-10 w-40 h-40 bg-purple-500/30 rounded-full blur-3xl mix-blend-screen"
-                    ></div>
-                    <div
-                      class="absolute bottom-16 -right-10 w-32 h-32 bg-blue-500/30 rounded-full blur-2xl mix-blend-screen"
-                    ></div>
-
-                    <div
-                      class="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-[90%] bg-slate-900 rounded-t-[2.5rem] border-x-[6px] border-t-[6px] border-slate-800 shadow-2xl flex flex-col items-center pt-3 overflow-hidden"
-                    >
+                    <div class="absolute inset-0 p-6 flex flex-col">
+                      <div class="border-b-2 border-white mb-4">
+                        <h2
+                          class="text-2xl font-bold text-white tracking-tight"
+                        >
+                          UI/UX Design
+                        </h2>
+                        <p
+                          class="text-indigo-200 text-xs mt-1 mb-2 font-medium tracking-wide"
+                        >
+                          Mobile Application Project
+                        </p>
+                      </div>
                       <div
-                        class="w-10 h-3 bg-black rounded-full mb-3 z-20 shadow-sm"
-                      ></div>
-                      <div
-                        class="w-full h-full bg-slate-800 relative px-3 space-y-2"
+                        class="flex-1 relative w-full rounded-3xl overflow-hidden border-2 border-white/10 bg-white/10 backdrop-blur-md shadow-[inset_0_0_20px_rgba(255,255,255,0.05)]"
                       >
                         <div
-                          class="w-full h-16 bg-slate-700/50 rounded-2xl"
+                          class="absolute -top-10 -left-10 w-40 h-40 bg-purple-500/30 rounded-full blur-3xl mix-blend-screen"
                         ></div>
                         <div
-                          class="w-3/4 h-3 bg-slate-700/30 rounded-full"
+                          class="absolute bottom-16 -right-10 w-32 h-32 bg-blue-500/30 rounded-full blur-2xl mix-blend-screen"
                         ></div>
                         <div
-                          class="w-1/2 h-3 bg-slate-700/30 rounded-full"
-                        ></div>
-                        <div
-                          class="w-full h-20 bg-indigo-500/10 rounded-2xl border border-white/5 mt-3"
-                        ></div>
+                          class="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-[90%] bg-slate-900 rounded-t-[2.5rem] border-x-[6px] border-t-[6px] border-slate-800 shadow-2xl flex flex-col items-center pt-3 overflow-hidden"
+                        >
+                          <div
+                            class="w-10 h-3 bg-black rounded-full mb-3 z-20 shadow-sm"
+                          ></div>
+                          <div
+                            class="w-full h-full bg-slate-800 relative px-3 space-y-2"
+                          >
+                            <div
+                              class="w-full h-16 bg-slate-700/50 rounded-2xl"
+                            ></div>
+                            <div
+                              class="w-3/4 h-3 bg-slate-700/30 rounded-full"
+                            ></div>
+                            <div
+                              class="w-1/2 h-3 bg-slate-700/30 rounded-full"
+                            ></div>
+                            <div
+                              class="w-full h-20 bg-indigo-500/10 rounded-2xl border border-white/5 mt-3"
+                            ></div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-
-              <!-- FLOATING BUTTON -->
-              <div class="absolute bottom-0 right-0 z-20 filter drop-shadow-xl">
-                <button
-                  class="w-16 h-16 bg-white group-hover:bg-[#FD461A] group-hover:text-white transition-colors duration-300 rounded-full flex items-center justify-center text-indigo-900 hover:scale-105 hover:bg-indigo-50 active:scale-95 transition-all duration-300 cursor-pointer group-hover:shadow-2xl"
-                >
-                  <i
-                    data-lucide="arrow-up-right"
-                    class="w-6 h-6 stroke-[2.5]"
-                  ></i>
-                </button>
-              </div>
-            </div>
-            <!-- cart design -->
-            <div class="relative w-full max-w-sm mx-auto group">
-              <!-- THE LIQUID CARD -->
-              <div
-                class="card-shape relative h-[380px] w-full bg-[#3B3B3B] group-hover:bg-[#FD461A] transition-colors duration-300 z-10 shadow-2xl"
-              >
-                <div class="absolute inset-0 p-6 flex flex-col">
-                  <div class="border-b-2 border-white mb-4">
-                    <h2 class="text-2xl font-bold text-white tracking-tight">
-                      UI/UX Design
-                    </h2>
-                    <p
-                      class="text-indigo-200 text-xs mt-1 mb-2 font-medium tracking-wide"
-                    >
-                      Mobile Application Project
-                    </p>
-                  </div>
-
                   <div
-                    class="flex-1 relative w-full rounded-3xl overflow-hidden border-2 border-white/10 bg-white/10 backdrop-blur-md shadow-[inset_0_0_20px_rgba(255,255,255,0.05)]"
+                    class="absolute bottom-0 right-0 z-20 filter drop-shadow-xl"
                   >
-                    <div
-                      class="absolute -top-10 -left-10 w-40 h-40 bg-purple-500/30 rounded-full blur-3xl mix-blend-screen"
-                    ></div>
-                    <div
-                      class="absolute bottom-16 -right-10 w-32 h-32 bg-blue-500/30 rounded-full blur-2xl mix-blend-screen"
-                    ></div>
-
-                    <div
-                      class="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-[90%] bg-slate-900 rounded-t-[2.5rem] border-x-[6px] border-t-[6px] border-slate-800 shadow-2xl flex flex-col items-center pt-3 overflow-hidden"
+                    <button
+                      class="w-16 h-16 bg-white group-hover:bg-[#FD461A] group-hover:text-white transition-colors duration-300 rounded-full flex items-center justify-center text-indigo-900 hover:scale-105 hover:bg-indigo-50 active:scale-95 transition-all duration-300 cursor-pointer group-hover:shadow-2xl"
                     >
+                      <i
+                        data-lucide="arrow-up-right"
+                        class="w-6 h-6 stroke-[2.5]"
+                      ></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="relative w-[320px] shrink-0 mx-auto group">
+                  <div
+                    class="card-shape relative h-[380px] w-full bg-[#3B3B3B] group-hover:bg-[#FD461A] transition-colors duration-300 z-10 shadow-2xl"
+                  >
+                    <div class="absolute inset-0 p-6 flex flex-col">
+                      <div class="border-b-2 border-white mb-4">
+                        <h2
+                          class="text-2xl font-bold text-white tracking-tight"
+                        >
+                          Web Development
+                        </h2>
+                        <p
+                          class="text-indigo-200 text-xs mt-1 mb-2 font-medium tracking-wide"
+                        >
+                          Conversion-Focused Websites
+                        </p>
+                      </div>
                       <div
-                        class="w-10 h-3 bg-black rounded-full mb-3 z-20 shadow-sm"
-                      ></div>
-                      <div
-                        class="w-full h-full bg-slate-800 relative px-3 space-y-2"
+                        class="flex-1 relative w-full rounded-3xl overflow-hidden border-2 border-white/10 bg-white/10 backdrop-blur-md shadow-[inset_0_0_20px_rgba(255,255,255,0.05)]"
                       >
                         <div
-                          class="w-full h-16 bg-slate-700/50 rounded-2xl"
+                          class="absolute -top-10 -left-10 w-40 h-40 bg-purple-500/30 rounded-full blur-3xl mix-blend-screen"
                         ></div>
                         <div
-                          class="w-3/4 h-3 bg-slate-700/30 rounded-full"
+                          class="absolute bottom-16 -right-10 w-32 h-32 bg-blue-500/30 rounded-full blur-2xl mix-blend-screen"
                         ></div>
                         <div
-                          class="w-1/2 h-3 bg-slate-700/30 rounded-full"
-                        ></div>
-                        <div
-                          class="w-full h-20 bg-indigo-500/10 rounded-2xl border border-white/5 mt-3"
-                        ></div>
+                          class="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-[90%] bg-slate-900 rounded-t-[2.5rem] border-x-[6px] border-t-[6px] border-slate-800 shadow-2xl flex flex-col items-center pt-3 overflow-hidden"
+                        >
+                          <div
+                            class="w-10 h-3 bg-black rounded-full mb-3 z-20 shadow-sm"
+                          ></div>
+                          <div
+                            class="w-full h-full bg-slate-800 relative px-3 space-y-2"
+                          >
+                            <div
+                              class="w-full h-16 bg-slate-700/50 rounded-2xl"
+                            ></div>
+                            <div
+                              class="w-3/4 h-3 bg-slate-700/30 rounded-full"
+                            ></div>
+                            <div
+                              class="w-1/2 h-3 bg-slate-700/30 rounded-full"
+                            ></div>
+                            <div
+                              class="w-full h-20 bg-indigo-500/10 rounded-2xl border border-white/5 mt-3"
+                            ></div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
+                  <div
+                    class="absolute bottom-0 right-0 z-20 filter drop-shadow-xl"
+                  >
+                    <button
+                      class="w-16 h-16 bg-white group-hover:bg-[#FD461A] group-hover:text-white transition-colors duration-300 rounded-full flex items-center justify-center text-indigo-900 hover:scale-105 hover:bg-indigo-50 active:scale-95 transition-all duration-300 cursor-pointer group-hover:shadow-2xl"
+                    >
+                      <i
+                        data-lucide="arrow-up-right"
+                        class="w-6 h-6 stroke-[2.5]"
+                      ></i>
+                    </button>
+                  </div>
                 </div>
-              </div>
 
-              <!-- FLOATING BUTTON -->
-              <div class="absolute bottom-0 right-0 z-20 filter drop-shadow-xl">
-                <button
-                  class="w-16 h-16 bg-white group-hover:bg-[#FD461A] group-hover:text-white transition-colors duration-300 rounded-full flex items-center justify-center text-indigo-900 hover:scale-105 hover:bg-indigo-50 active:scale-95 transition-all duration-300 cursor-pointer group-hover:shadow-2xl"
-                >
-                  <i
-                    data-lucide="arrow-up-right"
-                    class="w-6 h-6 stroke-[2.5]"
-                  ></i>
-                </button>
+                <div class="relative w-[320px] shrink-0 mx-auto group">
+                  <div
+                    class="card-shape relative h-[380px] w-full bg-[#3B3B3B] group-hover:bg-[#FD461A] transition-colors duration-300 z-10 shadow-2xl"
+                  >
+                    <div class="absolute inset-0 p-6 flex flex-col">
+                      <div class="border-b-2 border-white mb-4">
+                        <h2
+                          class="text-2xl font-bold text-white tracking-tight"
+                        >
+                          Marketing Strategy
+                        </h2>
+                        <p
+                          class="text-indigo-200 text-xs mt-1 mb-2 font-medium tracking-wide"
+                        >
+                          Growth-Focused Campaigns
+                        </p>
+                      </div>
+                      <div
+                        class="flex-1 relative w-full rounded-3xl overflow-hidden border-2 border-white/10 bg-white/10 backdrop-blur-md shadow-[inset_0_0_20px_rgba(255,255,255,0.05)]"
+                      >
+                        <div
+                          class="absolute -top-10 -left-10 w-40 h-40 bg-purple-500/30 rounded-full blur-3xl mix-blend-screen"
+                        ></div>
+                        <div
+                          class="absolute bottom-16 -right-10 w-32 h-32 bg-blue-500/30 rounded-full blur-2xl mix-blend-screen"
+                        ></div>
+                        <div
+                          class="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-[90%] bg-slate-900 rounded-t-[2.5rem] border-x-[6px] border-t-[6px] border-slate-800 shadow-2xl flex flex-col items-center pt-3 overflow-hidden"
+                        >
+                          <div
+                            class="w-10 h-3 bg-black rounded-full mb-3 z-20 shadow-sm"
+                          ></div>
+                          <div
+                            class="w-full h-full bg-slate-800 relative px-3 space-y-2"
+                          >
+                            <div
+                              class="w-full h-16 bg-slate-700/50 rounded-2xl"
+                            ></div>
+                            <div
+                              class="w-3/4 h-3 bg-slate-700/30 rounded-full"
+                            ></div>
+                            <div
+                              class="w-1/2 h-3 bg-slate-700/30 rounded-full"
+                            ></div>
+                            <div
+                              class="w-full h-20 bg-indigo-500/10 rounded-2xl border border-white/5 mt-3"
+                            ></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="absolute bottom-0 right-0 z-20 filter drop-shadow-xl"
+                  >
+                    <button
+                      class="w-16 h-16 bg-white group-hover:bg-[#FD461A] group-hover:text-white transition-colors duration-300 rounded-full flex items-center justify-center text-indigo-900 hover:scale-105 hover:bg-indigo-50 active:scale-95 transition-all duration-300 cursor-pointer group-hover:shadow-2xl"
+                    >
+                      <i
+                        data-lucide="arrow-up-right"
+                        class="w-6 h-6 stroke-[2.5]"
+                      ></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="relative w-[320px] shrink-0 mx-auto group">
+                  <div
+                    class="card-shape relative h-[380px] w-full bg-[#3B3B3B] group-hover:bg-[#FD461A] transition-colors duration-300 z-10 shadow-2xl"
+                  >
+                    <div class="absolute inset-0 p-6 flex flex-col">
+                      <div class="border-b-2 border-white mb-4">
+                        <h2
+                          class="text-2xl font-bold text-white tracking-tight"
+                        >
+                          Marketing Strategy
+                        </h2>
+                        <p
+                          class="text-indigo-200 text-xs mt-1 mb-2 font-medium tracking-wide"
+                        >
+                          Growth-Focused Campaigns
+                        </p>
+                      </div>
+                      <div
+                        class="flex-1 relative w-full rounded-3xl overflow-hidden border-2 border-white/10 bg-white/10 backdrop-blur-md shadow-[inset_0_0_20px_rgba(255,255,255,0.05)]"
+                      >
+                        <div
+                          class="absolute -top-10 -left-10 w-40 h-40 bg-purple-500/30 rounded-full blur-3xl mix-blend-screen"
+                        ></div>
+                        <div
+                          class="absolute bottom-16 -right-10 w-32 h-32 bg-blue-500/30 rounded-full blur-2xl mix-blend-screen"
+                        ></div>
+                        <div
+                          class="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-[90%] bg-slate-900 rounded-t-[2.5rem] border-x-[6px] border-t-[6px] border-slate-800 shadow-2xl flex flex-col items-center pt-3 overflow-hidden"
+                        >
+                          <div
+                            class="w-10 h-3 bg-black rounded-full mb-3 z-20 shadow-sm"
+                          ></div>
+                          <div
+                            class="w-full h-full bg-slate-800 relative px-3 space-y-2"
+                          >
+                            <div
+                              class="w-full h-16 bg-slate-700/50 rounded-2xl"
+                            ></div>
+                            <div
+                              class="w-3/4 h-3 bg-slate-700/30 rounded-full"
+                            ></div>
+                            <div
+                              class="w-1/2 h-3 bg-slate-700/30 rounded-full"
+                            ></div>
+                            <div
+                              class="w-full h-20 bg-indigo-500/10 rounded-2xl border border-white/5 mt-3"
+                            ></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="absolute bottom-0 right-0 z-20 filter drop-shadow-xl"
+                  >
+                    <button
+                      class="w-16 h-16 bg-white group-hover:bg-[#FD461A] group-hover:text-white transition-colors duration-300 rounded-full flex items-center justify-center text-indigo-900 hover:scale-105 hover:bg-indigo-50 active:scale-95 transition-all duration-300 cursor-pointer group-hover:shadow-2xl"
+                    >
+                      <i
+                        data-lucide="arrow-up-right"
+                        class="w-6 h-6 stroke-[2.5]"
+                      ></i>
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+      <style>
+        /* বাকি CSS ঠিক আছে */
+        .card-shape {
+          will-change: clip-path;
+        }
+        .container {
+          max-width: 1420px;
+          margin-left: auto;
+          margin-right: auto;
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+        .services-track {
+          display: flex;
+          width: max-content;
+          animation: services-scroll 40s linear infinite;
+          gap: 2rem;
+        }
+
+        /* এনিমেশন লজিক: 0% এ শুরু, 100% এ -50% সরে যাবে। 
+     যেহেতু আমরা কন্টেন্ট ডবল করেছি, তাই -50% সরা মানেই হলো প্রথম সেটটা স্ক্রিনের বাইরে চলে যাওয়া এবং দ্বিতীয় সেটটা ঠিক তার জায়গায় চলে আসা। 
+     চোখের পলকে এটা আবার 0% এ ফিরে আসবে (যেহেতু লুপ), কিন্তু দর্শক বুঝবে না কারণ দুটো সেট দেখতে হুবহু এক। */
+        @keyframes services-scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        .services-track:hover {
+          animation-play-state: paused;
+        }
+      </style>
+
       <!-- timeline design -->
       <section
         class="py-20 lg:py-32 bg-white"
@@ -755,49 +1137,31 @@
                 class="absolute w-[75%] pb-[75%] bg-[#F94F29] rounded-full top-1/2 left-1/2 -translate-x-[55%] -translate-y-[50%] z-0"
               ></div>
 
-              <!-- =========================== Those are svg I don't need for now ================= -->
-              <!-- <svg
-                class="absolute top-[5%] right-[10%] z-0 text-[#333333] w-16 h-16 opacity-60"
-                viewBox="0 0 100 100"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M5 10H15M25 10H35M45 10H55M65 10H75M85 10H95"
-                  stroke="currentColor"
-                  stroke-width="3"
-                  stroke-linecap="round"
-                />
-                <path
-                  d="M15 25H25M35 25H45M55 25H65M75 25H85M95 25H105"
-                  stroke="currentColor"
-                  stroke-width="3"
-                  stroke-linecap="round"
-                />
-                <path
-                  d="M5 40H15M25 40H35M45 40H55M65 40H75M85 40H95"
-                  stroke="currentColor"
-                  stroke-width="3"
-                  stroke-linecap="round"
-                />
-                <path
-                  d="M15 55H25M35 55H45M55 55H65M75 55H85M95 55H105"
-                  stroke="currentColor"
-                  stroke-width="3"
-                  stroke-linecap="round"
-                />
-              </svg> -->
+              <div class="absolute top-[-180px] right-0 opacity-80">
+                <svg
+                  width="200"
+                  height="200"
+                  viewBox="0 0 200 200"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g stroke="black" stroke-width="3" stroke-linecap="round">
+                    <line x1="50" y1="30" x2="60" y2="40" />
+                    <line x1="70" y1="35" x2="80" y2="45" />
+                    <line x1="90" y1="40" x2="100" y2="50" />
 
-              <!-- <div
-                class="relative z-10 w-full h-auto flex justify-center pt-10 pl-6"
-              >
-                <img
-                  src="https://freepngimg.com/thumb/girl/169397-girl-pointing-finger-young-free-download-image.png"
-                  alt="Why Hire Me"
-                  class="w-[85%] h-auto object-contain drop-shadow-xl"
-                  style="max-height: 550px"
-                />
-              </div> -->
+                    <line x1="60" y1="60" x2="70" y2="70" />
+                    <line x1="80" y1="65" x2="90" y2="75" />
+                    <line x1="100" y1="70" x2="110" y2="80" />
+                    <line x1="120" y1="75" x2="130" y2="85" />
+
+                    <line x1="70" y1="90" x2="80" y2="100" />
+                    <line x1="90" y1="95" x2="100" y2="105" />
+                    <line x1="110" y1="100" x2="120" y2="110" />
+                    <line x1="130" y1="105" x2="140" y2="115" />
+                  </g>
+                </svg>
+              </div>
             </div>
 
             <div
@@ -1033,7 +1397,7 @@
 
       <!-- Review Section -->
       <section class="bg-white pt-20">
-        <div class="text-center max-w-2xl mx-auto px-4 py-6">
+        <!-- <div class="text-center max-w-2xl mx-auto px-4 py-6">
           <div class="flex flex-wrap justify-center gap-2 mb-4">
             <span
               class="px-4 py-1.5 bg-[#F3F4F6] text-gray-600 text-xs sm:text-sm font-medium rounded-full"
@@ -1086,7 +1450,7 @@
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi.
           </p>
-        </div>
+        </div> -->
         <div
           class="bg-[#121212] rounded-3xl py-20 px-4 md:px-0 relative overflow-hidden"
           x-data="{ 
@@ -1290,6 +1654,7 @@
       <!-- have an awesome project -->
       <section class="py-20 bg-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <!-- 1. Heading -->
           <h2
             class="text-3xl md:text-5xl font-bold text-[#121212] leading-tight mb-10"
           >
@@ -1297,42 +1662,108 @@
             Idea? <span class="text-[#F94F29]">Let’s Discuss</span>
           </h2>
 
-          <div
-            class="max-w-2xl mx-auto bg-white rounded-full border border-gray-300 p-1.5 flex items-center shadow-sm transition-shadow hover:shadow-md hover:border-[#F94F29]/50"
-          >
-            <div
-              class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#F94F29]/10 flex items-center justify-center flex-shrink-0 ml-1"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                class="w-5 h-5 md:w-6 md:h-6 text-[#F94F29]"
+          <!-- 2. Form Container -->
+          <div class="max-w-2xl mx-auto">
+            <form action="#" class="space-y-5">
+              <!-- 1st Row: Full Name -->
+              <div class="relative group">
+                <div
+                  class="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none"
+                >
+                  <!-- User Icon -->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-5 h-5 text-gray-400 group-focus-within:text-[#F94F29] transition-colors"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+                    />
+                  </svg>
+                </div>
+                <input
+                  type="text"
+                  placeholder="Full Name"
+                  class="w-full bg-white text-gray-800 border border-gray-300 rounded-full py-4 pl-12 pr-5 outline-none focus:border-[#F94F29] focus:ring-1 focus:ring-[#F94F29] shadow-sm transition-all placeholder-gray-400"
+                />
+              </div>
+
+              <!-- 2nd Row: Mobile & Email -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <!-- Mobile Input -->
+                <div class="relative group">
+                  <div
+                    class="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none"
+                  >
+                    <!-- Phone Icon -->
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="w-5 h-5 text-gray-400 group-focus-within:text-[#F94F29] transition-colors"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"
+                      />
+                    </svg>
+                  </div>
+                  <input
+                    type="tel"
+                    placeholder="Mobile Number"
+                    class="w-full bg-white text-gray-800 border border-gray-300 rounded-full py-4 pl-12 pr-5 outline-none focus:border-[#F94F29] focus:ring-1 focus:ring-[#F94F29] shadow-sm transition-all placeholder-gray-400"
+                  />
+                </div>
+
+                <!-- Email Input -->
+                <div class="relative group">
+                  <div
+                    class="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none"
+                  >
+                    <!-- Email Icon -->
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="w-5 h-5 text-gray-400 group-focus-within:text-[#F94F29] transition-colors"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                      />
+                    </svg>
+                  </div>
+                  <input
+                    type="email"
+                    placeholder="Email Address"
+                    class="w-full bg-white text-gray-800 border border-gray-300 rounded-full py-4 pl-12 pr-5 outline-none focus:border-[#F94F29] focus:ring-1 focus:ring-[#F94F29] shadow-sm transition-all placeholder-gray-400"
+                  />
+                </div>
+              </div>
+
+              <!-- 3rd Row: Submit Button -->
+              <button
+                class="w-full bg-[#F94F29] text-white text-lg font-medium py-4 rounded-full shadow-lg shadow-orange-500/20 hover:bg-[#e04524] hover:shadow-orange-500/40 transition-all duration-300 transform hover:-translate-y-0.5 active:scale-[0.98]"
               >
-                <path
-                  d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z"
-                />
-                <path
-                  d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z"
-                />
-              </svg>
-            </div>
-
-            <input
-              type="email"
-              placeholder="Enter Email Address"
-              class="flex-1 bg-transparent border-none outline-none px-4 text-gray-700 placeholder-gray-400 h-full text-sm md:text-base"
-            />
-
-            <button
-              class="bg-[#F94F29] text-white px-6 md:px-8 py-3 rounded-full font-medium text-sm md:text-base transition-transform hover:bg-[#e04524] active:scale-95 whitespace-nowrap"
-            >
-              Book Call
-            </button>
+                Book Call
+              </button>
+            </form>
           </div>
 
+          <!-- 3. Trust Badges -->
           <div
-            class="mt-10 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 text-sm md:text-[15px] font-medium text-gray-600"
+            class="mt-12 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 text-sm md:text-[15px] font-medium text-gray-600"
           >
             <div class="flex items-center gap-2">
               <svg
